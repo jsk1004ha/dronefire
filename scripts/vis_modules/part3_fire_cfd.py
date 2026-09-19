@@ -63,18 +63,26 @@ def generate():
         ax.set_xlim(0, 16)
         
     axes[0].axhline(0.1, color="#dc2626", linestyle=":", lw=1.5, label="소화 판정선 (HRR <= 0.1 kW)")
+    axes[0].set_ylim(-0.8, 22.0)
     axes[0].set_ylabel("발열량 $\\dot{Q}$ [kW]\n(Heat Release Rate)", fontweight="bold")
-    axes[0].set_title("NIST FDS 6.11.1 CFD 화재 해석: 소화 방식별 발열량 · 열유속 · 가스온도 시계열 비교", pad=12, fontweight="bold")
-    axes[0].legend(loc="upper right", ncol=3, framealpha=0.95)
     
     axes[1].axhline(1.0, color="#dc2626", linestyle=":", lw=1.5, label="열 노출 한계선 (1.0 kW/m²)")
+    axes[1].set_ylim(-2.0, 72.0)
     axes[1].set_ylabel("복사 열유속 $q^{\\prime\\prime}$ [kW/m²]\n(Gauge Heat Flux)", fontweight="bold")
     
     axes[2].axhline(50.0, color="#dc2626", linestyle=":", lw=1.5, label="장비 안전 한계온도 (50°C)")
+    axes[2].set_ylim(-20.0, 950.0)
     axes[2].set_ylabel("가스 최고온도 $T_{gas}$ [°C]\n(Gas Temperature)", fontweight="bold")
     axes[2].set_xlabel("시뮬레이션 시간 $t$ [s] (0~6s: 기저화재 성장, 6~10s: 약제 분사, 10~16s: 재발화 관측)", fontweight="bold")
     
-    plt.tight_layout()
+    fig.suptitle("NIST FDS 6.11.1 CFD 화재 해석: 소화 방식별 발열량 · 열유속 · 가스온도 시계열 비교", y=0.98, fontweight="bold", fontsize=13)
+    
+    # Unified top legend placed outside all subplots to prevent any occlusion
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 0.945), ncol=4,
+               frameon=True, facecolor="#ffffff", edgecolor="#cbd5e1", fontsize=9.5)
+    
+    fig.subplots_adjust(top=0.88, bottom=0.07, left=0.09, right=0.97, hspace=0.18)
     p = OUT_DIR / "vis_03_fire_cfd_timeseries.png"
     fig.savefig(p)
     plt.close(fig)

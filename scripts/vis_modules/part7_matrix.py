@@ -41,11 +41,10 @@ def generate():
         linecolor="#ffffff"
     )
     
-    ax.set_title("5대 소화 방식의 단독 · 복합(동시 SIM / 순차 SEQ) 운용 상호보완성 Matrix Heatmap", pad=18, fontweight="bold")
-    ax.text(0.01, 1.03, "■ 대각선: 단독 운용 효율 | ■ 상삼각: 동시 분사 (SIM) | ■ 하삼각: 순차 분사 (SEQ)",
-            transform=ax.transAxes, fontsize=9.5, fontweight="bold", color="#1e293b")
+    fig.suptitle("5대 소화 방식의 단독 · 복합(동시 SIM / 순차 SEQ) 운용 상호보완성 Matrix Heatmap", y=0.97, fontweight="bold", fontsize=13)
+    ax.set_title("■ 대각선: 단독 운용 효율   |   ■ 상삼각: 동시 분사 (SIM)   |   ■ 하삼각: 순차 분사 (SEQ)", pad=14, fontsize=10, fontweight="bold", color="#334155")
             
-    plt.tight_layout()
+    fig.subplots_adjust(top=0.90, bottom=0.08, left=0.12, right=0.98)
     p = OUT_DIR / "vis_07_synergy_matrix_heatmap.png"
     fig.savefig(p)
     plt.close(fig)
