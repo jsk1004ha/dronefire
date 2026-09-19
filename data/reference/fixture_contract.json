@@ -1,0 +1,48 @@
+{
+  "case": {
+    "project_id": "AERIS-DRONE-PHYSICAL-FIELD",
+    "case_id": "FIXTURE-P0-P1-001",
+    "run_id": "ADAPTER-DEMO-R01",
+    "coordinate_frame": "facility-rhs-z-up",
+    "transform_id": "survey-transform-v1",
+    "time_basis": "event-clock-s"
+  },
+  "time_alignment": {
+    "tolerance_s": 2.5,
+    "mode": "nearest_within_tolerance",
+    "interpolation_allowed": false
+  },
+  "native_artifact_checks": {
+    "fds_input_path": "/home/ubuntu/aeris_review/external/AERIS_Research_External_AI_Review_2026-08-26/research_sources/steckler_benchmark/Steckler_010.fds",
+    "fds_output_path": "/home/ubuntu/aeris_review/evidence/AERIS_Complete_Visual_Evidence_2026-08-26/visual_assets/research_outputs/fds_steckler_010_short_preflight/Steckler_010_steckler_010_short_preflight_20260826T014249/Steckler_010.out",
+    "fds_output_required_time_s": 1800.0,
+    "fds_run_manifest_path": "/home/ubuntu/aeris_review/evidence/AERIS_Complete_Visual_Evidence_2026-08-26/visual_assets/research_outputs/fds_steckler_010_short_preflight/Steckler_010_steckler_010_short_preflight_20260826T014249/run_manifest.json",
+    "openfoam_case_path": "/home/ubuntu/aeris_review/source/openfoam_native_case_not_supplied"
+  },
+  "artifacts": [
+    {
+      "artifact_id": "FDS-PROBE-FIXTURE",
+      "source_kind": "fds_probe_csv",
+      "path": "/home/ubuntu/aeris_review/source/fds_probe_sample.csv",
+      "solver_name": "FDS",
+      "solver_version": "not-recorded-fixture",
+      "mesh_id": "not-recorded-fixture",
+      "native_bundle_required": true,
+      "native_required_keys": ["input_hash", "mesh_time_study", "device_geometry_sidecar"],
+      "native_bundle": {"input_hash": true, "mesh_time_study": false, "device_geometry_sidecar": false},
+      "probe_geometry": {}
+    },
+    {
+      "artifact_id": "OPENFOAM-POINT-FIXTURE",
+      "source_kind": "openfoam_point_csv",
+      "path": "/home/ubuntu/aeris_review/source/openfoam_web_point_sample.csv",
+      "solver_name": "OpenFOAM",
+      "solver_version": "not-recorded-fixture",
+      "mesh_id": "not-recorded-fixture",
+      "native_bundle_required": true,
+      "native_required_keys": ["polyMesh", "checkMesh", "field_directories", "solver_log", "sampling_definition"],
+      "native_bundle": {"polyMesh": false, "checkMesh": false, "field_directories": false, "solver_log": false, "sampling_definition": false}
+    }
+  ],
+  "output_dir": "/home/ubuntu/aeris_review/adapter_contract_core/outputs/fixture_run"
+}

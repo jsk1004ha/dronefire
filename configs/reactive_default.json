@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "note": "FDS 6.11.1 compact reactive research scenario. Values are disclosed starting assumptions, not calibrated suppression data.",
+  "case": {
+    "duration_s": 16.0,
+    "intervention_start_s": 6.0,
+    "intervention_end_s": 10.0,
+    "post_observation_s": 6.0,
+    "mesh_cell_m": 0.05,
+    "domain_x_m": [0.0, 1.5],
+    "domain_y_m": [-0.6, 0.6],
+    "domain_z_m": [0.0, 1.0]
+  },
+  "burner": {
+    "area_m2": 0.04,
+    "gas_fuel_mass_flux_kg_m2_s": 0.009
+  },
+  "methods": {
+    "M1": {"frequency_hz": 60.0, "velocity_rms_m_s": 0.4, "vent_area_m2": 0.01, "kind": "mechanically_forced_airflow_envelope"},
+    "M2": {"exit_velocity_m_s": 8.0, "pulse_duration_s": 0.05, "period_s": 1.0, "vent_area_m2": 0.01, "kind": "pulsed_nozzle_proxy"},
+    "M3": {"water_flow_kg_s": 0.005, "droplet_diameter_um": 100.0, "carrier_velocity_m_s": 5.0, "vent_area_m2": 0.01, "kind": "water_particle_transport"}
+  },
+  "evidence": {
+    "published_agent_or_chemistry": {},
+    "source_calibration": {},
+    "required_schema": {
+      "M4": ["agent_name", "composition_mass_fraction", "inhibition_or_reaction_model", "validation_reference"],
+      "M5": ["electrode_geometry", "voltage_waveform", "charge_transport_model", "validation_reference"]
+    }
+  }
+}

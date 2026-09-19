@@ -1,0 +1,20 @@
+{
+  "tau_s": 10,
+  "records": [
+    {
+      "case_id": "browser-validation-failure",
+      "block_id": "ui-test",
+      "condition_id": "M1",
+      "run_status": "solver_failure",
+      "observation_end_s": 0,
+      "event": false,
+      "event_time_s": null,
+      "loss_J_m2": null,
+      "input_energy_J": null,
+      "provenance": {
+        "source": "browser UI verification fixture; not experimental data",
+        "evidence_type": "unvalidated_physics"
+      }
+    }
+  ]
+}

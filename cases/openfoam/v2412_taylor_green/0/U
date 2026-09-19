@@ -1,0 +1,11 @@
+FoamFile { format ascii; class volVectorField; object U; }
+dimensions [0 1 -1 0 0 0 0];
+internalField uniform (0 0 0);
+boundaryField
+{
+    xMin { type cyclic; }
+    xMax { type cyclic; }
+    yMin { type cyclic; }
+    yMax { type cyclic; }
+    frontAndBack { type empty; }
+}

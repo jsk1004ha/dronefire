@@ -1,0 +1,2 @@
+control_point_id,source_frame,target_frame,transform_id,x_source_m,y_source_m,z_source_m,x_target_m,y_target_m,z_target_m,residual_m,source_record_id
+<unique_control_point_id>,<survey_or_instrument_frame>,<case_coordinate_frame>,<case_transform_id>,<source_x_m>,<source_y_m>,<source_z_m>,<target_x_m>,<target_y_m>,<target_z_m>,<nonnegative_residual_m>,<immutable_survey_record_id>

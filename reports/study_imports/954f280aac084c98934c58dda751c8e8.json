@@ -1,0 +1,2046 @@
+{
+  "analysis": {
+    "schema_version": "1.0",
+    "analysis_scope": "observed_solver_or_measured_time_series",
+    "preregistration": {
+      "control_id": "C0",
+      "tau_s": 10.0,
+      "extinction": {
+        "hrr_threshold_kW": 0.1,
+        "sustain_s": 1.0,
+        "reignition_threshold_kW": 0.2,
+        "reignition_followup_s": 4.0
+      },
+      "source": "declared research screening criteria; not experimentally calibrated",
+      "declared_before_results": true
+    },
+    "extinction_runs": [
+      {
+        "case_id": "runs/reactive_C0_corrected",
+        "block_id": "assumed_environment_0",
+        "condition_id": "C0",
+        "status": "complete",
+        "criterion": {
+          "hrr_threshold_kW": 0.1,
+          "sustain_s": 1.0,
+          "reignition_threshold_kW": 0.2,
+          "reignition_followup_s": 4.0
+        },
+        "extinction": {
+          "status": "right_censored",
+          "event": false,
+          "time_s": null,
+          "observed_through_s": 10.0
+        },
+        "reignition": {
+          "status": "not_applicable",
+          "event": null,
+          "time_s": null
+        },
+        "provenance": {
+          "source": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\runs\\reactive_C0_corrected\\run_manifest.json",
+          "solver": "FDS",
+          "evidence_type": "native_unvalidated",
+          "hrr_sha256": "88dc4884637df13d38336c024341cc88ac8070c8495e5d60568b10843aa5a143",
+          "devc_sha256": "d9098de6f96b545c0ed617494f78af79babedaef89ad3c441faf6b13ed895b92",
+          "time_alignment": "linear within shared support only",
+          "units_checked": true,
+          "case_path_identity": "runs/reactive_C0_corrected",
+          "analysis_criteria": {
+            "control_id": "C0",
+            "tau_s": 10.0,
+            "extinction": {
+              "hrr_threshold_kW": 0.1,
+              "sustain_s": 1.0,
+              "reignition_threshold_kW": 0.2,
+              "reignition_followup_s": 4.0
+            },
+            "source": "declared research screening criteria; not experimentally calibrated",
+            "declared_before_results": true
+          },
+          "intervention_activation": {
+            "status": "not_applicable_control",
+            "eligible": true,
+            "reason": null,
+            "methods": [],
+            "proof": []
+          },
+          "raw_resource_components": [],
+          "resource_ledger_status": "unverified_not_used_for_budget_matching"
+        },
+        "limitations": [
+          "Extinction is an HRR criterion, not visual flame disappearance.",
+          "No behavior is extrapolated past the last observed sample."
+        ]
+      },
+      {
+        "case_id": "runs/reactive_M1_corrected",
+        "block_id": "assumed_environment_0",
+        "condition_id": "M1",
+        "status": "complete",
+        "criterion": {
+          "hrr_threshold_kW": 0.1,
+          "sustain_s": 1.0,
+          "reignition_threshold_kW": 0.2,
+          "reignition_followup_s": 4.0
+        },
+        "extinction": {
+          "status": "right_censored",
+          "event": false,
+          "time_s": null,
+          "observed_through_s": 10.0
+        },
+        "reignition": {
+          "status": "not_applicable",
+          "event": null,
+          "time_s": null
+        },
+        "provenance": {
+          "source": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\runs\\reactive_M1_corrected\\run_manifest.json",
+          "solver": "FDS",
+          "evidence_type": "native_unvalidated",
+          "hrr_sha256": "a18949ebef7280c89f43b49f0e8ac5f412aed83d3bf360a755695a2c1c5be7ca",
+          "devc_sha256": "3dc7985abba042b0844181010ce05e608c4640b7355968d8629792298cfdec77",
+          "time_alignment": "linear within shared support only",
+          "units_checked": true,
+          "case_path_identity": "runs/reactive_M1_corrected",
+          "analysis_criteria": {
+            "control_id": "C0",
+            "tau_s": 10.0,
+            "extinction": {
+              "hrr_threshold_kW": 0.1,
+              "sustain_s": 1.0,
+              "reignition_threshold_kW": 0.2,
+              "reignition_followup_s": 4.0
+            },
+            "source": "declared research screening criteria; not experimentally calibrated",
+            "declared_before_results": true
+          },
+          "intervention_activation": {
+            "status": "verified",
+            "eligible": true,
+            "reason": null,
+            "methods": [
+              "M1"
+            ],
+            "proof": [
+              {
+                "window_s": [
+                  6.0,
+                  10.0
+                ],
+                "method_id": "M1",
+                "channel": "source_m1_u_m_s",
+                "column": "SOURCE_M1_U",
+                "baseline_statistic": 0.010590971,
+                "active_statistic": 0.3925792,
+                "threshold": 0.05,
+                "threshold_unit": "m/s",
+                "comparison": "abs_gte",
+                "dose_fraction": 1.0,
+                "expected_state": "active",
+                "unit": "m/s",
+                "passed": true
+              }
+            ]
+          },
+          "raw_resource_components": [
+            {
+              "method_id": "M1",
+              "status": "proxy",
+              "input_energy_J": null,
+              "air_volume_m3": 0.016
+            }
+          ],
+          "resource_ledger_status": "unverified_not_used_for_budget_matching"
+        },
+        "limitations": [
+          "Extinction is an HRR criterion, not visual flame disappearance.",
+          "No behavior is extrapolated past the last observed sample."
+        ]
+      },
+      {
+        "case_id": "runs/reactive_M2_corrected",
+        "block_id": "assumed_environment_0",
+        "condition_id": "M2",
+        "status": "complete",
+        "criterion": {
+          "hrr_threshold_kW": 0.1,
+          "sustain_s": 1.0,
+          "reignition_threshold_kW": 0.2,
+          "reignition_followup_s": 4.0
+        },
+        "extinction": {
+          "status": "right_censored",
+          "event": false,
+          "time_s": null,
+          "observed_through_s": 10.0
+        },
+        "reignition": {
+          "status": "not_applicable",
+          "event": null,
+          "time_s": null
+        },
+        "provenance": {
+          "source": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\runs\\reactive_M2_corrected\\run_manifest.json",
+          "solver": "FDS",
+          "evidence_type": "native_unvalidated",
+          "hrr_sha256": "c56c80861ffca84aafe5fb4eead67c6212b85466d1cbb6eb2b0a794ead2dc5a6",
+          "devc_sha256": "7ff65e35ed61c01dfbf58cb7d554a810d854329396d0983be871425e9321a6fc",
+          "time_alignment": "linear within shared support only",
+          "units_checked": true,
+          "case_path_identity": "runs/reactive_M2_corrected",
+          "analysis_criteria": {
+            "control_id": "C0",
+            "tau_s": 10.0,
+            "extinction": {
+              "hrr_threshold_kW": 0.1,
+              "sustain_s": 1.0,
+              "reignition_threshold_kW": 0.2,
+              "reignition_followup_s": 4.0
+            },
+            "source": "declared research screening criteria; not experimentally calibrated",
+            "declared_before_results": true
+          },
+          "intervention_activation": {
+            "status": "verified",
+            "eligible": true,
+            "reason": null,
+            "methods": [
+              "M2"
+            ],
+            "proof": [
+              {
+                "window_s": [
+                  6.0,
+                  10.0
+                ],
+                "method_id": "M2",
+                "channel": "source_m2_u_m_s",
+                "column": "SOURCE_M2_U",
+                "baseline_statistic": 0.019037936,
+                "active_statistic": 3.1076743,
+                "threshold": 0.2,
+                "threshold_unit": "m/s",
+                "comparison": "abs_gte",
+                "dose_fraction": 1.0,
+                "expected_state": "active",
+                "unit": "m/s",
+                "passed": true
+              }
+            ]
+          },
+          "raw_resource_components": [
+            {
+              "method_id": "M2",
+              "status": "proxy",
+              "input_energy_J": null,
+              "air_volume_m3": 0.016,
+              "pulse_count": 4
+            }
+          ],
+          "resource_ledger_status": "unverified_not_used_for_budget_matching"
+        },
+        "limitations": [
+          "Extinction is an HRR criterion, not visual flame disappearance.",
+          "No behavior is extrapolated past the last observed sample."
+        ]
+      },
+      {
+        "case_id": "runs/reactive_M3_corrected",
+        "block_id": "assumed_environment_0",
+        "condition_id": "M3",
+        "status": "complete",
+        "criterion": {
+          "hrr_threshold_kW": 0.1,
+          "sustain_s": 1.0,
+          "reignition_threshold_kW": 0.2,
+          "reignition_followup_s": 4.0
+        },
+        "extinction": {
+          "status": "right_censored",
+          "event": false,
+          "time_s": null,
+          "observed_through_s": 10.0
+        },
+        "reignition": {
+          "status": "not_applicable",
+          "event": null,
+          "time_s": null
+        },
+        "provenance": {
+          "source": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\runs\\reactive_M3_corrected\\run_manifest.json",
+          "solver": "FDS",
+          "evidence_type": "native_unvalidated",
+          "hrr_sha256": "cd0bbb4c95463b8b3aea53a10a91e31f6cb2375998e6dfc61fb8450f1ff64e03",
+          "devc_sha256": "27dea629227d936e1425ef0cfabbfe732c29de8503d998f1c925d62004a6ad7f",
+          "time_alignment": "linear within shared support only",
+          "units_checked": true,
+          "case_path_identity": "runs/reactive_M3_corrected",
+          "analysis_criteria": {
+            "control_id": "C0",
+            "tau_s": 10.0,
+            "extinction": {
+              "hrr_threshold_kW": 0.1,
+              "sustain_s": 1.0,
+              "reignition_threshold_kW": 0.2,
+              "reignition_followup_s": 4.0
+            },
+            "source": "declared research screening criteria; not experimentally calibrated",
+            "declared_before_results": true
+          },
+          "intervention_activation": {
+            "status": "verified",
+            "eligible": true,
+            "reason": null,
+            "methods": [
+              "M3"
+            ],
+            "proof": [
+              {
+                "window_s": [
+                  6.0,
+                  10.0
+                ],
+                "method_id": "M3",
+                "channel": "source_m3_u_m_s",
+                "column": "SOURCE_M3_U",
+                "baseline_statistic": 0.023982221,
+                "active_statistic": 3.2320365,
+                "threshold": 0.1,
+                "threshold_unit": "m/s",
+                "comparison": "abs_gte",
+                "dose_fraction": 1.0,
+                "expected_state": "active",
+                "unit": "m/s",
+                "passed": true
+              },
+              {
+                "window_s": [
+                  6.0,
+                  10.0
+                ],
+                "method_id": "M3",
+                "channel": "source_m3_droplet_volume_fraction",
+                "column": "SOURCE_M3_DVF",
+                "baseline_statistic": 0.0,
+                "active_statistic": 8.2520733e-05,
+                "threshold": 1e-12,
+                "threshold_unit": "",
+                "comparison": "gte",
+                "dose_fraction": 1.0,
+                "expected_state": "active",
+                "unit": "",
+                "passed": true
+              }
+            ]
+          },
+          "raw_resource_components": [
+            {
+              "method_id": "M3",
+              "status": "native_particle_transport",
+              "input_energy_J": null,
+              "water_mass_kg": 0.02
+            }
+          ],
+          "resource_ledger_status": "unverified_not_used_for_budget_matching"
+        },
+        "limitations": [
+          "Extinction is an HRR criterion, not visual flame disappearance.",
+          "No behavior is extrapolated past the last observed sample."
+        ]
+      }
+    ],
+    "extinction_statistics": {
+      "tau_s": 10.0,
+      "bootstrap": {
+        "method": "cluster_by_block",
+        "samples": 500,
+        "seed": 10042
+      },
+      "groups": {
+        "C0": {
+          "counts": {
+            "total": 1,
+            "eligible": 1,
+            "events": 0,
+            "administrative_censor": 1,
+            "incomplete": 0,
+            "independent_blocks": 1
+          },
+          "event_fraction_by_tau": 0.0,
+          "rmst_s": 10.0,
+          "rmst_ci95_s": [
+            10.0,
+            10.0
+          ],
+          "precision_warning": "fewer_than_3_independent_blocks",
+          "estimand_note": "Lower extinction RMST is favorable. Energy and exposure channels are not required; early incomplete runs are excluded and listed in counts."
+        },
+        "M1": {
+          "counts": {
+            "total": 1,
+            "eligible": 1,
+            "events": 0,
+            "administrative_censor": 1,
+            "incomplete": 0,
+            "independent_blocks": 1
+          },
+          "event_fraction_by_tau": 0.0,
+          "rmst_s": 10.0,
+          "rmst_ci95_s": [
+            10.0,
+            10.0
+          ],
+          "precision_warning": "fewer_than_3_independent_blocks",
+          "estimand_note": "Lower extinction RMST is favorable. Energy and exposure channels are not required; early incomplete runs are excluded and listed in counts."
+        },
+        "M2": {
+          "counts": {
+            "total": 1,
+            "eligible": 1,
+            "events": 0,
+            "administrative_censor": 1,
+            "incomplete": 0,
+            "independent_blocks": 1
+          },
+          "event_fraction_by_tau": 0.0,
+          "rmst_s": 10.0,
+          "rmst_ci95_s": [
+            10.0,
+            10.0
+          ],
+          "precision_warning": "fewer_than_3_independent_blocks",
+          "estimand_note": "Lower extinction RMST is favorable. Energy and exposure channels are not required; early incomplete runs are excluded and listed in counts."
+        },
+        "M3": {
+          "counts": {
+            "total": 1,
+            "eligible": 1,
+            "events": 0,
+            "administrative_censor": 1,
+            "incomplete": 0,
+            "independent_blocks": 1
+          },
+          "event_fraction_by_tau": 0.0,
+          "rmst_s": 10.0,
+          "rmst_ci95_s": [
+            10.0,
+            10.0
+          ],
+          "precision_warning": "fewer_than_3_independent_blocks",
+          "estimand_note": "Lower extinction RMST is favorable. Energy and exposure channels are not required; early incomplete runs are excluded and listed in counts."
+        }
+      },
+      "paired_comparisons": [
+        {
+          "left": "C0",
+          "right": "M1",
+          "eligible": true,
+          "reason": null,
+          "common_blocks": 1,
+          "rmst_difference_s": 0.0,
+          "rmst_difference_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "precision_warning": "fewer_than_3_common_blocks"
+        },
+        {
+          "left": "C0",
+          "right": "M2",
+          "eligible": true,
+          "reason": null,
+          "common_blocks": 1,
+          "rmst_difference_s": 0.0,
+          "rmst_difference_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "precision_warning": "fewer_than_3_common_blocks"
+        },
+        {
+          "left": "C0",
+          "right": "M3",
+          "eligible": true,
+          "reason": null,
+          "common_blocks": 1,
+          "rmst_difference_s": 0.0,
+          "rmst_difference_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "precision_warning": "fewer_than_3_common_blocks"
+        },
+        {
+          "left": "M1",
+          "right": "M2",
+          "eligible": true,
+          "reason": null,
+          "common_blocks": 1,
+          "rmst_difference_s": 0.0,
+          "rmst_difference_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "precision_warning": "fewer_than_3_common_blocks"
+        },
+        {
+          "left": "M1",
+          "right": "M3",
+          "eligible": true,
+          "reason": null,
+          "common_blocks": 1,
+          "rmst_difference_s": 0.0,
+          "rmst_difference_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "precision_warning": "fewer_than_3_common_blocks"
+        },
+        {
+          "left": "M2",
+          "right": "M3",
+          "eligible": true,
+          "reason": null,
+          "common_blocks": 1,
+          "rmst_difference_s": 0.0,
+          "rmst_difference_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "precision_warning": "fewer_than_3_common_blocks"
+        }
+      ],
+      "energy_required": false,
+      "heat_exposure_required": false
+    },
+    "hrr_reductions": [
+      {
+        "condition_id": "M1",
+        "eligible": true,
+        "reason": null,
+        "block_id": "assumed_environment_0",
+        "window_s": [
+          0.0,
+          10.0
+        ],
+        "integration": "trapezoid_on_union_of_observed_knots_within_overlap",
+        "method_integral_kJ": 165.66053301175964,
+        "control_integral_kJ": 165.67094946017477,
+        "decrease_kJ": 0.010416448415128343,
+        "decrease_fraction": 6.287432074891797e-05,
+        "extrapolated": false
+      },
+      {
+        "condition_id": "M2",
+        "eligible": true,
+        "reason": null,
+        "block_id": "assumed_environment_0",
+        "window_s": [
+          0.0,
+          10.0
+        ],
+        "integration": "trapezoid_on_union_of_observed_knots_within_overlap",
+        "method_integral_kJ": 165.71321931567635,
+        "control_integral_kJ": 165.67094946017474,
+        "decrease_kJ": -0.04226985550161544,
+        "decrease_fraction": -0.00025514343727328637,
+        "extrapolated": false
+      },
+      {
+        "condition_id": "M3",
+        "eligible": true,
+        "reason": null,
+        "block_id": "assumed_environment_0",
+        "window_s": [
+          0.0,
+          10.0
+        ],
+        "integration": "trapezoid_on_union_of_observed_knots_within_overlap",
+        "method_integral_kJ": 165.72625320979455,
+        "control_integral_kJ": 165.67094946017477,
+        "decrease_kJ": -0.055303749619781684,
+        "decrease_fraction": -0.000333816820631494,
+        "extrapolated": false
+      }
+    ],
+    "outcomes": {
+      "schema_version": "1.0",
+      "tau_s": 10.0,
+      "bootstrap": {
+        "method": "paired_cluster_by_block",
+        "samples": 500,
+        "seed": 42,
+        "ci_level": 0.95,
+        "limitations": "Sampling intervals do not include model or measurement bias."
+      },
+      "groups": {
+        "C0": {
+          "counts": {
+            "total_imported": 1,
+            "analysis_eligible": 1,
+            "event": 0,
+            "administrative_censor": 1,
+            "incomplete": 0,
+            "numerical_failure": 0
+          },
+          "success_rate": 0.0,
+          "success_rate_ci95": [
+            0.0,
+            0.0
+          ],
+          "rmst_s": 10.0,
+          "rmst_ci95_s": [
+            10.0,
+            10.0
+          ],
+          "mean_loss_J_m2": 405769.2893509699,
+          "mean_loss_ci95_J_m2": [
+            405769.2893509699,
+            405769.2893509699
+          ],
+          "mean_input_energy_J": 0.0,
+          "mean_input_energy_ci95_J": [
+            0.0,
+            0.0
+          ],
+          "estimand_note": "RMST is mean min(event time, 10.0 s) among complete event or administratively censored runs; incomplete and numerical failures are excluded."
+        },
+        "M1": {
+          "counts": {
+            "total_imported": 1,
+            "analysis_eligible": 0,
+            "event": 0,
+            "administrative_censor": 0,
+            "incomplete": 1,
+            "numerical_failure": 0
+          },
+          "success_rate": null,
+          "success_rate_ci95": null,
+          "rmst_s": null,
+          "rmst_ci95_s": null,
+          "mean_loss_J_m2": null,
+          "mean_loss_ci95_J_m2": null,
+          "mean_input_energy_J": null,
+          "mean_input_energy_ci95_J": null,
+          "estimand_note": "RMST is mean min(event time, 10.0 s) among complete event or administratively censored runs; incomplete and numerical failures are excluded."
+        },
+        "M2": {
+          "counts": {
+            "total_imported": 1,
+            "analysis_eligible": 0,
+            "event": 0,
+            "administrative_censor": 0,
+            "incomplete": 1,
+            "numerical_failure": 0
+          },
+          "success_rate": null,
+          "success_rate_ci95": null,
+          "rmst_s": null,
+          "rmst_ci95_s": null,
+          "mean_loss_J_m2": null,
+          "mean_loss_ci95_J_m2": null,
+          "mean_input_energy_J": null,
+          "mean_input_energy_ci95_J": null,
+          "estimand_note": "RMST is mean min(event time, 10.0 s) among complete event or administratively censored runs; incomplete and numerical failures are excluded."
+        },
+        "M3": {
+          "counts": {
+            "total_imported": 1,
+            "analysis_eligible": 0,
+            "event": 0,
+            "administrative_censor": 0,
+            "incomplete": 1,
+            "numerical_failure": 0
+          },
+          "success_rate": null,
+          "success_rate_ci95": null,
+          "rmst_s": null,
+          "rmst_ci95_s": null,
+          "mean_loss_J_m2": null,
+          "mean_loss_ci95_J_m2": null,
+          "mean_input_energy_J": null,
+          "mean_input_energy_ci95_J": null,
+          "estimand_note": "RMST is mean min(event time, 10.0 s) among complete event or administratively censored runs; incomplete and numerical failures are excluded."
+        }
+      },
+      "paired_comparisons": [
+        {
+          "left": "C0",
+          "right": "M1",
+          "eligible": false,
+          "reason": "no_common_complete_blocks",
+          "common_blocks": 0,
+          "rmst_difference_s": null,
+          "rmst_difference_ci95_s": null,
+          "loss_difference_J_m2": null,
+          "loss_difference_ci95_J_m2": null
+        },
+        {
+          "left": "C0",
+          "right": "M2",
+          "eligible": false,
+          "reason": "no_common_complete_blocks",
+          "common_blocks": 0,
+          "rmst_difference_s": null,
+          "rmst_difference_ci95_s": null,
+          "loss_difference_J_m2": null,
+          "loss_difference_ci95_J_m2": null
+        },
+        {
+          "left": "C0",
+          "right": "M3",
+          "eligible": false,
+          "reason": "no_common_complete_blocks",
+          "common_blocks": 0,
+          "rmst_difference_s": null,
+          "rmst_difference_ci95_s": null,
+          "loss_difference_J_m2": null,
+          "loss_difference_ci95_J_m2": null
+        },
+        {
+          "left": "M1",
+          "right": "M2",
+          "eligible": false,
+          "reason": "no_common_complete_blocks",
+          "common_blocks": 0,
+          "rmst_difference_s": null,
+          "rmst_difference_ci95_s": null,
+          "loss_difference_J_m2": null,
+          "loss_difference_ci95_J_m2": null
+        },
+        {
+          "left": "M1",
+          "right": "M3",
+          "eligible": false,
+          "reason": "no_common_complete_blocks",
+          "common_blocks": 0,
+          "rmst_difference_s": null,
+          "rmst_difference_ci95_s": null,
+          "loss_difference_J_m2": null,
+          "loss_difference_ci95_J_m2": null
+        },
+        {
+          "left": "M2",
+          "right": "M3",
+          "eligible": false,
+          "reason": "no_common_complete_blocks",
+          "common_blocks": 0,
+          "rmst_difference_s": null,
+          "rmst_difference_ci95_s": null,
+          "loss_difference_J_m2": null,
+          "loss_difference_ci95_J_m2": null
+        }
+      ]
+    },
+    "incomplete_outcomes": [
+      {
+        "case_id": "runs/reactive_M1_corrected",
+        "condition_id": "M1",
+        "reason": "missing_required_outcome_inputs",
+        "missing": [
+          "input_energy_J"
+        ]
+      },
+      {
+        "case_id": "runs/reactive_M2_corrected",
+        "condition_id": "M2",
+        "reason": "missing_required_outcome_inputs",
+        "missing": [
+          "input_energy_J"
+        ]
+      },
+      {
+        "case_id": "runs/reactive_M3_corrected",
+        "condition_id": "M3",
+        "reason": "missing_required_outcome_inputs",
+        "missing": [
+          "input_energy_J"
+        ]
+      }
+    ],
+    "synergy": [],
+    "missing_channel_policy": "incomplete_not_zero",
+    "extrapolation": "forbidden"
+  },
+  "exposure": {
+    "schema_version": "1.0",
+    "tau_s": 10.0,
+    "runs": [
+      {
+        "case_id": "runs/reactive_C0_corrected",
+        "block_id": "assumed_environment_0",
+        "condition_id": "C0",
+        "location_id": "TARGET",
+        "status": "incomplete",
+        "missing_channels": [
+          "CO_volume_fraction"
+        ],
+        "channels": {
+          "heat_flux_kW_m2": {
+            "status": "observed_interval",
+            "event": true,
+            "interval_s": [
+              0.0,
+              0.0
+            ],
+            "observed_through_s": 10.0,
+            "criterion": {
+              "limit": 1.0,
+              "direction": "above",
+              "source": "illustrative instrument threshold, not human tenability"
+            }
+          },
+          "temperature_C": {
+            "status": "observed_interval",
+            "event": true,
+            "interval_s": [
+              0.0,
+              0.0
+            ],
+            "observed_through_s": 10.0,
+            "criterion": {
+              "limit": 50.0,
+              "direction": "above",
+              "source": "illustrative instrument threshold, not human tenability"
+            }
+          },
+          "CO_volume_fraction": {
+            "status": "incomplete_missing_channel",
+            "event": null,
+            "interval_s": null,
+            "criterion": {
+              "limit": 0.001,
+              "direction": "above",
+              "source": "illustrative channel threshold, not human tenability"
+            }
+          },
+          "O2_volume_fraction": {
+            "status": "observed_interval",
+            "event": true,
+            "interval_s": [
+              0.0,
+              0.0
+            ],
+            "observed_through_s": 10.0,
+            "criterion": {
+              "limit": 0.18,
+              "direction": "below",
+              "source": "illustrative channel threshold, not human tenability"
+            }
+          }
+        },
+        "integrated_heat_exposure_J_m2": 405769.2893509699,
+        "provenance": {
+          "source": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\runs\\reactive_C0_corrected\\run_manifest.json",
+          "solver": "FDS",
+          "evidence_type": "native_unvalidated",
+          "hrr_sha256": "88dc4884637df13d38336c024341cc88ac8070c8495e5d60568b10843aa5a143",
+          "devc_sha256": "d9098de6f96b545c0ed617494f78af79babedaef89ad3c441faf6b13ed895b92",
+          "time_alignment": "linear within shared support only",
+          "units_checked": true,
+          "case_path_identity": "runs/reactive_C0_corrected",
+          "analysis_criteria": {
+            "control_id": "C0",
+            "tau_s": 10.0,
+            "extinction": {
+              "hrr_threshold_kW": 0.1,
+              "sustain_s": 1.0,
+              "reignition_threshold_kW": 0.2,
+              "reignition_followup_s": 4.0
+            },
+            "source": "declared research screening criteria; not experimentally calibrated",
+            "declared_before_results": true
+          },
+          "intervention_activation": {
+            "status": "not_applicable_control",
+            "eligible": true,
+            "reason": null,
+            "methods": [],
+            "proof": []
+          },
+          "raw_resource_components": [],
+          "resource_ledger_status": "unverified_not_used_for_budget_matching"
+        },
+        "interpretation": "Threshold time is an exposure endpoint, not human survival time."
+      },
+      {
+        "case_id": "runs/reactive_M1_corrected",
+        "block_id": "assumed_environment_0",
+        "condition_id": "M1",
+        "location_id": "TARGET",
+        "status": "incomplete",
+        "missing_channels": [
+          "CO_volume_fraction"
+        ],
+        "channels": {
+          "heat_flux_kW_m2": {
+            "status": "observed_interval",
+            "event": true,
+            "interval_s": [
+              0.0,
+              0.0
+            ],
+            "observed_through_s": 10.0,
+            "criterion": {
+              "limit": 1.0,
+              "direction": "above",
+              "source": "illustrative instrument threshold, not human tenability"
+            }
+          },
+          "temperature_C": {
+            "status": "observed_interval",
+            "event": true,
+            "interval_s": [
+              0.0,
+              0.0
+            ],
+            "observed_through_s": 10.0,
+            "criterion": {
+              "limit": 50.0,
+              "direction": "above",
+              "source": "illustrative instrument threshold, not human tenability"
+            }
+          },
+          "CO_volume_fraction": {
+            "status": "incomplete_missing_channel",
+            "event": null,
+            "interval_s": null,
+            "criterion": {
+              "limit": 0.001,
+              "direction": "above",
+              "source": "illustrative channel threshold, not human tenability"
+            }
+          },
+          "O2_volume_fraction": {
+            "status": "observed_interval",
+            "event": true,
+            "interval_s": [
+              0.0,
+              0.0
+            ],
+            "observed_through_s": 10.0,
+            "criterion": {
+              "limit": 0.18,
+              "direction": "below",
+              "source": "illustrative channel threshold, not human tenability"
+            }
+          }
+        },
+        "integrated_heat_exposure_J_m2": 401327.776239692,
+        "provenance": {
+          "source": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\runs\\reactive_M1_corrected\\run_manifest.json",
+          "solver": "FDS",
+          "evidence_type": "native_unvalidated",
+          "hrr_sha256": "a18949ebef7280c89f43b49f0e8ac5f412aed83d3bf360a755695a2c1c5be7ca",
+          "devc_sha256": "3dc7985abba042b0844181010ce05e608c4640b7355968d8629792298cfdec77",
+          "time_alignment": "linear within shared support only",
+          "units_checked": true,
+          "case_path_identity": "runs/reactive_M1_corrected",
+          "analysis_criteria": {
+            "control_id": "C0",
+            "tau_s": 10.0,
+            "extinction": {
+              "hrr_threshold_kW": 0.1,
+              "sustain_s": 1.0,
+              "reignition_threshold_kW": 0.2,
+              "reignition_followup_s": 4.0
+            },
+            "source": "declared research screening criteria; not experimentally calibrated",
+            "declared_before_results": true
+          },
+          "intervention_activation": {
+            "status": "verified",
+            "eligible": true,
+            "reason": null,
+            "methods": [
+              "M1"
+            ],
+            "proof": [
+              {
+                "window_s": [
+                  6.0,
+                  10.0
+                ],
+                "method_id": "M1",
+                "channel": "source_m1_u_m_s",
+                "column": "SOURCE_M1_U",
+                "baseline_statistic": 0.010590971,
+                "active_statistic": 0.3925792,
+                "threshold": 0.05,
+                "threshold_unit": "m/s",
+                "comparison": "abs_gte",
+                "dose_fraction": 1.0,
+                "expected_state": "active",
+                "unit": "m/s",
+                "passed": true
+              }
+            ]
+          },
+          "raw_resource_components": [
+            {
+              "method_id": "M1",
+              "status": "proxy",
+              "input_energy_J": null,
+              "air_volume_m3": 0.016
+            }
+          ],
+          "resource_ledger_status": "unverified_not_used_for_budget_matching"
+        },
+        "interpretation": "Threshold time is an exposure endpoint, not human survival time."
+      },
+      {
+        "case_id": "runs/reactive_M2_corrected",
+        "block_id": "assumed_environment_0",
+        "condition_id": "M2",
+        "location_id": "TARGET",
+        "status": "incomplete",
+        "missing_channels": [
+          "CO_volume_fraction"
+        ],
+        "channels": {
+          "heat_flux_kW_m2": {
+            "status": "observed_interval",
+            "event": true,
+            "interval_s": [
+              0.0,
+              0.0
+            ],
+            "observed_through_s": 10.0,
+            "criterion": {
+              "limit": 1.0,
+              "direction": "above",
+              "source": "illustrative instrument threshold, not human tenability"
+            }
+          },
+          "temperature_C": {
+            "status": "observed_interval",
+            "event": true,
+            "interval_s": [
+              0.0,
+              0.0
+            ],
+            "observed_through_s": 10.0,
+            "criterion": {
+              "limit": 50.0,
+              "direction": "above",
+              "source": "illustrative instrument threshold, not human tenability"
+            }
+          },
+          "CO_volume_fraction": {
+            "status": "incomplete_missing_channel",
+            "event": null,
+            "interval_s": null,
+            "criterion": {
+              "limit": 0.001,
+              "direction": "above",
+              "source": "illustrative channel threshold, not human tenability"
+            }
+          },
+          "O2_volume_fraction": {
+            "status": "observed_interval",
+            "event": true,
+            "interval_s": [
+              0.0,
+              0.0
+            ],
+            "observed_through_s": 10.0,
+            "criterion": {
+              "limit": 0.18,
+              "direction": "below",
+              "source": "illustrative channel threshold, not human tenability"
+            }
+          }
+        },
+        "integrated_heat_exposure_J_m2": 409527.2970507389,
+        "provenance": {
+          "source": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\runs\\reactive_M2_corrected\\run_manifest.json",
+          "solver": "FDS",
+          "evidence_type": "native_unvalidated",
+          "hrr_sha256": "c56c80861ffca84aafe5fb4eead67c6212b85466d1cbb6eb2b0a794ead2dc5a6",
+          "devc_sha256": "7ff65e35ed61c01dfbf58cb7d554a810d854329396d0983be871425e9321a6fc",
+          "time_alignment": "linear within shared support only",
+          "units_checked": true,
+          "case_path_identity": "runs/reactive_M2_corrected",
+          "analysis_criteria": {
+            "control_id": "C0",
+            "tau_s": 10.0,
+            "extinction": {
+              "hrr_threshold_kW": 0.1,
+              "sustain_s": 1.0,
+              "reignition_threshold_kW": 0.2,
+              "reignition_followup_s": 4.0
+            },
+            "source": "declared research screening criteria; not experimentally calibrated",
+            "declared_before_results": true
+          },
+          "intervention_activation": {
+            "status": "verified",
+            "eligible": true,
+            "reason": null,
+            "methods": [
+              "M2"
+            ],
+            "proof": [
+              {
+                "window_s": [
+                  6.0,
+                  10.0
+                ],
+                "method_id": "M2",
+                "channel": "source_m2_u_m_s",
+                "column": "SOURCE_M2_U",
+                "baseline_statistic": 0.019037936,
+                "active_statistic": 3.1076743,
+                "threshold": 0.2,
+                "threshold_unit": "m/s",
+                "comparison": "abs_gte",
+                "dose_fraction": 1.0,
+                "expected_state": "active",
+                "unit": "m/s",
+                "passed": true
+              }
+            ]
+          },
+          "raw_resource_components": [
+            {
+              "method_id": "M2",
+              "status": "proxy",
+              "input_energy_J": null,
+              "air_volume_m3": 0.016,
+              "pulse_count": 4
+            }
+          ],
+          "resource_ledger_status": "unverified_not_used_for_budget_matching"
+        },
+        "interpretation": "Threshold time is an exposure endpoint, not human survival time."
+      },
+      {
+        "case_id": "runs/reactive_M3_corrected",
+        "block_id": "assumed_environment_0",
+        "condition_id": "M3",
+        "location_id": "TARGET",
+        "status": "incomplete",
+        "missing_channels": [
+          "CO_volume_fraction"
+        ],
+        "channels": {
+          "heat_flux_kW_m2": {
+            "status": "observed_interval",
+            "event": true,
+            "interval_s": [
+              0.0,
+              0.0
+            ],
+            "observed_through_s": 10.0,
+            "criterion": {
+              "limit": 1.0,
+              "direction": "above",
+              "source": "illustrative instrument threshold, not human tenability"
+            }
+          },
+          "temperature_C": {
+            "status": "observed_interval",
+            "event": true,
+            "interval_s": [
+              0.0,
+              0.0
+            ],
+            "observed_through_s": 10.0,
+            "criterion": {
+              "limit": 50.0,
+              "direction": "above",
+              "source": "illustrative instrument threshold, not human tenability"
+            }
+          },
+          "CO_volume_fraction": {
+            "status": "incomplete_missing_channel",
+            "event": null,
+            "interval_s": null,
+            "criterion": {
+              "limit": 0.001,
+              "direction": "above",
+              "source": "illustrative channel threshold, not human tenability"
+            }
+          },
+          "O2_volume_fraction": {
+            "status": "observed_interval",
+            "event": true,
+            "interval_s": [
+              0.0,
+              0.0
+            ],
+            "observed_through_s": 10.0,
+            "criterion": {
+              "limit": 0.18,
+              "direction": "below",
+              "source": "illustrative channel threshold, not human tenability"
+            }
+          }
+        },
+        "integrated_heat_exposure_J_m2": 416773.5700846766,
+        "provenance": {
+          "source": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\runs\\reactive_M3_corrected\\run_manifest.json",
+          "solver": "FDS",
+          "evidence_type": "native_unvalidated",
+          "hrr_sha256": "cd0bbb4c95463b8b3aea53a10a91e31f6cb2375998e6dfc61fb8450f1ff64e03",
+          "devc_sha256": "27dea629227d936e1425ef0cfabbfe732c29de8503d998f1c925d62004a6ad7f",
+          "time_alignment": "linear within shared support only",
+          "units_checked": true,
+          "case_path_identity": "runs/reactive_M3_corrected",
+          "analysis_criteria": {
+            "control_id": "C0",
+            "tau_s": 10.0,
+            "extinction": {
+              "hrr_threshold_kW": 0.1,
+              "sustain_s": 1.0,
+              "reignition_threshold_kW": 0.2,
+              "reignition_followup_s": 4.0
+            },
+            "source": "declared research screening criteria; not experimentally calibrated",
+            "declared_before_results": true
+          },
+          "intervention_activation": {
+            "status": "verified",
+            "eligible": true,
+            "reason": null,
+            "methods": [
+              "M3"
+            ],
+            "proof": [
+              {
+                "window_s": [
+                  6.0,
+                  10.0
+                ],
+                "method_id": "M3",
+                "channel": "source_m3_u_m_s",
+                "column": "SOURCE_M3_U",
+                "baseline_statistic": 0.023982221,
+                "active_statistic": 3.2320365,
+                "threshold": 0.1,
+                "threshold_unit": "m/s",
+                "comparison": "abs_gte",
+                "dose_fraction": 1.0,
+                "expected_state": "active",
+                "unit": "m/s",
+                "passed": true
+              },
+              {
+                "window_s": [
+                  6.0,
+                  10.0
+                ],
+                "method_id": "M3",
+                "channel": "source_m3_droplet_volume_fraction",
+                "column": "SOURCE_M3_DVF",
+                "baseline_statistic": 0.0,
+                "active_statistic": 8.2520733e-05,
+                "threshold": 1e-12,
+                "threshold_unit": "",
+                "comparison": "gte",
+                "dose_fraction": 1.0,
+                "expected_state": "active",
+                "unit": "",
+                "passed": true
+              }
+            ]
+          },
+          "raw_resource_components": [
+            {
+              "method_id": "M3",
+              "status": "native_particle_transport",
+              "input_energy_J": null,
+              "water_mass_kg": 0.02
+            }
+          ],
+          "resource_ledger_status": "unverified_not_used_for_budget_matching"
+        },
+        "interpretation": "Threshold time is an exposure endpoint, not human survival time."
+      }
+    ],
+    "locations": {
+      "TARGET": {
+        "heat_flux_kW_m2": {
+          "C0": {
+            "total_runs": 1,
+            "eligible_runs": 1,
+            "event_count": 1,
+            "right_censored_count": 0,
+            "incomplete_count": 0,
+            "rmst_interval_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_lower_ci95_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_upper_ci95_s": [
+              0.0,
+              0.0
+            ]
+          },
+          "M1": {
+            "total_runs": 1,
+            "eligible_runs": 1,
+            "event_count": 1,
+            "right_censored_count": 0,
+            "incomplete_count": 0,
+            "rmst_interval_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_lower_ci95_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_upper_ci95_s": [
+              0.0,
+              0.0
+            ]
+          },
+          "M2": {
+            "total_runs": 1,
+            "eligible_runs": 1,
+            "event_count": 1,
+            "right_censored_count": 0,
+            "incomplete_count": 0,
+            "rmst_interval_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_lower_ci95_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_upper_ci95_s": [
+              0.0,
+              0.0
+            ]
+          },
+          "M3": {
+            "total_runs": 1,
+            "eligible_runs": 1,
+            "event_count": 1,
+            "right_censored_count": 0,
+            "incomplete_count": 0,
+            "rmst_interval_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_lower_ci95_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_upper_ci95_s": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "temperature_C": {
+          "C0": {
+            "total_runs": 1,
+            "eligible_runs": 1,
+            "event_count": 1,
+            "right_censored_count": 0,
+            "incomplete_count": 0,
+            "rmst_interval_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_lower_ci95_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_upper_ci95_s": [
+              0.0,
+              0.0
+            ]
+          },
+          "M1": {
+            "total_runs": 1,
+            "eligible_runs": 1,
+            "event_count": 1,
+            "right_censored_count": 0,
+            "incomplete_count": 0,
+            "rmst_interval_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_lower_ci95_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_upper_ci95_s": [
+              0.0,
+              0.0
+            ]
+          },
+          "M2": {
+            "total_runs": 1,
+            "eligible_runs": 1,
+            "event_count": 1,
+            "right_censored_count": 0,
+            "incomplete_count": 0,
+            "rmst_interval_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_lower_ci95_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_upper_ci95_s": [
+              0.0,
+              0.0
+            ]
+          },
+          "M3": {
+            "total_runs": 1,
+            "eligible_runs": 1,
+            "event_count": 1,
+            "right_censored_count": 0,
+            "incomplete_count": 0,
+            "rmst_interval_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_lower_ci95_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_upper_ci95_s": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "CO_volume_fraction": {
+          "C0": {
+            "total_runs": 1,
+            "eligible_runs": 0,
+            "event_count": 0,
+            "right_censored_count": 0,
+            "incomplete_count": 1,
+            "rmst_interval_s": null,
+            "rmst_lower_ci95_s": null,
+            "rmst_upper_ci95_s": null
+          },
+          "M1": {
+            "total_runs": 1,
+            "eligible_runs": 0,
+            "event_count": 0,
+            "right_censored_count": 0,
+            "incomplete_count": 1,
+            "rmst_interval_s": null,
+            "rmst_lower_ci95_s": null,
+            "rmst_upper_ci95_s": null
+          },
+          "M2": {
+            "total_runs": 1,
+            "eligible_runs": 0,
+            "event_count": 0,
+            "right_censored_count": 0,
+            "incomplete_count": 1,
+            "rmst_interval_s": null,
+            "rmst_lower_ci95_s": null,
+            "rmst_upper_ci95_s": null
+          },
+          "M3": {
+            "total_runs": 1,
+            "eligible_runs": 0,
+            "event_count": 0,
+            "right_censored_count": 0,
+            "incomplete_count": 1,
+            "rmst_interval_s": null,
+            "rmst_lower_ci95_s": null,
+            "rmst_upper_ci95_s": null
+          }
+        },
+        "O2_volume_fraction": {
+          "C0": {
+            "total_runs": 1,
+            "eligible_runs": 1,
+            "event_count": 1,
+            "right_censored_count": 0,
+            "incomplete_count": 0,
+            "rmst_interval_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_lower_ci95_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_upper_ci95_s": [
+              0.0,
+              0.0
+            ]
+          },
+          "M1": {
+            "total_runs": 1,
+            "eligible_runs": 1,
+            "event_count": 1,
+            "right_censored_count": 0,
+            "incomplete_count": 0,
+            "rmst_interval_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_lower_ci95_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_upper_ci95_s": [
+              0.0,
+              0.0
+            ]
+          },
+          "M2": {
+            "total_runs": 1,
+            "eligible_runs": 1,
+            "event_count": 1,
+            "right_censored_count": 0,
+            "incomplete_count": 0,
+            "rmst_interval_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_lower_ci95_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_upper_ci95_s": [
+              0.0,
+              0.0
+            ]
+          },
+          "M3": {
+            "total_runs": 1,
+            "eligible_runs": 1,
+            "event_count": 1,
+            "right_censored_count": 0,
+            "incomplete_count": 0,
+            "rmst_interval_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_lower_ci95_s": [
+              0.0,
+              0.0
+            ],
+            "rmst_upper_ci95_s": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    "groups": {
+      "heat_flux_kW_m2": {
+        "C0": {
+          "total_runs": 1,
+          "eligible_runs": 1,
+          "event_count": 1,
+          "right_censored_count": 0,
+          "incomplete_count": 0,
+          "rmst_interval_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_lower_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_upper_ci95_s": [
+            0.0,
+            0.0
+          ]
+        },
+        "M1": {
+          "total_runs": 1,
+          "eligible_runs": 1,
+          "event_count": 1,
+          "right_censored_count": 0,
+          "incomplete_count": 0,
+          "rmst_interval_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_lower_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_upper_ci95_s": [
+            0.0,
+            0.0
+          ]
+        },
+        "M2": {
+          "total_runs": 1,
+          "eligible_runs": 1,
+          "event_count": 1,
+          "right_censored_count": 0,
+          "incomplete_count": 0,
+          "rmst_interval_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_lower_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_upper_ci95_s": [
+            0.0,
+            0.0
+          ]
+        },
+        "M3": {
+          "total_runs": 1,
+          "eligible_runs": 1,
+          "event_count": 1,
+          "right_censored_count": 0,
+          "incomplete_count": 0,
+          "rmst_interval_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_lower_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_upper_ci95_s": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "temperature_C": {
+        "C0": {
+          "total_runs": 1,
+          "eligible_runs": 1,
+          "event_count": 1,
+          "right_censored_count": 0,
+          "incomplete_count": 0,
+          "rmst_interval_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_lower_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_upper_ci95_s": [
+            0.0,
+            0.0
+          ]
+        },
+        "M1": {
+          "total_runs": 1,
+          "eligible_runs": 1,
+          "event_count": 1,
+          "right_censored_count": 0,
+          "incomplete_count": 0,
+          "rmst_interval_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_lower_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_upper_ci95_s": [
+            0.0,
+            0.0
+          ]
+        },
+        "M2": {
+          "total_runs": 1,
+          "eligible_runs": 1,
+          "event_count": 1,
+          "right_censored_count": 0,
+          "incomplete_count": 0,
+          "rmst_interval_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_lower_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_upper_ci95_s": [
+            0.0,
+            0.0
+          ]
+        },
+        "M3": {
+          "total_runs": 1,
+          "eligible_runs": 1,
+          "event_count": 1,
+          "right_censored_count": 0,
+          "incomplete_count": 0,
+          "rmst_interval_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_lower_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_upper_ci95_s": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "CO_volume_fraction": {
+        "C0": {
+          "total_runs": 1,
+          "eligible_runs": 0,
+          "event_count": 0,
+          "right_censored_count": 0,
+          "incomplete_count": 1,
+          "rmst_interval_s": null,
+          "rmst_lower_ci95_s": null,
+          "rmst_upper_ci95_s": null
+        },
+        "M1": {
+          "total_runs": 1,
+          "eligible_runs": 0,
+          "event_count": 0,
+          "right_censored_count": 0,
+          "incomplete_count": 1,
+          "rmst_interval_s": null,
+          "rmst_lower_ci95_s": null,
+          "rmst_upper_ci95_s": null
+        },
+        "M2": {
+          "total_runs": 1,
+          "eligible_runs": 0,
+          "event_count": 0,
+          "right_censored_count": 0,
+          "incomplete_count": 1,
+          "rmst_interval_s": null,
+          "rmst_lower_ci95_s": null,
+          "rmst_upper_ci95_s": null
+        },
+        "M3": {
+          "total_runs": 1,
+          "eligible_runs": 0,
+          "event_count": 0,
+          "right_censored_count": 0,
+          "incomplete_count": 1,
+          "rmst_interval_s": null,
+          "rmst_lower_ci95_s": null,
+          "rmst_upper_ci95_s": null
+        }
+      },
+      "O2_volume_fraction": {
+        "C0": {
+          "total_runs": 1,
+          "eligible_runs": 1,
+          "event_count": 1,
+          "right_censored_count": 0,
+          "incomplete_count": 0,
+          "rmst_interval_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_lower_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_upper_ci95_s": [
+            0.0,
+            0.0
+          ]
+        },
+        "M1": {
+          "total_runs": 1,
+          "eligible_runs": 1,
+          "event_count": 1,
+          "right_censored_count": 0,
+          "incomplete_count": 0,
+          "rmst_interval_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_lower_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_upper_ci95_s": [
+            0.0,
+            0.0
+          ]
+        },
+        "M2": {
+          "total_runs": 1,
+          "eligible_runs": 1,
+          "event_count": 1,
+          "right_censored_count": 0,
+          "incomplete_count": 0,
+          "rmst_interval_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_lower_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_upper_ci95_s": [
+            0.0,
+            0.0
+          ]
+        },
+        "M3": {
+          "total_runs": 1,
+          "eligible_runs": 1,
+          "event_count": 1,
+          "right_censored_count": 0,
+          "incomplete_count": 0,
+          "rmst_interval_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_lower_ci95_s": [
+            0.0,
+            0.0
+          ],
+          "rmst_upper_ci95_s": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "paired_rmst_differences": [
+      {
+        "channel": "heat_flux_kW_m2",
+        "method": "M1",
+        "control": "C0",
+        "eligible": true,
+        "reason": null,
+        "common_blocks": 1,
+        "difference_interval_s": [
+          0.0,
+          0.0
+        ],
+        "difference_lower_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "difference_upper_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "location_id": "TARGET"
+      },
+      {
+        "channel": "heat_flux_kW_m2",
+        "method": "M2",
+        "control": "C0",
+        "eligible": true,
+        "reason": null,
+        "common_blocks": 1,
+        "difference_interval_s": [
+          0.0,
+          0.0
+        ],
+        "difference_lower_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "difference_upper_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "location_id": "TARGET"
+      },
+      {
+        "channel": "heat_flux_kW_m2",
+        "method": "M3",
+        "control": "C0",
+        "eligible": true,
+        "reason": null,
+        "common_blocks": 1,
+        "difference_interval_s": [
+          0.0,
+          0.0
+        ],
+        "difference_lower_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "difference_upper_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "location_id": "TARGET"
+      },
+      {
+        "channel": "temperature_C",
+        "method": "M1",
+        "control": "C0",
+        "eligible": true,
+        "reason": null,
+        "common_blocks": 1,
+        "difference_interval_s": [
+          0.0,
+          0.0
+        ],
+        "difference_lower_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "difference_upper_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "location_id": "TARGET"
+      },
+      {
+        "channel": "temperature_C",
+        "method": "M2",
+        "control": "C0",
+        "eligible": true,
+        "reason": null,
+        "common_blocks": 1,
+        "difference_interval_s": [
+          0.0,
+          0.0
+        ],
+        "difference_lower_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "difference_upper_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "location_id": "TARGET"
+      },
+      {
+        "channel": "temperature_C",
+        "method": "M3",
+        "control": "C0",
+        "eligible": true,
+        "reason": null,
+        "common_blocks": 1,
+        "difference_interval_s": [
+          0.0,
+          0.0
+        ],
+        "difference_lower_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "difference_upper_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "location_id": "TARGET"
+      },
+      {
+        "channel": "CO_volume_fraction",
+        "method": "M1",
+        "control": "C0",
+        "eligible": false,
+        "reason": "no_common_blocks",
+        "common_blocks": 0,
+        "difference_interval_s": null,
+        "location_id": "TARGET"
+      },
+      {
+        "channel": "CO_volume_fraction",
+        "method": "M2",
+        "control": "C0",
+        "eligible": false,
+        "reason": "no_common_blocks",
+        "common_blocks": 0,
+        "difference_interval_s": null,
+        "location_id": "TARGET"
+      },
+      {
+        "channel": "CO_volume_fraction",
+        "method": "M3",
+        "control": "C0",
+        "eligible": false,
+        "reason": "no_common_blocks",
+        "common_blocks": 0,
+        "difference_interval_s": null,
+        "location_id": "TARGET"
+      },
+      {
+        "channel": "O2_volume_fraction",
+        "method": "M1",
+        "control": "C0",
+        "eligible": true,
+        "reason": null,
+        "common_blocks": 1,
+        "difference_interval_s": [
+          0.0,
+          0.0
+        ],
+        "difference_lower_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "difference_upper_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "location_id": "TARGET"
+      },
+      {
+        "channel": "O2_volume_fraction",
+        "method": "M2",
+        "control": "C0",
+        "eligible": true,
+        "reason": null,
+        "common_blocks": 1,
+        "difference_interval_s": [
+          0.0,
+          0.0
+        ],
+        "difference_lower_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "difference_upper_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "location_id": "TARGET"
+      },
+      {
+        "channel": "O2_volume_fraction",
+        "method": "M3",
+        "control": "C0",
+        "eligible": true,
+        "reason": null,
+        "common_blocks": 1,
+        "difference_interval_s": [
+          0.0,
+          0.0
+        ],
+        "difference_lower_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "difference_upper_ci95_s": [
+          0.0,
+          0.0
+        ],
+        "location_id": "TARGET"
+      }
+    ],
+    "censoring": "interval bounds retained; no midpoint imputation",
+    "missing_channel_policy": "incomplete_not_zero",
+    "interpretation": "Positive method-minus-control time means later exposure-limit crossing within tau; it is not survival time."
+  }
+}

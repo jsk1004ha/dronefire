@@ -1,0 +1,131 @@
+{
+  "reactive": {
+    "version": 1,
+    "note": "FDS 6.11.1 compact reactive research scenario; values are disclosed starting assumptions, not calibrated suppression data.",
+    "solver": {
+      "name": "FDS",
+      "target_release": "6.11.1"
+    },
+    "case": {
+      "duration_s": 16.0,
+      "intervention_start_s": 6.0,
+      "intervention_end_s": 10.0,
+      "post_observation_s": 6.0,
+      "mesh_cell_m": 0.05,
+      "domain_x_m": [
+        0.0,
+        1.5
+      ],
+      "domain_y_m": [
+        -0.6,
+        0.6
+      ],
+      "domain_z_m": [
+        0.0,
+        1.0
+      ]
+    },
+    "burner": {
+      "area_m2": 0.04,
+      "gas_fuel_mass_flux_kg_m2_s": 0.009
+    },
+    "methods": {
+      "M1": {
+        "frequency_hz": 60.0,
+        "velocity_rms_m_s": 0.4,
+        "vent_area_m2": 0.01,
+        "kind": "mechanically_forced_airflow_envelope"
+      },
+      "M2": {
+        "exit_velocity_m_s": 8.0,
+        "pulse_duration_s": 0.05,
+        "period_s": 1.0,
+        "vent_area_m2": 0.01,
+        "kind": "pulsed_nozzle_proxy"
+      },
+      "M3": {
+        "water_flow_kg_s": 0.005,
+        "droplet_diameter_um": 100.0,
+        "carrier_velocity_m_s": 5.0,
+        "vent_area_m2": 0.01,
+        "kind": "water_particle_transport"
+      }
+    },
+    "evidence": {
+      "published_agent_or_chemistry": {},
+      "source_calibration": {},
+      "required_schema": {
+        "M4": [
+          "agent_name",
+          "composition_mass_fraction",
+          "inhibition_or_reaction_model",
+          "validation_reference"
+        ],
+        "M5": [
+          "electrode_geometry",
+          "voltage_waveform",
+          "charge_transport_model",
+          "validation_reference"
+        ]
+      }
+    }
+  },
+  "transport": {},
+  "native_timeout_s": 300.0,
+  "ehd": {
+    "gap_m": 0.1,
+    "voltage_V": 10.0,
+    "ground_voltage_V": 0.0,
+    "relative_permittivity": 1.0,
+    "charge_mobility_m2_V_s": 0.0002,
+    "charge_diffusion_m2_s": 1e-05,
+    "injected_charge_density_C_m3": 1e-10,
+    "initial_charge_density_C_m3": 0.0,
+    "gas_density_kg_m3": 1.2,
+    "cells": 64,
+    "duration_s": 0.1,
+    "dt_max_s": 0.001,
+    "cfl": 0.45,
+    "max_saved_frames": 101
+  },
+  "omp_threads": 1,
+  "supplemental": true,
+  "selected_combinations": [],
+  "condition_ids": null,
+  "execute_native": true,
+  "include_drone": true,
+  "metrics": {
+    "control_id": "C0",
+    "tau_s": 10.0,
+    "extinction": {
+      "hrr_threshold_kW": 0.1,
+      "sustain_s": 1.0,
+      "reignition_threshold_kW": 0.2,
+      "reignition_followup_s": 4.0
+    },
+    "source": "declared research screening criteria; not experimentally calibrated",
+    "declared_before_results": true
+  },
+  "exposure_criteria": {
+    "heat_flux_kW_m2": {
+      "limit": 1.0,
+      "direction": "above",
+      "source": "illustrative instrument threshold, not human tenability"
+    },
+    "temperature_C": {
+      "limit": 50.0,
+      "direction": "above",
+      "source": "illustrative instrument threshold, not human tenability"
+    },
+    "CO_volume_fraction": {
+      "limit": 0.001,
+      "direction": "above",
+      "source": "illustrative channel threshold, not human tenability"
+    },
+    "O2_volume_fraction": {
+      "limit": 0.18,
+      "direction": "below",
+      "source": "illustrative channel threshold, not human tenability"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "campaign_id": "study_20260918T161640_73505f36",
+  "conditions": 60,
+  "statuses": {
+    "needs_model": 33,
+    "prepared_not_executed": 27
+  },
+  "source_boundary": "corrected_nonoverlapping_source_patches"
+}

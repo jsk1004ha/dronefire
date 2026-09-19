@@ -1,0 +1,45 @@
+[
+  {
+    "artifact_id": "FDS-PROBE-FIXTURE",
+    "source_kind": "fds_probe_csv",
+    "path": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\data\\reference\\fds_probe_sample.csv",
+    "sha256": "cc3b516b8fa4b9db92879e09ed35ae7a3b489e87cbe681a503351d232f133e1d",
+    "byte_size": 312,
+    "columns": [
+      "time_s",
+      "probe_id",
+      "temperature_C",
+      "co_ppm",
+      "oxygen_pct",
+      "smoke_obscuration_1_m",
+      "particle_proxy"
+    ],
+    "native_bundle_status": "missing",
+    "diagnostics": [
+      "native bundle metadata is incomplete"
+    ]
+  },
+  {
+    "artifact_id": "OPENFOAM-POINT-FIXTURE",
+    "source_kind": "openfoam_point_csv",
+    "path": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\data\\reference\\openfoam_web_point_sample.csv",
+    "sha256": "0b7c10813332d258f079b70381e659f25f527721202463bc01f804ac3d039f13",
+    "byte_size": 659,
+    "columns": [
+      "time_s",
+      "x_m",
+      "y_m",
+      "z_m",
+      "U_x_m_s",
+      "U_y_m_s",
+      "U_z_m_s",
+      "vorticity_s_1",
+      "temperature_K",
+      "pressure_Pa"
+    ],
+    "native_bundle_status": "missing",
+    "diagnostics": [
+      "native bundle metadata is incomplete"
+    ]
+  }
+]

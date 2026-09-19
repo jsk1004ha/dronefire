@@ -1,0 +1,68 @@
+{
+  "case": {
+    "project_id": "AERIS-DRONE-PHYSICAL-FIELD",
+    "case_id": "FIXTURE-P0-P1-001",
+    "run_id": "ADAPTER-DEMO-R01",
+    "coordinate_frame": "facility-rhs-z-up",
+    "transform_id": "survey-transform-v1",
+    "time_basis": "event-clock-s"
+  },
+  "time_alignment": {
+    "tolerance_s": 2.5,
+    "mode": "nearest_within_tolerance",
+    "interpolation_allowed": false
+  },
+  "native_artifact_checks": {
+    "fds_input_path": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\data\\reference\\Steckler_010.fds",
+    "fds_output_path": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\data\\reference\\not_supplied\\Steckler_010.out",
+    "fds_output_required_time_s": 1800.0,
+    "fds_run_manifest_path": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\data\\reference\\run_manifest.json",
+    "openfoam_case_path": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\data\\reference\\not_supplied\\openfoam"
+  },
+  "artifacts": [
+    {
+      "artifact_id": "FDS-PROBE-FIXTURE",
+      "source_kind": "fds_probe_csv",
+      "path": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\data\\reference\\fds_probe_sample.csv",
+      "solver_name": "FDS",
+      "solver_version": "not-recorded-fixture",
+      "mesh_id": "not-recorded-fixture",
+      "native_bundle_required": true,
+      "native_required_keys": [
+        "input_hash",
+        "mesh_time_study",
+        "device_geometry_sidecar"
+      ],
+      "native_bundle": {
+        "input_hash": true,
+        "mesh_time_study": false,
+        "device_geometry_sidecar": false
+      },
+      "probe_geometry": {}
+    },
+    {
+      "artifact_id": "OPENFOAM-POINT-FIXTURE",
+      "source_kind": "openfoam_point_csv",
+      "path": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\data\\reference\\openfoam_web_point_sample.csv",
+      "solver_name": "OpenFOAM",
+      "solver_version": "not-recorded-fixture",
+      "mesh_id": "not-recorded-fixture",
+      "native_bundle_required": true,
+      "native_required_keys": [
+        "polyMesh",
+        "checkMesh",
+        "field_directories",
+        "solver_log",
+        "sampling_definition"
+      ],
+      "native_bundle": {
+        "polyMesh": false,
+        "checkMesh": false,
+        "field_directories": false,
+        "solver_log": false,
+        "sampling_definition": false
+      }
+    }
+  ],
+  "output_dir": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\reports\\reference_audit"
+}

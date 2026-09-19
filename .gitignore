@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+.tools/
+runs/
+scratch/
+*.zip
+*.log
+*.pid

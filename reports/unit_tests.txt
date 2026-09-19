@@ -1,0 +1,55 @@
+test_matrix_has_control_five_singles_ten_simultaneous_and_twenty_sequential (test_analysis.MatrixTests.test_matrix_has_control_five_singles_ten_simultaneous_and_twenty_sequential) ... ok
+test_all_administratively_censored_has_rmst_tau (test_analysis.OutcomeTests.test_all_administratively_censored_has_rmst_tau) ... ok
+test_early_non_event_completion_is_incomplete_not_administrative_censor (test_analysis.OutcomeTests.test_early_non_event_completion_is_incomplete_not_administrative_censor) ... ok
+test_invalid_numeric_input_fails_closed (test_analysis.OutcomeTests.test_invalid_numeric_input_fails_closed) ... ok
+test_pairwise_bootstrap_uses_only_common_blocks (test_analysis.OutcomeTests.test_pairwise_bootstrap_uses_only_common_blocks) ... ok
+test_unobserved_and_numerical_failures_are_separate_and_not_imputed (test_analysis.OutcomeTests.test_unobserved_and_numerical_failures_are_separate_and_not_imputed) ... ok
+test_empty_resource_sections_fail_closed (test_analysis.SynergyTests.test_empty_resource_sections_fail_closed) ... ok
+test_equal_budget_gain_requires_independent_preselection (test_analysis.SynergyTests.test_equal_budget_gain_requires_independent_preselection) ... ok
+test_equal_budget_gain_uses_fixed_preselected_single (test_analysis.SynergyTests.test_equal_budget_gain_uses_fixed_preselected_single) ... ok
+test_known_antagonistic_additive_synergy (test_analysis.SynergyTests.test_known_antagonistic_additive_synergy) ... ok
+test_known_positive_additive_synergy (test_analysis.SynergyTests.test_known_positive_additive_synergy) ... ok
+test_missing_partial_method_key_does_not_match_none (test_analysis.SynergyTests.test_missing_partial_method_key_does_not_match_none) ... ok
+test_schedule_mismatch_blocks_additive_calculation (test_analysis.SynergyTests.test_schedule_mismatch_blocks_additive_calculation) ... ok
+test_unequal_budget_blocks_practical_gain (test_analysis.SynergyTests.test_unequal_budget_blocks_practical_gain) ... ok
+test_unvalidated_evidence_is_ineligible (test_analysis.SynergyTests.test_unvalidated_evidence_is_ineligible) ... ok
+test_duration_bounds_and_pulse (test_config.ConfigurationTests.test_duration_bounds_and_pulse) ... ok
+test_no_mutable_default_leak (test_config.ConfigurationTests.test_no_mutable_default_leak) ... ok
+test_reject_nonfinite_bool_unknown (test_config.ConfigurationTests.test_reject_nonfinite_bool_unknown) ... ok
+test_available_pulse_count_limits_recoil (test_drone.DroneMissionTests.test_available_pulse_count_limits_recoil) ... ok
+test_energy_and_consumable_conservation_with_reserve (test_drone.DroneMissionTests.test_energy_and_consumable_conservation_with_reserve) ... ok
+test_hover_symmetry_and_json_safety (test_drone.DroneMissionTests.test_hover_symmetry_and_json_safety) ... ok
+test_insufficient_method_resource_blocks_feasibility (test_drone.DroneMissionTests.test_insufficient_method_resource_blocks_feasibility) ... ok
+test_loaded_payload_keeps_unused_ballast (test_drone.DroneMissionTests.test_loaded_payload_keeps_unused_ballast) ... ok
+test_nonfinite_inputs_are_rejected (test_drone.DroneMissionTests.test_nonfinite_inputs_are_rejected) ... ok
+test_off_control_keeps_starting_payload_without_using_device (test_drone.DroneMissionTests.test_off_control_keeps_starting_payload_without_using_device) ... ok
+test_pulse_overlap_preserves_impulse_across_nondividing_time_step (test_drone.DroneMissionTests.test_pulse_overlap_preserves_impulse_across_nondividing_time_step) ... ok
+test_recoil_feedback_reduces_tracking_error (test_drone.DroneMissionTests.test_recoil_feedback_reduces_tracking_error) ... ok
+test_return_reserve_shortfall (test_drone.DroneMissionTests.test_return_reserve_shortfall) ... ok
+test_zero_resources_are_reported_infeasible (test_drone.DroneMissionTests.test_zero_resources_are_reported_infeasible) ... ok
+test_derivative_preserves_source_and_sets_output_identity (test_native.NativeTests.test_derivative_preserves_source_and_sets_output_identity) ... ok
+test_fake_success_marker_cannot_replace_time_and_artifacts (test_native.NativeTests.test_fake_success_marker_cannot_replace_time_and_artifacts) ... ok
+test_input_outside_trusted_root_is_rejected (test_native.NativeTests.test_input_outside_trusted_root_is_rejected) ... ok
+test_native_completion_requires_configured_time_in_csv (test_native.NativeTests.test_native_completion_requires_configured_time_in_csv) ... ok
+test_acoustic_rms_decays_with_distance_and_preserves_phase_average (test_physics.PhysicsContractTests.test_acoustic_rms_decays_with_distance_and_preserves_phase_average) ... ok
+test_all_methods_follow_json_contract_without_claiming_suppression (test_physics.PhysicsContractTests.test_all_methods_follow_json_contract_without_claiming_suppression) ... ok
+test_crosswind_changes_water_delivery (test_physics.PhysicsContractTests.test_crosswind_changes_water_delivery) ... ok
+test_invalid_inputs_fail_closed (test_physics.PhysicsContractTests.test_invalid_inputs_fail_closed) ... ok
+test_m5_cv_does_not_invent_electric_force (test_physics.PhysicsContractTests.test_m5_cv_does_not_invent_electric_force) ... ok
+test_m5_ehd_requires_fields_and_uses_supplied_body_force (test_physics.PhysicsContractTests.test_m5_ehd_requires_fields_and_uses_supplied_body_force) ... ok
+test_m5_pneumatic_capacity_limits_both_rings_and_particle_launch (test_physics.PhysicsContractTests.test_m5_pneumatic_capacity_limits_both_rings_and_particle_launch) ... ok
+test_passive_aerosol_conserves_mass_and_has_no_evaporation (test_physics.PhysicsContractTests.test_passive_aerosol_conserves_mass_and_has_no_evaporation) ... ok
+test_pneumatic_capacity_truncates_unaffordable_vortex_pulses (test_physics.PhysicsContractTests.test_pneumatic_capacity_truncates_unaffordable_vortex_pulses) ... ok
+test_vortex_crosswind_deflects_ring_and_reduces_on_axis_peak (test_physics.PhysicsContractTests.test_vortex_crosswind_deflects_ring_and_reduces_on_axis_peak) ... ok
+test_water_mass_balance_and_energy_are_conservative (test_physics.PhysicsContractTests.test_water_mass_balance_and_energy_are_conservative) ... ok
+test_zero_flow_is_finite_and_zero_consumable (test_physics.PhysicsContractTests.test_zero_flow_is_finite_and_zero_consumable) ... ok
+test_foreign_host_and_origin_rejected (test_server.ServerTests.test_foreign_host_and_origin_rejected) ... ok
+test_invalid_configuration_never_queues (test_server.ServerTests.test_invalid_configuration_never_queues) ... ok
+test_loopback_health_and_static (test_server.ServerTests.test_loopback_health_and_static) ... ok
+test_mime_required (test_server.ServerTests.test_mime_required) ... ok
+test_missing_data_and_synergy_cannot_fabricate_score (test_server.ServerTests.test_missing_data_and_synergy_cannot_fabricate_score) ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 18.738s
+
+OK

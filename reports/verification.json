@@ -1,0 +1,221 @@
+{
+  "checked_utc": "2026-09-18T16:23:06.687529+00:00",
+  "unit_tests": {
+    "passed": 133,
+    "log": "reports/tests_final.log",
+    "sha256": "2220009ddd6edd072cd206ff4aad305db162c96a098652cf6d447dcfcacea847"
+  },
+  "javascript_syntax": "passed",
+  "python_compile": "passed",
+  "browser_checks": [
+    "invalid omp_threads rejected without queue",
+    "native OpenFOAM 80x80 frame at 0.2s rendered",
+    "actual FDS field datasets loaded",
+    "console error log empty",
+    "corrected campaign C0/M1/M2/M3 completed and M4/M5 needs_model displayed"
+  ],
+  "corrected_native_cases": {
+    "C0": {
+      "status": "completed",
+      "completion": {
+        "success_marker": true,
+        "achieved_time_s": 16.0,
+        "configured_t_end_s": 16.0,
+        "completion_fraction": 1.0,
+        "time_covered": true,
+        "artifacts": {
+          "out": true,
+          "hrr_csv": true,
+          "devc_csv": true
+        },
+        "required_artifacts_present": true
+      },
+      "manifest": "runs\\reactive_C0_corrected\\run_manifest.json"
+    },
+    "M1": {
+      "status": "completed",
+      "completion": {
+        "success_marker": true,
+        "achieved_time_s": 16.0,
+        "configured_t_end_s": 16.0,
+        "completion_fraction": 1.0,
+        "time_covered": true,
+        "artifacts": {
+          "out": true,
+          "hrr_csv": true,
+          "devc_csv": true
+        },
+        "required_artifacts_present": true
+      },
+      "manifest": "runs\\reactive_M1_corrected\\run_manifest.json"
+    },
+    "M2": {
+      "status": "completed",
+      "completion": {
+        "success_marker": true,
+        "achieved_time_s": 16.0,
+        "configured_t_end_s": 16.0,
+        "completion_fraction": 1.0,
+        "time_covered": true,
+        "artifacts": {
+          "out": true,
+          "hrr_csv": true,
+          "devc_csv": true
+        },
+        "required_artifacts_present": true
+      },
+      "manifest": "runs\\reactive_M2_corrected\\run_manifest.json"
+    },
+    "M3": {
+      "status": "completed",
+      "completion": {
+        "success_marker": true,
+        "achieved_time_s": 16.0,
+        "configured_t_end_s": 16.0,
+        "completion_fraction": 1.0,
+        "time_covered": true,
+        "artifacts": {
+          "out": true,
+          "hrr_csv": true,
+          "devc_csv": true
+        },
+        "required_artifacts_present": true
+      },
+      "manifest": "runs\\reactive_M3_corrected\\run_manifest.json"
+    }
+  },
+  "fds_full_background": {
+    "status": "running",
+    "completion": {
+      "success_marker": false,
+      "achieved_time_s": 236.51268,
+      "configured_t_end_s": 1800.0,
+      "completion_fraction": 0.13139593333333333,
+      "time_covered": false,
+      "artifacts": {
+        "out": true,
+        "hrr_csv": true,
+        "devc_csv": true
+      },
+      "required_artifacts_present": true
+    },
+    "last_sync_utc": "2026-09-18T16:18:06.187559+00:00",
+    "manifest": "runs\\fds_steckler_full_ext4_omp8\\run_manifest.json"
+  },
+  "physical_validation": "Not experimentally validated. M4/M5 reactive coupling unavailable; drone fire retention lacks matched validated losses.",
+  "full_plan_complete": false,
+  "targeted_post_check": "reporting censorship regression passed",
+  "http_verification": "reports/http_verification.json",
+  "campaign_id": "study_20260918T161543_corrected_6be8fc5f",
+  "source_activation": {
+    "C0": {
+      "status": "not_applicable_control",
+      "eligible": true,
+      "reason": null,
+      "methods": [],
+      "proof": []
+    },
+    "M1": {
+      "status": "verified",
+      "eligible": true,
+      "reason": null,
+      "methods": [
+        "M1"
+      ],
+      "proof": [
+        {
+          "window_s": [
+            6.0,
+            10.0
+          ],
+          "method_id": "M1",
+          "channel": "source_m1_u_m_s",
+          "column": "SOURCE_M1_U",
+          "baseline_statistic": 0.010590971,
+          "active_statistic": 0.3925792,
+          "threshold": 0.05,
+          "threshold_unit": "m/s",
+          "comparison": "abs_gte",
+          "dose_fraction": 1.0,
+          "expected_state": "active",
+          "unit": "m/s",
+          "passed": true
+        }
+      ]
+    },
+    "M2": {
+      "status": "verified",
+      "eligible": true,
+      "reason": null,
+      "methods": [
+        "M2"
+      ],
+      "proof": [
+        {
+          "window_s": [
+            6.0,
+            10.0
+          ],
+          "method_id": "M2",
+          "channel": "source_m2_u_m_s",
+          "column": "SOURCE_M2_U",
+          "baseline_statistic": 0.019037936,
+          "active_statistic": 3.1076743,
+          "threshold": 0.2,
+          "threshold_unit": "m/s",
+          "comparison": "abs_gte",
+          "dose_fraction": 1.0,
+          "expected_state": "active",
+          "unit": "m/s",
+          "passed": true
+        }
+      ]
+    },
+    "M3": {
+      "status": "verified",
+      "eligible": true,
+      "reason": null,
+      "methods": [
+        "M3"
+      ],
+      "proof": [
+        {
+          "window_s": [
+            6.0,
+            10.0
+          ],
+          "method_id": "M3",
+          "channel": "source_m3_u_m_s",
+          "column": "SOURCE_M3_U",
+          "baseline_statistic": 0.023982221,
+          "active_statistic": 3.2320365,
+          "threshold": 0.1,
+          "threshold_unit": "m/s",
+          "comparison": "abs_gte",
+          "dose_fraction": 1.0,
+          "expected_state": "active",
+          "unit": "m/s",
+          "passed": true
+        },
+        {
+          "window_s": [
+            6.0,
+            10.0
+          ],
+          "method_id": "M3",
+          "channel": "source_m3_droplet_volume_fraction",
+          "column": "SOURCE_M3_DVF",
+          "baseline_statistic": 0.0,
+          "active_statistic": 8.2520733e-05,
+          "threshold": 1e-12,
+          "threshold_unit": "",
+          "comparison": "gte",
+          "dose_fraction": 1.0,
+          "expected_state": "active",
+          "unit": "",
+          "passed": true
+        }
+      ]
+    }
+  }
+}

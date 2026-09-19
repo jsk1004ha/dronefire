@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "app": {
+    "name": "AERIS FDS Local Runner",
+    "version": "0.1.0"
+  },
+  "status": "completed",
+  "run_id": "Steckler_010_steckler_010_short_preflight_20260826T014249",
+  "created_utc": "2026-08-26T01:42:49+00:00",
+  "case": {
+    "chid": "Steckler_010",
+    "source_input": "/home/ubuntu/drone-fire-control-lab/research_sources/steckler_benchmark/Steckler_010.fds",
+    "source_input_sha256": "778cfa34368802a92cf9ad4750d418f8d3bd0aaa981776883cd985cd42c0e938",
+    "workspace_input": "Steckler_010.fds",
+    "expected_input_sha256": "778cfa34368802a92cf9ad4750d418f8d3bd0aaa981776883cd985cd42c0e938",
+    "source_preserved_unchanged": true,
+    "time_end_s": 1.0,
+    "workspace_input_sha256": "683a7728607e68eb6821724a03efd66c9a425ce0ef33a3747a9ed541b803b88f"
+  },
+  "runtime": {
+    "executable": "/home/ubuntu/fds_sample_preflight_runtime/FDS-6.11.1_SMV-6.11.2_lnx/bin/fds_openmp",
+    "executable_sha256": "5e7cab038d1dbe05547a5dd6ba0ddfce9d55f58ae4d86494acfaf6bc7f6c7d57",
+    "version_output": "FDS revision       : FDS-6.11.1-0-gff928db-release\nMPI library version: Intel(R) MPI Library 2021.17 for Linux* OS",
+    "checked_utc": "2026-08-26T01:42:49+00:00"
+  },
+  "command": [
+    "/home/ubuntu/fds_sample_preflight_runtime/FDS-6.11.1_SMV-6.11.2_lnx/bin/fds_openmp",
+    "Steckler_010.fds"
+  ],
+  "parallel": {
+    "mpi_processes": 1,
+    "omp_threads": 1
+  },
+  "wall_timeout_seconds": 180,
+  "environment": {
+    "platform": "Linux-6.1.102-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "processor": "x86_64",
+    "cpu_count": 6,
+    "workspace": "/home/ubuntu/drone-fire-control-lab/research_outputs/fds_steckler_010_short_preflight/Steckler_010_steckler_010_short_preflight_20260826T014249"
+  },
+  "restart_policy": {
+    "automatic_restart": false,
+    "requires_explicit_derivative_input": true,
+    "completed_equivalence_claim": false
+  },
+  "preflight": {
+    "kind": "steckler_010_short_derivative",
+    "source_input_sha256_required": "778cfa34368802a92cf9ad4750d418f8d3bd0aaa981776883cd985cd42c0e938",
+    "source_input_preserved_unchanged": true,
+    "derived_workspace_input": "Steckler_010.fds",
+    "derived_t_end_s": 1.0,
+    "wall_timeout_seconds": 180,
+    "success_criteria": [
+      "return code 0",
+      "FDS completed successfully marker",
+      "output diagnostic file exists"
+    ],
+    "not_a_full_1800_s_run": true,
+    "not_a_qoi_residual_source": true
+  },
+  "started_utc": "2026-08-26T01:42:49+00:00",
+  "pid": 18013,
+  "finished_utc": "2026-08-26T01:43:03+00:00",
+  "returncode": 0
+}

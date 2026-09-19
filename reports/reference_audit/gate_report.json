@@ -1,0 +1,42 @@
+[
+  {
+    "stage": 1,
+    "name": "lineage & integrity",
+    "status": "ready",
+    "errors": [],
+    "detail": "cc3b516b8fa4… ↔ 0b7c10813332…"
+  },
+  {
+    "stage": 2,
+    "name": "schema & unit",
+    "status": "ready",
+    "errors": [],
+    "detail": "canonical rows: 40 / 72"
+  },
+  {
+    "stage": 3,
+    "name": "coordinate & spatial support",
+    "status": "blocked",
+    "errors": [
+      "E002",
+      "E004"
+    ],
+    "detail": "all rows require declared frame, transform, and support"
+  },
+  {
+    "stage": 4,
+    "name": "time support",
+    "status": "warning",
+    "errors": [],
+    "detail": "25% of left export times pair within ±2.5s"
+  },
+  {
+    "stage": 5,
+    "name": "QoI pairing",
+    "status": "blocked",
+    "errors": [
+      "E008"
+    ],
+    "detail": "common canonical fields: temperature_K"
+  }
+]

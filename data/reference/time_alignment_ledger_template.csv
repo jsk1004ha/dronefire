@@ -1,0 +1,2 @@
+clock_id,native_time_basis,analysis_time_basis,reference_event_id,offset_s,drift_s_per_s,fit_residual_s,method,source_file_sha256
+<unique_clock_id>,<native_clock_definition>,<case_analysis_time_basis>,<shared_reference_event_id>,<estimated_offset_s>,<estimated_drift_s_per_s>,<nonnegative_fit_residual_s>,<declared_estimation_method>,<source_trace_sha256>

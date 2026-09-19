@@ -1,0 +1,14 @@
+{
+  "checked_utc": "2026-09-18T15:31:00Z",
+  "environment": "Ubuntu WSL2",
+  "distribution_contract": "OpenCFD OpenFOAM-v2412",
+  "commands": {
+    "package": "openfoam2412:amd64 2412.260127-1",
+    "blockMesh": "/usr/lib/openfoam/openfoam2412/platforms/linux64GccDPInt32Opt/bin/blockMesh",
+    "icoFoam": "/usr/lib/openfoam/openfoam2412/platforms/linux64GccDPInt32Opt/bin/icoFoam"
+  },
+  "status": "runtime_available",
+  "execution": "completed_preflight",
+  "validation": "unvalidated_cavity_preflight",
+  "verified_benchmark": "../v2412_taylor_green and runs/openfoam_v2412_taylor_green_*"
+}

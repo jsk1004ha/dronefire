@@ -1,0 +1,1765 @@
+[
+  {
+    "id": "C0",
+    "methods": [],
+    "order": [],
+    "mode": "control",
+    "schedule": {},
+    "dose_fraction": {},
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV"
+    }
+  },
+  {
+    "id": "M1",
+    "methods": [
+      "M1"
+    ],
+    "order": [
+      "M1"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M1": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M1": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV"
+    }
+  },
+  {
+    "id": "M2",
+    "methods": [
+      "M2"
+    ],
+    "order": [
+      "M2"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M2": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M2": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV"
+    }
+  },
+  {
+    "id": "M3",
+    "methods": [
+      "M3"
+    ],
+    "order": [
+      "M3"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M3": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M3": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV"
+    }
+  },
+  {
+    "id": "M4",
+    "methods": [
+      "M4"
+    ],
+    "order": [
+      "M4"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M4": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M4": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV"
+    }
+  },
+  {
+    "id": "M5",
+    "methods": [
+      "M5"
+    ],
+    "order": [
+      "M5"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M5": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M5": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV"
+    }
+  },
+  {
+    "id": "M1+M2:SIM",
+    "methods": [
+      "M1",
+      "M2"
+    ],
+    "order": [
+      "M1",
+      "M2"
+    ],
+    "mode": "simultaneous",
+    "schedule": {
+      "M1": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      },
+      "M2": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M1": 0.5,
+      "M2": 0.5
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV"
+    },
+    "partial_controls": {
+      "M1": "PARTIAL_3114f62b1075",
+      "M2": "PARTIAL_4ae999189c6e"
+    }
+  },
+  {
+    "id": "M1+M3:SIM",
+    "methods": [
+      "M1",
+      "M3"
+    ],
+    "order": [
+      "M1",
+      "M3"
+    ],
+    "mode": "simultaneous",
+    "schedule": {
+      "M1": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      },
+      "M3": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M1": 0.5,
+      "M3": 0.5
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV"
+    },
+    "partial_controls": {
+      "M1": "PARTIAL_3114f62b1075",
+      "M3": "PARTIAL_13baf1e00280"
+    }
+  },
+  {
+    "id": "M1+M4:SIM",
+    "methods": [
+      "M1",
+      "M4"
+    ],
+    "order": [
+      "M1",
+      "M4"
+    ],
+    "mode": "simultaneous",
+    "schedule": {
+      "M1": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      },
+      "M4": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M1": 0.5,
+      "M4": 0.5
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV"
+    },
+    "partial_controls": {
+      "M1": "PARTIAL_3114f62b1075",
+      "M4": "PARTIAL_839b3c81956e"
+    }
+  },
+  {
+    "id": "M1+M5:SIM",
+    "methods": [
+      "M1",
+      "M5"
+    ],
+    "order": [
+      "M1",
+      "M5"
+    ],
+    "mode": "simultaneous",
+    "schedule": {
+      "M1": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      },
+      "M5": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M1": 0.5,
+      "M5": 0.5
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV"
+    },
+    "partial_controls": {
+      "M1": "PARTIAL_3114f62b1075",
+      "M5": "PARTIAL_cc55b961caf5"
+    }
+  },
+  {
+    "id": "M2+M3:SIM",
+    "methods": [
+      "M2",
+      "M3"
+    ],
+    "order": [
+      "M2",
+      "M3"
+    ],
+    "mode": "simultaneous",
+    "schedule": {
+      "M2": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      },
+      "M3": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M2": 0.5,
+      "M3": 0.5
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV"
+    },
+    "partial_controls": {
+      "M2": "PARTIAL_4ae999189c6e",
+      "M3": "PARTIAL_13baf1e00280"
+    }
+  },
+  {
+    "id": "M2+M4:SIM",
+    "methods": [
+      "M2",
+      "M4"
+    ],
+    "order": [
+      "M2",
+      "M4"
+    ],
+    "mode": "simultaneous",
+    "schedule": {
+      "M2": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      },
+      "M4": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M2": 0.5,
+      "M4": 0.5
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV"
+    },
+    "partial_controls": {
+      "M2": "PARTIAL_4ae999189c6e",
+      "M4": "PARTIAL_839b3c81956e"
+    }
+  },
+  {
+    "id": "M2+M5:SIM",
+    "methods": [
+      "M2",
+      "M5"
+    ],
+    "order": [
+      "M2",
+      "M5"
+    ],
+    "mode": "simultaneous",
+    "schedule": {
+      "M2": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      },
+      "M5": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M2": 0.5,
+      "M5": 0.5
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV"
+    },
+    "partial_controls": {
+      "M2": "PARTIAL_4ae999189c6e",
+      "M5": "PARTIAL_cc55b961caf5"
+    }
+  },
+  {
+    "id": "M3+M4:SIM",
+    "methods": [
+      "M3",
+      "M4"
+    ],
+    "order": [
+      "M3",
+      "M4"
+    ],
+    "mode": "simultaneous",
+    "schedule": {
+      "M3": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      },
+      "M4": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M3": 0.5,
+      "M4": 0.5
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV"
+    },
+    "partial_controls": {
+      "M3": "PARTIAL_13baf1e00280",
+      "M4": "PARTIAL_839b3c81956e"
+    }
+  },
+  {
+    "id": "M3+M5:SIM",
+    "methods": [
+      "M3",
+      "M5"
+    ],
+    "order": [
+      "M3",
+      "M5"
+    ],
+    "mode": "simultaneous",
+    "schedule": {
+      "M3": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      },
+      "M5": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M3": 0.5,
+      "M5": 0.5
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV"
+    },
+    "partial_controls": {
+      "M3": "PARTIAL_13baf1e00280",
+      "M5": "PARTIAL_cc55b961caf5"
+    }
+  },
+  {
+    "id": "M4+M5:SIM",
+    "methods": [
+      "M4",
+      "M5"
+    ],
+    "order": [
+      "M4",
+      "M5"
+    ],
+    "mode": "simultaneous",
+    "schedule": {
+      "M4": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      },
+      "M5": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M4": 0.5,
+      "M5": 0.5
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV"
+    },
+    "partial_controls": {
+      "M4": "PARTIAL_839b3c81956e",
+      "M5": "PARTIAL_cc55b961caf5"
+    }
+  },
+  {
+    "id": "M1>M2:SEQ",
+    "methods": [
+      "M1",
+      "M2"
+    ],
+    "order": [
+      "M1",
+      "M2"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M1": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M2": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M1": 1.0,
+      "M2": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M1": "PARTIAL_8bec36cc4eff",
+      "M2": "PARTIAL_14e588e95dbb"
+    }
+  },
+  {
+    "id": "M2>M1:SEQ",
+    "methods": [
+      "M2",
+      "M1"
+    ],
+    "order": [
+      "M2",
+      "M1"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M2": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M1": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M2": 1.0,
+      "M1": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M2": "PARTIAL_070bbe4bcfd9",
+      "M1": "PARTIAL_244b9044b276"
+    }
+  },
+  {
+    "id": "M1>M3:SEQ",
+    "methods": [
+      "M1",
+      "M3"
+    ],
+    "order": [
+      "M1",
+      "M3"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M1": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M3": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M1": 1.0,
+      "M3": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M1": "PARTIAL_8bec36cc4eff",
+      "M3": "PARTIAL_bf047b407900"
+    }
+  },
+  {
+    "id": "M3>M1:SEQ",
+    "methods": [
+      "M3",
+      "M1"
+    ],
+    "order": [
+      "M3",
+      "M1"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M3": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M1": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M3": 1.0,
+      "M1": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M3": "PARTIAL_4cb79aab8bb2",
+      "M1": "PARTIAL_244b9044b276"
+    }
+  },
+  {
+    "id": "M1>M4:SEQ",
+    "methods": [
+      "M1",
+      "M4"
+    ],
+    "order": [
+      "M1",
+      "M4"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M1": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M4": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M1": 1.0,
+      "M4": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M1": "PARTIAL_8bec36cc4eff",
+      "M4": "PARTIAL_74fa89a1210b"
+    }
+  },
+  {
+    "id": "M4>M1:SEQ",
+    "methods": [
+      "M4",
+      "M1"
+    ],
+    "order": [
+      "M4",
+      "M1"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M4": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M1": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M4": 1.0,
+      "M1": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M4": "PARTIAL_41ef3305320f",
+      "M1": "PARTIAL_244b9044b276"
+    }
+  },
+  {
+    "id": "M1>M5:SEQ",
+    "methods": [
+      "M1",
+      "M5"
+    ],
+    "order": [
+      "M1",
+      "M5"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M1": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M5": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M1": 1.0,
+      "M5": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M1": "PARTIAL_8bec36cc4eff",
+      "M5": "PARTIAL_da604d9fdcb5"
+    }
+  },
+  {
+    "id": "M5>M1:SEQ",
+    "methods": [
+      "M5",
+      "M1"
+    ],
+    "order": [
+      "M5",
+      "M1"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M5": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M1": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M5": 1.0,
+      "M1": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M5": "PARTIAL_7ad745d16d57",
+      "M1": "PARTIAL_244b9044b276"
+    }
+  },
+  {
+    "id": "M2>M3:SEQ",
+    "methods": [
+      "M2",
+      "M3"
+    ],
+    "order": [
+      "M2",
+      "M3"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M2": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M3": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M2": 1.0,
+      "M3": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M2": "PARTIAL_070bbe4bcfd9",
+      "M3": "PARTIAL_bf047b407900"
+    }
+  },
+  {
+    "id": "M3>M2:SEQ",
+    "methods": [
+      "M3",
+      "M2"
+    ],
+    "order": [
+      "M3",
+      "M2"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M3": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M2": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M3": 1.0,
+      "M2": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M3": "PARTIAL_4cb79aab8bb2",
+      "M2": "PARTIAL_14e588e95dbb"
+    }
+  },
+  {
+    "id": "M2>M4:SEQ",
+    "methods": [
+      "M2",
+      "M4"
+    ],
+    "order": [
+      "M2",
+      "M4"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M2": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M4": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M2": 1.0,
+      "M4": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M2": "PARTIAL_070bbe4bcfd9",
+      "M4": "PARTIAL_74fa89a1210b"
+    }
+  },
+  {
+    "id": "M4>M2:SEQ",
+    "methods": [
+      "M4",
+      "M2"
+    ],
+    "order": [
+      "M4",
+      "M2"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M4": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M2": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M4": 1.0,
+      "M2": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M4": "PARTIAL_41ef3305320f",
+      "M2": "PARTIAL_14e588e95dbb"
+    }
+  },
+  {
+    "id": "M2>M5:SEQ",
+    "methods": [
+      "M2",
+      "M5"
+    ],
+    "order": [
+      "M2",
+      "M5"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M2": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M5": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M2": 1.0,
+      "M5": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M2": "PARTIAL_070bbe4bcfd9",
+      "M5": "PARTIAL_da604d9fdcb5"
+    }
+  },
+  {
+    "id": "M5>M2:SEQ",
+    "methods": [
+      "M5",
+      "M2"
+    ],
+    "order": [
+      "M5",
+      "M2"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M5": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M2": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M5": 1.0,
+      "M2": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M5": "PARTIAL_7ad745d16d57",
+      "M2": "PARTIAL_14e588e95dbb"
+    }
+  },
+  {
+    "id": "M3>M4:SEQ",
+    "methods": [
+      "M3",
+      "M4"
+    ],
+    "order": [
+      "M3",
+      "M4"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M3": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M4": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M3": 1.0,
+      "M4": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M3": "PARTIAL_4cb79aab8bb2",
+      "M4": "PARTIAL_74fa89a1210b"
+    }
+  },
+  {
+    "id": "M4>M3:SEQ",
+    "methods": [
+      "M4",
+      "M3"
+    ],
+    "order": [
+      "M4",
+      "M3"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M4": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M3": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M4": 1.0,
+      "M3": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M4": "PARTIAL_41ef3305320f",
+      "M3": "PARTIAL_bf047b407900"
+    }
+  },
+  {
+    "id": "M3>M5:SEQ",
+    "methods": [
+      "M3",
+      "M5"
+    ],
+    "order": [
+      "M3",
+      "M5"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M3": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M5": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M3": 1.0,
+      "M5": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M3": "PARTIAL_4cb79aab8bb2",
+      "M5": "PARTIAL_da604d9fdcb5"
+    }
+  },
+  {
+    "id": "M5>M3:SEQ",
+    "methods": [
+      "M5",
+      "M3"
+    ],
+    "order": [
+      "M5",
+      "M3"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M5": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M3": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M5": 1.0,
+      "M3": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M5": "PARTIAL_7ad745d16d57",
+      "M3": "PARTIAL_bf047b407900"
+    }
+  },
+  {
+    "id": "M4>M5:SEQ",
+    "methods": [
+      "M4",
+      "M5"
+    ],
+    "order": [
+      "M4",
+      "M5"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M4": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M5": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M4": 1.0,
+      "M5": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M4": "PARTIAL_41ef3305320f",
+      "M5": "PARTIAL_da604d9fdcb5"
+    }
+  },
+  {
+    "id": "M5>M4:SEQ",
+    "methods": [
+      "M5",
+      "M4"
+    ],
+    "order": [
+      "M5",
+      "M4"
+    ],
+    "mode": "sequential",
+    "schedule": {
+      "M5": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      },
+      "M4": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M5": 1.0,
+      "M4": 1.0
+    },
+    "metadata": {
+      "main_design": true,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "transition_delay_s": 0.0
+    },
+    "partial_controls": {
+      "M5": "PARTIAL_7ad745d16d57",
+      "M4": "PARTIAL_74fa89a1210b"
+    }
+  },
+  {
+    "id": "PARTIAL_3114f62b1075",
+    "methods": [
+      "M1"
+    ],
+    "order": [
+      "M1"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M1": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M1": 0.5
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "partial_control": true
+    }
+  },
+  {
+    "id": "PARTIAL_4ae999189c6e",
+    "methods": [
+      "M2"
+    ],
+    "order": [
+      "M2"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M2": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M2": 0.5
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "partial_control": true
+    }
+  },
+  {
+    "id": "PARTIAL_13baf1e00280",
+    "methods": [
+      "M3"
+    ],
+    "order": [
+      "M3"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M3": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M3": 0.5
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "partial_control": true
+    }
+  },
+  {
+    "id": "PARTIAL_839b3c81956e",
+    "methods": [
+      "M4"
+    ],
+    "order": [
+      "M4"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M4": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M4": 0.5
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "partial_control": true
+    }
+  },
+  {
+    "id": "PARTIAL_cc55b961caf5",
+    "methods": [
+      "M5"
+    ],
+    "order": [
+      "M5"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M5": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M5": 0.5
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "partial_control": true
+    }
+  },
+  {
+    "id": "PARTIAL_8bec36cc4eff",
+    "methods": [
+      "M1"
+    ],
+    "order": [
+      "M1"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M1": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M1": 1.0
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "partial_control": true
+    }
+  },
+  {
+    "id": "PARTIAL_14e588e95dbb",
+    "methods": [
+      "M2"
+    ],
+    "order": [
+      "M2"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M2": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M2": 1.0
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "partial_control": true
+    }
+  },
+  {
+    "id": "PARTIAL_070bbe4bcfd9",
+    "methods": [
+      "M2"
+    ],
+    "order": [
+      "M2"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M2": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M2": 1.0
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "partial_control": true
+    }
+  },
+  {
+    "id": "PARTIAL_244b9044b276",
+    "methods": [
+      "M1"
+    ],
+    "order": [
+      "M1"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M1": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M1": 1.0
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "partial_control": true
+    }
+  },
+  {
+    "id": "PARTIAL_bf047b407900",
+    "methods": [
+      "M3"
+    ],
+    "order": [
+      "M3"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M3": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M3": 1.0
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "partial_control": true
+    }
+  },
+  {
+    "id": "PARTIAL_4cb79aab8bb2",
+    "methods": [
+      "M3"
+    ],
+    "order": [
+      "M3"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M3": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M3": 1.0
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "partial_control": true
+    }
+  },
+  {
+    "id": "PARTIAL_74fa89a1210b",
+    "methods": [
+      "M4"
+    ],
+    "order": [
+      "M4"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M4": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M4": 1.0
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "partial_control": true
+    }
+  },
+  {
+    "id": "PARTIAL_41ef3305320f",
+    "methods": [
+      "M4"
+    ],
+    "order": [
+      "M4"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M4": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M4": 1.0
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "partial_control": true
+    }
+  },
+  {
+    "id": "PARTIAL_da604d9fdcb5",
+    "methods": [
+      "M5"
+    ],
+    "order": [
+      "M5"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M5": {
+        "start_s": 8.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M5": 1.0
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "partial_control": true
+    }
+  },
+  {
+    "id": "PARTIAL_7ad745d16d57",
+    "methods": [
+      "M5"
+    ],
+    "order": [
+      "M5"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M5": {
+        "start_s": 6.0,
+        "duration_s": 2.0
+      }
+    },
+    "dose_fraction": {
+      "M5": 1.0
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "partial_control": true
+    }
+  },
+  {
+    "id": "SHAM_M1",
+    "methods": [],
+    "order": [],
+    "mode": "control",
+    "schedule": {},
+    "dose_fraction": {},
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "mounted_devices": [
+        "M1"
+      ],
+      "sham": true
+    }
+  },
+  {
+    "id": "SHAM_M2",
+    "methods": [],
+    "order": [],
+    "mode": "control",
+    "schedule": {},
+    "dose_fraction": {},
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "mounted_devices": [
+        "M2"
+      ],
+      "sham": true
+    }
+  },
+  {
+    "id": "SHAM_M3",
+    "methods": [],
+    "order": [],
+    "mode": "control",
+    "schedule": {},
+    "dose_fraction": {},
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "mounted_devices": [
+        "M3"
+      ],
+      "sham": true
+    }
+  },
+  {
+    "id": "SHAM_M4",
+    "methods": [],
+    "order": [],
+    "mode": "control",
+    "schedule": {},
+    "dose_fraction": {},
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "mounted_devices": [
+        "M4"
+      ],
+      "sham": true
+    }
+  },
+  {
+    "id": "SHAM_M5",
+    "methods": [],
+    "order": [],
+    "mode": "control",
+    "schedule": {},
+    "dose_fraction": {},
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "CV",
+      "mounted_devices": [
+        "M5"
+      ],
+      "sham": true
+    }
+  },
+  {
+    "id": "M5_VORTEX_ONLY",
+    "methods": [
+      "M5"
+    ],
+    "order": [
+      "M5"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M5": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M5": 1.0
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "VORTEX_ONLY",
+      "ablation": true
+    }
+  },
+  {
+    "id": "M5_PARTICLE_ONLY",
+    "methods": [
+      "M5"
+    ],
+    "order": [
+      "M5"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M5": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M5": 1.0
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "PARTICLE_ONLY",
+      "ablation": true
+    }
+  },
+  {
+    "id": "M5_EHD",
+    "methods": [
+      "M5"
+    ],
+    "order": [
+      "M5"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M5": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M5": 1.0
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "EHD",
+      "ablation": true
+    }
+  },
+  {
+    "id": "M5_COMBINED",
+    "methods": [
+      "M5"
+    ],
+    "order": [
+      "M5"
+    ],
+    "mode": "single",
+    "schedule": {
+      "M5": {
+        "start_s": 6.0,
+        "duration_s": 4.0
+      }
+    },
+    "dose_fraction": {
+      "M5": 1.0
+    },
+    "metadata": {
+      "main_design": false,
+      "dose_basis": "requested_fraction_not_resource_equivalence",
+      "m5_variant": "COMBINED",
+      "ablation": true
+    }
+  }
+]

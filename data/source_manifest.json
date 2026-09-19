@@ -1,0 +1,859 @@
+{
+  "sources": [
+    {
+      "name": "FDS와 OpenFOAM 데이터 3D 시각화 및 분석 보고서 작성.zip",
+      "path": "C:\\Users\\js100\\Documents\\카카오톡 받은 파일\\FDS와 OpenFOAM 데이터 3D 시각화 및 분석 보고서 작성.zip",
+      "exists": true,
+      "size_bytes": 61485755,
+      "sha256": "b5c0d52b3ab1ce64201af106036180f6133ae87d9ab807076ea7994b843c407f"
+    },
+    {
+      "name": "화재 구조 환경에서 인명 생존 시간 연장을 위한 드론 기반 물리적 화염 제어 기술 연구.pdf",
+      "path": "C:\\Users\\js100\\Documents\\카카오톡 받은 파일\\화재 구조 환경에서 인명 생존 시간 연장을 위한 드론 기반 물리적 화염 제어 기술 연구.pdf",
+      "exists": true,
+      "size_bytes": 2662180,
+      "sha256": "efab6d0599ba6036697721ee7dc12197ab8708e80e878a2ef44a850455f989c1"
+    },
+    {
+      "name": "삼휴텍 - 드론 화재.docx",
+      "path": "C:\\Users\\js100\\Documents\\카카오톡 받은 파일\\삼휴텍 - 드론 화재.docx",
+      "exists": true,
+      "size_bytes": 36200690,
+      "sha256": "5be472dc8a419034c802ac51b289b498b38d7f776df493670b7d4064f4508da2"
+    },
+    {
+      "name": "img_prime.zip",
+      "path": "C:\\Users\\js100\\Documents\\카카오톡 받은 파일\\img_prime.zip",
+      "exists": true,
+      "size_bytes": 6868700,
+      "sha256": "74130328e9be19dd486dc3cff748345a87b715cbc81448ccf6448fee0a5de1bd"
+    }
+  ],
+  "archive_entries": [
+    {
+      "path": "adapter_contract.py",
+      "size_bytes": 33178
+    },
+    {
+      "path": "gate_report.json",
+      "size_bytes": 830
+    },
+    {
+      "path": "native_artifact_report.json",
+      "size_bytes": 3183
+    },
+    {
+      "path": "generate_fds_geometry_sidecar.py",
+      "size_bytes": 6939
+    },
+    {
+      "path": "연구 주제.md",
+      "size_bytes": 12054
+    },
+    {
+      "path": "Rung2_S13Lint_LS공간대표성_관측강건성_상세설계_2026-08-26.zip",
+      "size_bytes": 107008
+    },
+    {
+      "path": "Rung2_S13Lint_LS공간대표성_관측강건성_상세설계_2026-08-26.zip.sha256",
+      "size_bytes": 142
+    },
+    {
+      "path": "todo.md",
+      "size_bytes": 25192
+    },
+    {
+      "path": "FDS S13 Stage 3 Crosswalk 및 Geometry Sidecar 생성 예시 코드 가이드.md",
+      "size_bytes": 8769
+    },
+    {
+      "path": "FDS S13 Stage 3 Geometry Sidecar 자동 검증 파이프라인 구축안.md",
+      "size_bytes": 12050
+    },
+    {
+      "path": "EvidenceLadder_S13자동화_인명피해최소화_연구포트폴리오_2026-08-26.zip",
+      "size_bytes": 103782
+    },
+    {
+      "path": "EvidenceLadder_S13자동화_인명피해최소화_연구포트폴리오_2026-08-26.zip.sha256",
+      "size_bytes": 153
+    },
+    {
+      "path": "fds_device_survey_geometry_template.csv",
+      "size_bytes": 601
+    },
+    {
+      "path": "fds_sidecar_case_metadata_template.json",
+      "size_bytes": 197
+    },
+    {
+      "path": "FDS_S13_Crosswalk_EvidenceLadder_연구통합정리_2026-08-26.zip.sha256",
+      "size_bytes": 133
+    },
+    {
+      "path": "FDS_S13_Crosswalk_EvidenceLadder_연구통합정리_2026-08-26.zip",
+      "size_bytes": 98504
+    },
+    {
+      "path": "test_generate_fds_geometry_sidecar.py",
+      "size_bytes": 1862
+    },
+    {
+      "path": "fds_probe_crosswalk_ledger_template.csv",
+      "size_bytes": 206
+    },
+    {
+      "path": "S1_S12_마일스톤_통합표.csv",
+      "size_bytes": 3408
+    },
+    {
+      "path": "S16–S18 추가 민감도 검증 시나리오.md",
+      "size_bytes": 4530
+    },
+    {
+      "path": "S1–S6 핵심 시뮬레이션 경계조건·입력 사양.md",
+      "size_bytes": 18983
+    },
+    {
+      "path": "test_adapter_contract.py",
+      "size_bytes": 6900
+    },
+    {
+      "path": "S13 차단 해소 계획: FDS Probe Geometry 및  Native Output Evidence.md",
+      "size_bytes": 9681
+    },
+    {
+      "path": "fds_probe_geometry_sidecar_template.csv",
+      "size_bytes": 872
+    },
+    {
+      "path": "Adapter Contract 검증 로직·테스트 구조 및 S13 Geometry Sidecar 실무 안내.md",
+      "size_bytes": 13607
+    },
+    {
+      "path": "드론 기반 물리적 화염 제어 연구의 비판적 검토 및 차별화 전략.md",
+      "size_bytes": 15986
+    },
+    {
+      "path": "AdapterContract_검증설명_S13Sidecar_연구비판_2026-08-26.zip.sha256",
+      "size_bytes": 134
+    },
+    {
+      "path": "AdapterContract_검증설명_S13Sidecar_연구비판_2026-08-26.zip",
+      "size_bytes": 84045
+    },
+    {
+      "path": "드론 기반 물리적 화염 제어의 단계적 검증 프레임워크.md",
+      "size_bytes": 19062
+    },
+    {
+      "path": "fixture_contract.json",
+      "size_bytes": 2458
+    },
+    {
+      "path": "Adapter Contract 및 연구 증거사슬 작업 레지스터.md",
+      "size_bytes": 6704
+    },
+    {
+      "path": "fds_full_run_manifest_template.json",
+      "size_bytes": 698
+    },
+    {
+      "path": "fds_mesh_time_study_template.csv",
+      "size_bytes": 416
+    },
+    {
+      "path": "coordinate_transform_registry_template.csv",
+      "size_bytes": 381
+    },
+    {
+      "path": "time_alignment_ledger_template.csv",
+      "size_bytes": 356
+    },
+    {
+      "path": "support_mapping_template.csv",
+      "size_bytes": 488
+    },
+    {
+      "path": "openfoam_native_bundle_manifest_template.json",
+      "size_bytes": 463
+    },
+    {
+      "path": "AdapterContract_S13_보완계획_및_증거검사_2026-08-26.zip.sha256",
+      "size_bytes": 131
+    },
+    {
+      "path": "AdapterContract_S13_보완계획_및_증거검사_2026-08-26.zip",
+      "size_bytes": 67104
+    },
+    {
+      "path": "5단계 Adapter Contract 핵심 구현.md",
+      "size_bytes": 4248
+    },
+    {
+      "path": "requirements.txt",
+      "size_bytes": 85
+    },
+    {
+      "path": "run_manifest.json",
+      "size_bytes": 2566
+    },
+    {
+      "path": "Steckler_short_preflight_실행보고서_2026-08-26.md",
+      "size_bytes": 4017
+    },
+    {
+      "path": "P0–P1 추가 계측 데이터 사양 v1.md",
+      "size_bytes": 25044
+    },
+    {
+      "path": "fds_probe_sample.csv",
+      "size_bytes": 312
+    },
+    {
+      "path": "measurement_benchmark_contract.json",
+      "size_bytes": 1608
+    },
+    {
+      "path": "canonical_left.csv",
+      "size_bytes": 1913
+    },
+    {
+      "path": "AdapterContract_5단계_핵심구현_실행결과_2026-08-26.zip.sha256",
+      "size_bytes": 157
+    },
+    {
+      "path": "AdapterContract_5단계_핵심구현_실행결과_2026-08-26.zip",
+      "size_bytes": 47064
+    },
+    {
+      "path": "Steckler_Test_10_layer.csv",
+      "size_bytes": 94
+    },
+    {
+      "path": "드론 기반 물리적 화염 제어 연구 재균형 및 CFD–계측 연계 개발계획.md",
+      "size_bytes": 18984
+    },
+    {
+      "path": "드론기반물리적화염제어_연구재균형_CFD연계계획_2026-08-26.zip",
+      "size_bytes": 13133
+    },
+    {
+      "path": "드론기반물리적화염제어_연구재균형_CFD연계계획_2026-08-26.zip.sha256",
+      "size_bytes": 173
+    },
+    {
+      "path": "드론기반_물리적화염제어_연구재균형_계획개요.html",
+      "size_bytes": 10411
+    },
+    {
+      "path": "case_manifest_web_sample.json",
+      "size_bytes": 584
+    },
+    {
+      "path": "experimental_methodology_expansion.md",
+      "size_bytes": 4850
+    },
+    {
+      "path": "AERIS Offline CFD & Drone Lab.md",
+      "size_bytes": 13059
+    },
+    {
+      "path": "1단계 시뮬레이션 검증·특허 전략·개발 목록.md",
+      "size_bytes": 30951
+    },
+    {
+      "path": "Home.tsx",
+      "size_bytes": 28129
+    },
+    {
+      "path": "evidence.pairing.test.ts",
+      "size_bytes": 1354
+    },
+    {
+      "path": "research-evidence.ts",
+      "size_bytes": 15686
+    },
+    {
+      "path": "DashboardLayout.tsx",
+      "size_bytes": 8998
+    },
+    {
+      "path": "드론기반물리적화염제어_학술논문형_P0P3_S16S18_2026-08-26.zip",
+      "size_bytes": 1129329
+    },
+    {
+      "path": "드론 기반 물리적 화염 제어 P0–P3 현장 실증 시나리오.md",
+      "size_bytes": 11448
+    },
+    {
+      "path": "S16–S18 및 S17 Pairing Gate 비교 차트 해석.md",
+      "size_bytes": 1359
+    },
+    {
+      "path": "드론기반물리적화염제어_학술논문형_P0P3_S16S18_2026-08-26.zip.sha256",
+      "size_bytes": 169
+    },
+    {
+      "path": "S16_S18_vs_S17_pairing_gate_comparison.png",
+      "size_bytes": 347543
+    },
+    {
+      "path": "S16_S18_S17_비교차트_해석메모.md",
+      "size_bytes": 1359
+    },
+    {
+      "path": "visualize_S16_S18_vs_S17_gate.py",
+      "size_bytes": 5486
+    },
+    {
+      "path": "P0_P3_드론기반물리적화염제어_현장실증_시나리오.md",
+      "size_bytes": 11448
+    },
+    {
+      "path": "드론 기반 물리적 화염 제어의 실효성 검증을 위한 통합 연구 프레임워크.md",
+      "size_bytes": 23917
+    },
+    {
+      "path": "드론기반물리적화염제어_중심_개정논문_S16S18_2026-08-26.zip",
+      "size_bytes": 816475
+    },
+    {
+      "path": "S16–S18 추가 민감도 결과 해석 메모.md",
+      "size_bytes": 2309
+    },
+    {
+      "path": "s16_design_summary.csv",
+      "size_bytes": 12991
+    },
+    {
+      "path": "s17_pairing_decision_sensitivity.csv",
+      "size_bytes": 1770
+    },
+    {
+      "path": "s18_design_summary.csv",
+      "size_bytes": 19381
+    },
+    {
+      "path": "s18_factor_association_screen.csv",
+      "size_bytes": 246
+    },
+    {
+      "path": "run_S16_S18_drone_centered_sensitivity.py",
+      "size_bytes": 9808
+    },
+    {
+      "path": "드론기반물리적화염제어_중심_개정논문_S16S18_2026-08-26.zip.sha256",
+      "size_bytes": 168
+    },
+    {
+      "path": "S16_S18_drone_centered_sensitivity_dashboard.png",
+      "size_bytes": 373506
+    },
+    {
+      "path": "S16_S18_결과해석메모.md",
+      "size_bytes": 2309
+    },
+    {
+      "path": "visualize_S16_S18_results.py",
+      "size_bytes": 4277
+    },
+    {
+      "path": "s16_s18_config.json",
+      "size_bytes": 1113
+    },
+    {
+      "path": "S16_S18_추가민감도_검증시나리오.md",
+      "size_bytes": 4530
+    },
+    {
+      "path": "drone_centered_reframing.md",
+      "size_bytes": 3950
+    },
+    {
+      "path": "초기 주제 중심 통합 연구계획.md",
+      "size_bytes": 27672
+    },
+    {
+      "path": "드론 기반 물리적 화염 제어 연구의 통합 검증 프레임워크: FDS·OpenFOAM 데이터 계약, 확률론적 민감도 분석 및 미세중력 소화 확장.md",
+      "size_bytes": 25138
+    },
+    {
+      "path": "통합연구논문_환기민감도_S13S15_실행패키지_2026-08-26.zip",
+      "size_bytes": 816262
+    },
+    {
+      "path": "S13–S15 및 5단계 Adapter Contract 실행 가이드.md",
+      "size_bytes": 5763
+    },
+    {
+      "path": "ventilation_sweep_summary.csv",
+      "size_bytes": 10452
+    },
+    {
+      "path": "five_stage_audit.csv",
+      "size_bytes": 1301
+    },
+    {
+      "path": "s14_mapping_sensitivity_summary.csv",
+      "size_bytes": 1510
+    },
+    {
+      "path": "s15_morris_summary.csv",
+      "size_bytes": 988
+    },
+    {
+      "path": "s13_adapter_contract_audit.py",
+      "size_bytes": 8521
+    },
+    {
+      "path": "s14_mapping_sensitivity.py",
+      "size_bytes": 4398
+    },
+    {
+      "path": "s15_morris_screening.py",
+      "size_bytes": 6239
+    },
+    {
+      "path": "통합연구논문_환기민감도_S13S15_실행패키지_2026-08-26.zip.sha256",
+      "size_bytes": 165
+    },
+    {
+      "path": "ventilation_sensitivity_efficiency.png",
+      "size_bytes": 283673
+    },
+    {
+      "path": "method_success_time_comparison.png",
+      "size_bytes": 213754
+    },
+    {
+      "path": "S13_S15_AdapterContract_실행가이드.md",
+      "size_bytes": 5763
+    },
+    {
+      "path": "s15_morris_config.json",
+      "size_bytes": 1091
+    },
+    {
+      "path": "s14_mapping_config.json",
+      "size_bytes": 532
+    },
+    {
+      "path": "adapter_contract_example.json",
+      "size_bytes": 1742
+    },
+    {
+      "path": "best_flow_by_method_model_output.csv",
+      "size_bytes": 2262
+    },
+    {
+      "path": "microgravity_simulation_visual_review.md",
+      "size_bytes": 4155
+    },
+    {
+      "path": "visualize_ventilation_and_success_time.py",
+      "size_bytes": 6215
+    },
+    {
+      "path": "run_microgravity_ventilation_sweep.py",
+      "size_bytes": 10032
+    },
+    {
+      "path": "space_fire_suppression_research_notes.md",
+      "size_bytes": 7476
+    },
+    {
+      "path": "assumption_registry.csv",
+      "size_bytes": 1758
+    },
+    {
+      "path": "우주·미세중력 환경의 접촉식·비접촉식 소화 방법과 확률론적 화재 확산 억제 분석.md",
+      "size_bytes": 19302
+    },
+    {
+      "path": "우주_미세중력_소화_몬테카를로_분석패키지_2026-08-26.zip",
+      "size_bytes": 2085240
+    },
+    {
+      "path": "scenario_method_summary.csv",
+      "size_bytes": 9420
+    },
+    {
+      "path": "run_level_outcomes.csv",
+      "size_bytes": 5330891
+    },
+    {
+      "path": "우주_미세중력_소화_몬테카를로_분석패키지_2026-08-26.zip.sha256",
+      "size_bytes": 166
+    },
+    {
+      "path": "suppression_outcomes_overview.png",
+      "size_bytes": 381246
+    },
+    {
+      "path": "reference_scenario_trajectories.png",
+      "size_bytes": 313430
+    },
+    {
+      "path": "visualize_microgravity_fire_results.py",
+      "size_bytes": 8473
+    },
+    {
+      "path": "run_microgravity_fire_suppression_monte_carlo.py",
+      "size_bytes": 15154
+    },
+    {
+      "path": "microgravity_fire_monte_carlo_model_spec.md",
+      "size_bytes": 6693
+    },
+    {
+      "path": "연구 보강 보고서.md",
+      "size_bytes": 21039
+    },
+    {
+      "path": "물리 검증 중심의 S1–S12 연구 보강.pptx",
+      "size_bytes": 1575643
+    },
+    {
+      "path": "adapter_sensitivity_audit.png",
+      "size_bytes": 249659
+    },
+    {
+      "path": "P1_P2_P3_리소스배분_비교.png",
+      "size_bytes": 180687
+    },
+    {
+      "path": "S1_S12_연구보강_발표슬라이드_내용.md",
+      "size_bytes": 5505
+    },
+    {
+      "path": "benchmark_adapter_contract_v1.yaml",
+      "size_bytes": 6079
+    },
+    {
+      "path": "visualize_stage_resource_comparison.py",
+      "size_bytes": 5128
+    },
+    {
+      "path": "run_adapter_sensitivity_audit.py",
+      "size_bytes": 11612
+    },
+    {
+      "path": "reinforcement_literature_notes.md",
+      "size_bytes": 3252
+    },
+    {
+      "path": "benchmark_format_research_notes.md",
+      "size_bytes": 2526
+    },
+    {
+      "path": "S1_S12_핵심시뮬레이션사양_마일스톤_리소스시각화_2026-08-26.zip.sha256",
+      "size_bytes": 174
+    },
+    {
+      "path": "S1_S12_핵심시뮬레이션사양_마일스톤_리소스시각화_2026-08-26.zip",
+      "size_bytes": 392844
+    },
+    {
+      "path": "S1_S12_리소스배분_요약.csv",
+      "size_bytes": 457
+    },
+    {
+      "path": "S1_S12_마일스톤_리소스계획.csv",
+      "size_bytes": 1498
+    },
+    {
+      "path": "S1_S12_마일스톤_리소스배분.png",
+      "size_bytes": 428756
+    },
+    {
+      "path": "visualize_portfolio_milestones.py",
+      "size_bytes": 7259
+    },
+    {
+      "path": "S1_S6_핵심시뮬레이션_경계조건_입력사양.md",
+      "size_bytes": 18983
+    },
+    {
+      "path": "필수시뮬레이션_포트폴리오.csv",
+      "size_bytes": 3358
+    },
+    {
+      "path": "초기주제중심_P2P3_통합연구계획_2026-08-26.zip",
+      "size_bytes": 148470
+    },
+    {
+      "path": "초기주제중심_P2P3_통합연구계획_2026-08-26.zip.sha256",
+      "size_bytes": 150
+    },
+    {
+      "path": "physical_focus_integrated_roadmap.png",
+      "size_bytes": 139337
+    },
+    {
+      "path": "physical_focus_integrated_roadmap.mmd",
+      "size_bytes": 1786
+    },
+    {
+      "path": "P2_P3_gate_matrix_notes.md",
+      "size_bytes": 6089
+    },
+    {
+      "path": "bench_lab_risk_analysis_notes.md",
+      "size_bytes": 4068
+    },
+    {
+      "path": "physical_focus_research_notes.md",
+      "size_bytes": 2040
+    },
+    {
+      "path": "case_manifest_template.json",
+      "size_bytes": 2288
+    },
+    {
+      "path": "qoi_registry_template.csv",
+      "size_bytes": 1079
+    },
+    {
+      "path": "channel_inventory_template.csv",
+      "size_bytes": 754
+    },
+    {
+      "path": "paired_qoi_comparison_template.csv",
+      "size_bytes": 707
+    },
+    {
+      "path": "P0_P1_비연소계측_수치검증_실행패키지_2026-08-26.zip",
+      "size_bytes": 24912
+    },
+    {
+      "path": "P0–P1 단기 검증 프로토콜 초안.md",
+      "size_bytes": 19752
+    },
+    {
+      "path": "P0_P1_비연소계측_수치검증_실행패키지_2026-08-26.zip.sha256",
+      "size_bytes": 158
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 2859
+    },
+    {
+      "path": "P0_P1_추가계측데이터_사양_v1.md",
+      "size_bytes": 25044
+    },
+    {
+      "path": "P0_P1_단기검증_프로토콜_초안.md",
+      "size_bytes": 19752
+    },
+    {
+      "path": "FDS·OpenFOAM 3D 격자 시각화 및 연구 정합성 심층분석 보고서.md",
+      "size_bytes": 34330
+    },
+    {
+      "path": "FDS_OpenFOAM_3D격자_연구정합성_심층분석_2026-08-26.zip",
+      "size_bytes": 395799
+    },
+    {
+      "path": "fds_openfoam_grid_data_audit.csv",
+      "size_bytes": 479
+    },
+    {
+      "path": "FDS_OpenFOAM_3D격자_연구정합성_심층분석_2026-08-26.zip.sha256",
+      "size_bytes": 158
+    },
+    {
+      "path": "fds_openfoam_fixture_spatial_audit.png",
+      "size_bytes": 308240
+    },
+    {
+      "path": "rebalancing_roadmap.png",
+      "size_bytes": 101637
+    },
+    {
+      "path": "external_source_digest.md",
+      "size_bytes": 1798
+    },
+    {
+      "path": "visual_review_notes.md",
+      "size_bytes": 3444
+    },
+    {
+      "path": "rebalancing_roadmap.mmd",
+      "size_bytes": 1364
+    },
+    {
+      "path": "Steckler_010.fds",
+      "size_bytes": 6294
+    },
+    {
+      "path": "추가 시뮬레이션·실험 계획서.md",
+      "size_bytes": 25630
+    },
+    {
+      "path": "analyze_grid_data.py",
+      "size_bytes": 7266
+    },
+    {
+      "path": "ResearchDataLab.tsx",
+      "size_bytes": 39300
+    },
+    {
+      "path": "fds_preflight_hrr_devc.png",
+      "size_bytes": 118889
+    },
+    {
+      "path": "three_d_field_snapshot.png",
+      "size_bytes": 367244
+    },
+    {
+      "path": "three_d_scenario_sample.json",
+      "size_bytes": 870
+    },
+    {
+      "path": "openfoam_web_point_sample.csv",
+      "size_bytes": 659
+    },
+    {
+      "path": "original_topic_pdf.txt",
+      "size_bytes": 9413
+    },
+    {
+      "path": "FDS_OpenFOAM_웹데이터연동_안내.md",
+      "size_bytes": 15539
+    },
+    {
+      "path": "VISUAL_ASSET_CATALOG.tsv",
+      "size_bytes": 21562
+    },
+    {
+      "path": "VISUAL_EVIDENCE_GUIDE_KO.md",
+      "size_bytes": 4693
+    },
+    {
+      "path": "화재구조환경_드론기반_물리적화염제어_최신통합연구보고서_2026-08-26.md",
+      "size_bytes": 35668
+    },
+    {
+      "path": "드론기반화재제어연구의자료조사및분석.zip",
+      "size_bytes": 32597556
+    },
+    {
+      "path": "화재구조환경에서인명생존시간연장을위한드론기반물리적화염제어기술연구.pdf",
+      "size_bytes": 2662180
+    },
+    {
+      "path": "AERIS_Research_External_AI_Review_2026-08-26.zip",
+      "size_bytes": 2782466
+    },
+    {
+      "path": "AERIS_Research_External_AI_Review_2026-08-26.zip.sha256",
+      "size_bytes": 115
+    },
+    {
+      "path": "EXTERNAL_AI_REVIEW_GUIDE.md",
+      "size_bytes": 5589
+    },
+    {
+      "path": "AERIS_Complete_Visual_Evidence_2026-08-26.zip.sha256",
+      "size_bytes": 112
+    },
+    {
+      "path": "AERIS_Complete_Visual_Evidence_2026-08-26.zip",
+      "size_bytes": 5275285
+    }
+  ],
+  "reference_files": [
+    {
+      "archive_entry": "adapter_contract.py",
+      "local_path": "data\\reference\\adapter_contract.py",
+      "sha256": "c7340b16f202c36e913cc6ab95123c8c8ceb260d0bd6a01cd7cbd2a567cbc707",
+      "modified": false
+    },
+    {
+      "archive_entry": "generate_fds_geometry_sidecar.py",
+      "local_path": "data\\reference\\generate_fds_geometry_sidecar.py",
+      "sha256": "a126d12b19078b67e65c9786cab81b3fa30bfaa0b45fc451392186f0c72b64a7",
+      "modified": false
+    },
+    {
+      "archive_entry": "test_adapter_contract.py",
+      "local_path": "data\\reference\\test_adapter_contract.py",
+      "sha256": "6ca2f1b98f8bee7e46e273fef5923ddf7fc415f98444f8c2c5aa250b43843d7a",
+      "modified": false
+    },
+    {
+      "archive_entry": "test_generate_fds_geometry_sidecar.py",
+      "local_path": "data\\reference\\test_generate_fds_geometry_sidecar.py",
+      "sha256": "d30f6d23d51ab542d08aa48de2bec2a44072f33caebb723a31d609f40deff8c7",
+      "modified": false
+    },
+    {
+      "archive_entry": "fds_probe_sample.csv",
+      "local_path": "data\\reference\\fds_probe_sample.csv",
+      "sha256": "cc3b516b8fa4b9db92879e09ed35ae7a3b489e87cbe681a503351d232f133e1d",
+      "modified": false
+    },
+    {
+      "archive_entry": "openfoam_web_point_sample.csv",
+      "local_path": "data\\reference\\openfoam_web_point_sample.csv",
+      "sha256": "0b7c10813332d258f079b70381e659f25f527721202463bc01f804ac3d039f13",
+      "modified": false
+    },
+    {
+      "archive_entry": "fixture_contract.json",
+      "local_path": "data\\reference\\fixture_contract.json",
+      "sha256": "a10bd1b12473001906a3a30b42097aabed86bbba9405dfcab857bd1ac4176e88",
+      "modified": false
+    },
+    {
+      "archive_entry": "gate_report.json",
+      "local_path": "data\\reference\\gate_report.json",
+      "sha256": "986016218baf27e31c93f931c3dd90154a539456299285e9d86eb59f4f71eea9",
+      "modified": false
+    },
+    {
+      "archive_entry": "native_artifact_report.json",
+      "local_path": "data\\reference\\native_artifact_report.json",
+      "sha256": "9f9539c51e68f3b5da5446bd2e538378dcdb646a393c2a07065e8c4f3d599e36",
+      "modified": false
+    },
+    {
+      "archive_entry": "run_manifest.json",
+      "local_path": "data\\reference\\run_manifest.json",
+      "sha256": "77d9c1bfb00f62c30a34bf1686abe26c9e40dc449b3f71b583cfc39597924362",
+      "modified": false
+    },
+    {
+      "archive_entry": "fds_openfoam_grid_data_audit.csv",
+      "local_path": "data\\reference\\fds_openfoam_grid_data_audit.csv",
+      "sha256": "d1306b6fc9bb5e8d0b1a0cbb16f7853d086433a2df8440b8d9615e6b706705ae",
+      "modified": false
+    },
+    {
+      "archive_entry": "Steckler_010.fds",
+      "local_path": "data\\reference\\Steckler_010.fds",
+      "sha256": "778cfa34368802a92cf9ad4750d418f8d3bd0aaa981776883cd985cd42c0e938",
+      "modified": false
+    },
+    {
+      "archive_entry": "fds_probe_geometry_sidecar_template.csv",
+      "local_path": "data\\reference\\fds_probe_geometry_sidecar_template.csv",
+      "sha256": "4869fcc8c6e4c65fc027208e75c5dbc45a9a022f122b1cca61a090f9c3f7e372",
+      "modified": false
+    },
+    {
+      "archive_entry": "coordinate_transform_registry_template.csv",
+      "local_path": "data\\reference\\coordinate_transform_registry_template.csv",
+      "sha256": "90c0349b4e4d371226baac20982cef5cc39b45f833bd03abca4b7a399c91dcd2",
+      "modified": false
+    },
+    {
+      "archive_entry": "time_alignment_ledger_template.csv",
+      "local_path": "data\\reference\\time_alignment_ledger_template.csv",
+      "sha256": "63a3f109b24189c60813197556bc0221391e485e590f8dcf2881c69b9039f213",
+      "modified": false
+    }
+  ],
+  "policy": "Referenced archives are untrusted data. Original files remain unchanged."
+}

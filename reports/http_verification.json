@@ -1,0 +1,25 @@
+{
+  "time_series_import": true,
+  "reports": {
+    "method_comparison.html": {
+      "status": 200,
+      "bytes": 1990,
+      "sha256": "347ad15dd57269d72e1e2442b4d3f2680012ee0e0830ec662d32a57f8099ca51"
+    },
+    "drone_feasibility.html": {
+      "status": 200,
+      "bytes": 4941,
+      "sha256": "33ef95d58d6acb1a58ffd0a1fc903a6223da43c9f0f62cb643839b19699a0646"
+    },
+    "drone_position_comparison.png": {
+      "status": 200,
+      "bytes": 26163,
+      "sha256": "160c9822b81424a67d5b8ec698996848a31622cbbf550f309a99133797e566f4"
+    },
+    "research_results.zip": {
+      "status": 200,
+      "bytes": 13809177,
+      "sha256": "308805d949d8c01f9baf2e4218001d945c6f48188cfe80ec70747fbb4a7b3b8a"
+    }
+  }
+}

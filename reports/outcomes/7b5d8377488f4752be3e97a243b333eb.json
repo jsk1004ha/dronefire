@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "tau_s": 10.0,
+  "bootstrap": {
+    "method": "paired_cluster_by_block",
+    "samples": 500,
+    "seed": 42,
+    "ci_level": 0.95,
+    "limitations": "Sampling intervals do not include model or measurement bias."
+  },
+  "groups": {
+    "M1": {
+      "counts": {
+        "total_imported": 1,
+        "analysis_eligible": 0,
+        "event": 0,
+        "administrative_censor": 0,
+        "incomplete": 0,
+        "numerical_failure": 1
+      },
+      "success_rate": null,
+      "success_rate_ci95": null,
+      "rmst_s": null,
+      "rmst_ci95_s": null,
+      "mean_loss_J_m2": null,
+      "mean_loss_ci95_J_m2": null,
+      "mean_input_energy_J": null,
+      "mean_input_energy_ci95_J": null,
+      "estimand_note": "RMST is mean min(event time, 10.0 s) among complete event or administratively censored runs; incomplete and numerical failures are excluded."
+    }
+  },
+  "paired_comparisons": []
+}

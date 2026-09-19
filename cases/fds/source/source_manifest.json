@@ -1,0 +1,11 @@
+{
+  "source_archive": "FDS\uc640 OpenFOAM \ub370\uc774\ud130 3D \uc2dc\uac01\ud654 \ubc0f \ubd84\uc11d \ubcf4\uace0\uc11c \uc791\uc131.zip",
+  "source_archive_sha256": "b5c0d52b3ab1ce64201af106036180f6133ae87d9ab807076ea7994b843c407f",
+  "archive_entry": "Steckler_010.fds",
+  "extracted_path": "cases/fds/source/Steckler_010.fds",
+  "sha256": "778cfa34368802a92cf9ad4750d418f8d3bd0aaa981776883cd985cd42c0e938",
+  "chid": "Steckler_010",
+  "configured_t_end_s": 1800.0,
+  "preserved_unchanged": true,
+  "evidence_type": "provided_public_benchmark_input"
+}

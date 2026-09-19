@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "status": "passed",
+  "checks": {
+    "charge_free_linear_potential": true,
+    "constant_charge_poisson_solution": true,
+    "second_order_spatial_convergence": true,
+    "time_refinement_reduces_error": true,
+    "charge_conservation": true,
+    "positivity": true
+  },
+  "charge_free_max_abs_potential_error_V": 6.217248937900877e-14,
+  "constant_charge_max_abs_potential_error_V": 6.838973831690964e-14,
+  "spatial_refinement": {
+    "cells": [
+      16,
+      32,
+      64,
+      128
+    ],
+    "l2_error_V": [
+      1.2652771232788843e-05,
+      3.2026490954741194e-06,
+      8.062875969270363e-07,
+      2.0231973902353881e-07
+    ],
+    "observed_orders": [
+      1.9821157610252096,
+      1.9898993005591348,
+      1.9946574482373345
+    ]
+  },
+  "temporal_refinement": {
+    "dt_max_s": [
+      0.01,
+      0.005,
+      0.00125
+    ],
+    "l1_errors_vs_finest_C_m3": [
+      1.7034389725094465e-15,
+      7.025780459262746e-16
+    ],
+    "observed_order": 1.2777198610775178
+  },
+  "charge_ledger_relative_residual": 1.1351518364259166e-16,
+  "scope": "numerical verification only; no M5 device or fire-suppression validation"
+}

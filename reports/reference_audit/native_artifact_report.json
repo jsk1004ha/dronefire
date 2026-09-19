@@ -1,0 +1,116 @@
+{
+  "fds_input": {
+    "path": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\data\\reference\\Steckler_010.fds",
+    "sha256": "778cfa34368802a92cf9ad4750d418f8d3bd0aaa981776883cd985cd42c0e938",
+    "mesh": {
+      "ijk": [
+        72,
+        56,
+        44
+      ],
+      "xb_m": [
+        0.0,
+        3.6,
+        -1.4,
+        1.4,
+        0.0,
+        2.13
+      ],
+      "cell_count": 177408
+    },
+    "time_end_s": 1800.0,
+    "output_cadence": {
+      "dt_devc_s": 10.0,
+      "dt_hrr_s": 10.0
+    },
+    "device_count": 5,
+    "devices": [
+      {
+        "id": "'TC_Room'",
+        "quantity": "'TEMPERATURE'",
+        "xb": "2.50,2.50,1.10,1.10,0.02,2.11",
+        "support": "line"
+      },
+      {
+        "id": "'TC_Door'",
+        "quantity": "'THERMOCOUPLE'",
+        "xb": "2.85,2.85,0.00,0.00,0.02,1.82",
+        "support": "line"
+      },
+      {
+        "id": "'BP_Door'",
+        "quantity": "'BI-DIRECTIONAL PROBE'",
+        "xb": "2.85,2.85,0.00,0.00,0.02,1.82",
+        "support": "line"
+      },
+      {
+        "id": "'HGL Temp'",
+        "quantity": "'UPPER TEMPERATURE'",
+        "xb": "2.50,2.50,1.10,1.10,0.00,2.13",
+        "support": "line"
+      },
+      {
+        "id": "'HGL Height'",
+        "quantity": "'LAYER HEIGHT'",
+        "xb": "2.50,2.50,1.10,1.10,0.00,2.13",
+        "support": "line"
+      }
+    ],
+    "slice_count": 1,
+    "status": "ready",
+    "errors": []
+  },
+  "fds_output": {
+    "path": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\data\\reference\\not_supplied\\Steckler_010.out",
+    "exists": false,
+    "status": "blocked",
+    "errors": [
+      "E003",
+      "E005"
+    ],
+    "missing": [
+      "fds_output_log"
+    ],
+    "time_coverage_requirement_s": 1800.0,
+    "time_coverage_satisfied": false
+  },
+  "fds_run_manifest": {
+    "path": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\data\\reference\\run_manifest.json",
+    "exists": true,
+    "sha256": "77d9c1bfb00f62c30a34bf1686abe26c9e40dc449b3f71b583cfc39597924362",
+    "run_id": "Steckler_010_steckler_010_short_preflight_20260826T014249",
+    "status": "ready",
+    "errors": [],
+    "source_input_sha256": "778cfa34368802a92cf9ad4750d418f8d3bd0aaa981776883cd985cd42c0e938",
+    "source_hash_matches_declared_input": true,
+    "time_end_s": 1.0,
+    "returncode": 0,
+    "preflight_only": true
+  },
+  "openfoam_case": {
+    "path": "C:\\Users\\js100\\Desktop\\학교\\서B전람회\\data\\reference\\not_supplied\\openfoam",
+    "exists": false,
+    "required": {
+      "polyMesh": false,
+      "controlDict": false,
+      "sampleDict": false,
+      "fields": false,
+      "solver_log": false
+    },
+    "time_directories": [],
+    "fields": [],
+    "solver_logs": [],
+    "status": "blocked",
+    "errors": [
+      "E005",
+      "E006"
+    ],
+    "missing": [
+      "polyMesh",
+      "controlDict",
+      "sampleDict",
+      "fields",
+      "solver_log"
+    ]
+  }
+}
