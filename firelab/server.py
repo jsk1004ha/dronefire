@@ -107,8 +107,17 @@ def make_server(root, port=8765):
                 return self.send_file(root / "docs" / "physics_derivation.md")
             if path in ("/transport-physics.md", "/transport_derivation.md"):
                 return self.send_file(root / "docs" / "transport_derivation.md")
-            if path in ("/drone-physics.md", "/drone_derivation.md"):
-                return self.send_file(root / "docs" / "drone_derivation.md")
+            if path.startswith("/visualizations/"):
+                img_name = path.replace("/visualizations/", "")
+                img_path = root / "reports" / "visualizations" / img_name
+                if img_path.is_file():
+                    return self.send_file(img_path)
+            if path in ("/firefield_research_results.zip", "/download/research_results"):
+                return self.send_file(root / "firefield_research_results.zip", download=True)
+            if path == "/api/visualizations":
+                vis_dir = root / "reports" / "visualizations"
+                files = [f.name for f in sorted(vis_dir.glob("*.png"))] if vis_dir.exists() else []
+                return self.json_response(200, {"visualizations": files})
             static = {"/": "index.html", "/index.html": "index.html", "/app.js": "app.js", "/style.css": "style.css", "/campaign.js":"campaign.js"}
             if path in static:
                 return self.send_file(root / "web" / static[path])
@@ -219,6 +228,18 @@ def make_server(root, port=8765):
                     import_id = uuid.uuid4().hex
                     json_write(root / "data" / "imports" / f"{import_id}.json", body)
                     json_write(root / "reports" / "synergy" / f"{import_id}.json", result)
+                    return self.json_response(200, result)
+                if path == "/api/optimize":
+                    from .optimizer import run_optimization
+                    result = run_optimization(body)
+                    return self.json_response(200, result)
+                if path == "/api/montecarlo":
+                    from .uncertainty import run_monte_carlo
+                    method_id = body.get("method_id", "M3")
+                    num_samples = body.get("num_samples", 50)
+                    uncertainty_spec = body.get("uncertainty_spec")
+                    base_cfg = body.get("base_cfg")
+                    result = run_monte_carlo(method_id, num_samples, uncertainty_spec, base_cfg)
                     return self.json_response(200, result)
                 return self.json_response(404, {"error": "not found"})
             except (ValueError, TypeError, KeyError, OverflowError) as exc:

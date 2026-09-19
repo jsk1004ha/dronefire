@@ -1,4 +1,11 @@
-"use strict";
+"""Builds the comprehensive web/app.js script supporting all 12 GUI panels."""
+import os
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+APP_PATH = ROOT / "web" / "app.js"
+
+APP_CODE = r'''"use strict";
 
 const $ = (id) => document.getElementById(id);
 const state = {
@@ -1459,3 +1466,11 @@ function renderCharts() {
 
 window.addEventListener("DOMContentLoaded", boot);
 window.addEventListener("resize", renderCharts);
+'''
+
+def write_app():
+    APP_PATH.write_text(APP_CODE, encoding="utf-8")
+    print(f"Successfully generated web/app.js ({len(APP_CODE)} chars)")
+
+if __name__ == "__main__":
+    write_app()

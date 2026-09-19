@@ -1,27 +1,15 @@
-<!doctype html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FIREFIELD · 드론 기반 물리적 화염 제어 연구실</title>
-  <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-<aside class="sidebar">
-  <a class="brand" href="/">
-    <span class="brand-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2c0 4.5-4 6.5-4 10a6 6 0 0 0 12 0c0-3.5-4-5.5-4-10z"/>
-        <path d="M12 14a2 2 0 0 0-2 2c0 1.1.9 2 2 2s2-.9 2-2a2 2 0 0 0-2-2z"/>
-      </svg>
-    </span>
-    <span class="brand-title">
-      FIREFIELD
-      <small>물리적 화염 제어 연구실</small>
-    </span>
-  </a>
+"""Script to generate the complete 12-Panel UI in web/index.html and update style/app scripts."""
+import re
+from pathlib import Path
 
-    <div class="side-label">통합 연구 워크벤치 (12 Panels)</div>
+ROOT = Path(__file__).resolve().parents[1]
+INDEX_PATH = ROOT / "web" / "index.html"
+
+def generate_index_html():
+    raw = INDEX_PATH.read_text(encoding="utf-8")
+    
+    # 1. Update Navigation Buttons
+    nav_html = """  <div class="side-label">통합 연구 워크벤치 (12 Panels)</div>
   <nav aria-label="주 연구 메뉴">
     <button class="nav active" data-page="lab">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 18.2A2 2 0 0 0 5.7 21h12.6a2 2 0 0 0 1.6-2.8L14 9.31V2"/></svg>
@@ -59,69 +47,12 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
       <span>근거와 검증 게이트</span>
     </button>
-  </nav>
-
-  <div class="sidebar-note">
-    <div class="status-line">
-      <span class="status-mark">●</span> Local Simulation
-    </div>
-    <p>엄격한 물리 보존법칙 준수<br>실측 데이터 기반 검증 분리</p>
-    <a href="/implement.md">구현 계획서 열람 ↗</a>
-    <a href="/physics.md">물리 유도 상세 문서 ↗</a>
-  </div>
-</aside>
-
-<main>
-  <header class="topbar">
-    <div class="breadcrumb">
-      <span>RESEARCH</span>
-      <span class="divider">/</span>
-      <span>FIRE CONTROL</span>
-      <span class="divider">/</span>
-      <strong>드론 기반 물리적 화염 제어 시뮬레이션</strong>
-    </div>
-    <span class="badge ready">LOCAL BACKEND VERIFIED</span>
-  </header>
-
-  <section class="hero">
-    <div>
-      <div class="eyebrow">NON-CONTACT FIRE SUPPRESSION PLATFORM</div>
-      <h1 id="page-title">5가지 진압 방식의 전달장 계산</h1>
-      <p id="page-description">동일한 거리·횡풍·작동 시간에서 실제 물리 지배방정식에 따른 유동 및 자원 수지를 비교합니다.</p>
-    </div>
-    <div class="hero-actions">
-      <button class="button" id="export-btn" disabled>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        결과 내보내기
-      </button>
-      <button class="button primary" id="run-btn" disabled>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        시뮬레이션 실행
-      </button>
-    </div>
-  </section>
-
-  <div class="run-status" id="run-status" role="status" aria-live="polite" hidden>
-    <span id="run-message"></span>
-    <div class="progress-track"><i id="progress-fill"></i></div>
-  </div>
-
-  <div class="notice">
-    <div class="notice-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-    </div>
-    <p>
-      <strong>연구 원칙:</strong> 전달장 및 비행 동역학은 보존법칙(질량·운동량·에너지)을 엄격히 적분하며, 검증되지 않은 소화 성공률이나 임의의 효능 계수를 생성하지 않습니다.
-    </p>
-    <div class="notice-links">
-      <button class="text-button" id="see-evidence">검증 게이트 확인</button>
-      <button class="text-button" id="see-physics">물리 공식 보기</button>
-    </div>
-  </div>
-
-    <!-- PAGE 1: LAB (통합 시뮬레이션 스튜디오 워크벤치) -->
-  <section class="page active" id="page-lab">
-  <!-- [필수 5] Simulation Control Panel (시뮬레이션 제어 바) -->
+  </nav>"""
+    
+    raw = re.sub(r'<div class="side-label">.*?<\/nav>', nav_html, raw, flags=re.DOTALL)
+    
+    # 2. Simulation Control Bar (필수 5) right above or inside studio
+    sim_ctrl_bar = """  <!-- [필수 5] Simulation Control Panel (시뮬레이션 제어 바) -->
   <section class="panel sim-control-bar" id="panel-sim-control">
     <div class="control-row">
       <div class="btn-group">
@@ -162,7 +93,13 @@
       </div>
     </div>
   </section>
-
+"""
+    
+    # 3. New Studio Page (PAGE 1: LAB) with 6 Panels:
+    # P1 (Input/Scenario), P2 (Method/Operation), P6 (3D Visualization), P3 (Flight & Control), P4 (Fire & Environment), P7 (Performance Dashboard)
+    studio_html = """  <!-- PAGE 1: LAB (통합 시뮬레이션 스튜디오 워크벤치) -->
+  <section class="page active" id="page-lab">
+""" + sim_ctrl_bar + """
     <div class="studio-grid">
       <!-- Left Column: P1 Input/Scenario & P2 Method/Operation -->
       <div class="studio-col">
@@ -289,7 +226,7 @@
               <input id="pid-kp" type="number" step="0.1" value="1.2" min="0.1" max="5.0">
             </div>
             <div class="input-row">
-              <label for="sensor-latency">센서 지연 $\tau_{delay}$ [s]:</label>
+              <label for="sensor-latency">센서 지연 $\\tau_{delay}$ [s]:</label>
               <input id="sensor-latency" type="number" step="0.05" value="0.10" min="0.0" max="0.50">
             </div>
           </div>
@@ -400,7 +337,12 @@
       <div id="model-note" class="model-note">계산 결과의 지배방정식 및 모델 가정이 여기에 표시됩니다.</div>
     </section>
   </section>
-  <!-- [필수 8] Comparison Panel (방식별 비교 분석 패널) -->
+"""
+    
+    # Replace existing page-lab and page-drone with the new integrated studio and dedicated pages
+    # Let's define the other dedicated pages:
+    # page-comparison ([필수 8])
+    comparison_page = """  <!-- [필수 8] Comparison Panel (방식별 비교 분석 패널) -->
   <section class="page" id="page-comparison">
     <div class="comparison-layout">
       <section class="panel">
@@ -461,7 +403,10 @@
       </div>
     </section>
   </section>
-  <!-- [필수 9] Scenario Editor (시나리오 에디터) -->
+"""
+
+    # page-editor ([필수 9])
+    editor_page = """  <!-- [필수 9] Scenario Editor (시나리오 에디터) -->
   <section class="page" id="page-editor">
     <div class="editor-layout">
       <!-- Visual Phase Editor -->
@@ -542,7 +487,10 @@
       </section>
     </div>
   </section>
-  <!-- [선택 1] Optimization Panel (다목적 Pareto 최적화 패널) -->
+"""
+
+    # page-optimize ([선택 1])
+    optimize_page = """  <!-- [선택 1] Optimization Panel (다목적 Pareto 최적화 패널) -->
   <section class="page" id="page-optimize">
     <div class="optimize-layout">
       <section class="panel optimize-ctrl">
@@ -554,7 +502,7 @@
           <span class="badge ready">NSGA-II / GRID</span>
         </div>
         
-        <p class="section-copy">소화 시간($\min t_{ext}$), 비행 에너지($\min E_{tot}$), 위치 오차($\min e_{max}$), 약제 전달 효율($\max \eta$) 간의 상충 관계를 동시 최적화합니다.</p>
+        <p class="section-copy">소화 시간($\\min t_{ext}$), 비행 에너지($\\min E_{tot}$), 위치 오차($\\min e_{max}$), 약제 전달 효율($\\max \\eta$) 간의 상충 관계를 동시 최적화합니다.</p>
 
         <div class="input-grid">
           <div>
@@ -629,7 +577,10 @@
       </div>
     </section>
   </section>
-  <!-- [선택 2] Uncertainty / Monte Carlo Panel (불확실성 및 몬테카를로 분석 패널) -->
+"""
+
+    # page-montecarlo ([선택 2])
+    montecarlo_page = """  <!-- [선택 2] Uncertainty / Monte Carlo Panel (불확실성 및 몬테카를로 분석 패널) -->
   <section class="page" id="page-montecarlo">
     <div class="optimize-layout">
       <section class="panel">
@@ -710,7 +661,10 @@
       <canvas id="tornado-canvas" style="width:100%; height:220px;"></canvas>
     </section>
   </section>
-  <!-- [필수 10] Result Export Panel (결과 및 고해상도 차트 내보내기) -->
+"""
+
+    # page-export ([필수 10])
+    export_page = """  <!-- [필수 10] Result Export Panel (결과 및 고해상도 차트 내보내기) -->
   <section class="page" id="page-export">
     <!-- One-Click Deliverable Download Banner -->
     <section class="panel export-banner">
@@ -797,490 +751,16 @@
       </section>
     </div>
   </section>
-<!-- PAGE 3: PHYSICS DERIVATIONS (지배방정식과 물리 유도) -->
-  <section class="page" id="page-physics">
-    <div class="physics-container">
-      <div class="panel">
-        <div class="panel-head">
-          <div>
-            <span class="eyebrow">THEORETICAL FOUNDATION</span>
-            <h2>공통 보존 법칙 (Universal Conservation Laws)</h2>
-          </div>
-          <span class="badge ready">FIRST PRINCIPLES</span>
-        </div>
-        <div class="math-card-body">
-          <p class="math-explanation">
-            본 시뮬레이션의 모든 모델(M1~M5 및 드론 동역학)은 임의의 가중치나 성공률 점수를 일절 사용하지 않으며, 다음 고전 연속체 역학의 기본 보존 법칙에서 출발합니다.
-          </p>
+"""
 
-          <div class="math-grid-2col">
-            <div class="math-formula-box">
-              <span class="eyebrow">질량 보존 (Continuity Equation)</span>
-              <p>
-                <math display="block">
-                  <mrow>
-                    <mfrac>
-                      <mrow><mo>∂</mo><mi>ρ</mi></mrow>
-                      <mrow><mo>∂</mo><mi>t</mi></mrow>
-                    </mfrac>
-                    <mo>+</mo>
-                    <mo>∇</mo>
-                    <mo>·</mo>
-                    <mo stretchy="false">(</mo><mi>ρ</mi><mi mathvariant="bold">u</mi><mo stretchy="false">)</mo>
-                    <mo>=</mo>
-                    <msub><mi>s</mi><mi>m</mi></msub>
-                  </mrow>
-                </math>
-              </p>
-              <small class="muted">입자 분사 질량 수지: m_emitted = m_delivered + m_evap + m_dep + m_esc + m_airborne</small>
-            </div>
+    # Assemble: replace page-lab and page-drone with studio, comparison, editor, optimize, montecarlo, export
+    # Notice page-physics starts at `<!-- PAGE 3: PHYSICS DERIVATIONS`
+    prefix = raw[:raw.find('<!-- PAGE 1: LAB')]
+    suffix = raw[raw.find('<!-- PAGE 3: PHYSICS DERIVATIONS'):]
+    
+    new_html = prefix + studio_html + comparison_page + editor_page + optimize_page + montecarlo_page + export_page + suffix
+    INDEX_PATH.write_text(new_html, encoding="utf-8")
+    print(f"Successfully generated new web/index.html ({len(new_html)} chars)")
 
-            <div class="math-formula-box">
-              <span class="eyebrow">운동량 보존 (Navier-Stokes)</span>
-              <p>
-                <math display="block">
-                  <mrow>
-                    <mfrac>
-                      <mrow><mo>∂</mo><mo stretchy="false">(</mo><mi>ρ</mi><mi mathvariant="bold">u</mi><mo stretchy="false">)</mo></mrow>
-                      <mrow><mo>∂</mo><mi>t</mi></mrow>
-                    </mfrac>
-                    <mo>+</mo>
-                    <mo>∇</mo>
-                    <mo>·</mo>
-                    <mo stretchy="false">(</mo><mi>ρ</mi><mi mathvariant="bold">u</mi><mo>⊗</mo><mi mathvariant="bold">u</mi><mo stretchy="false">)</mo>
-                    <mo>=</mo>
-                    <mo>−</mo><mo>∇</mo><mi>p</mi>
-                    <mo>+</mo><mo>∇</mo><mo>·</mo><mi mathvariant="bold">τ</mi>
-                    <mo>+</mo><mi>ρ</mi><mi mathvariant="bold">g</mi>
-                    <mo>+</mo><msub><mi mathvariant="bold">f</mi><mrow><mi>ext</mi></mrow></msub>
-                  </mrow>
-                </math>
-              </p>
-              <small class="muted">노즐 반력: F_reaction = m_dot · U + ρ A U² (기체 및 입자 항 분리 적분)</small>
-            </div>
-          </div>
-
-          <div class="math-code-mapping">
-            <span class="tag">VERIFICATION</span>
-            질량 보존 오차 잔차는 수치 부동소수점 오차 한계 내(&lt; 10⁻¹² kg)에서 0으로 닫힘을 매 단계 검사합니다.
-          </div>
-        </div>
-      </div>
-
-      <!-- M1 Math Card -->
-      <div class="math-card">
-        <div class="math-card-header">
-          <div>
-            <span class="eyebrow">METHOD 1</span>
-            <h2>M1 저주파 음향 유동 (Low-Frequency Acoustics)</h2>
-          </div>
-          <span class="method-badge" style="color:var(--m1-color)">M1 ACOUSTICS</span>
-        </div>
-        <div class="math-card-body">
-          <p class="math-explanation">
-            균일 매질의 질량·운동량 방정식을 미소 섭동(|u| ≪ c, |ρ'| ≪ ρ₀)에 대해 선형화하면 선형 음향 파동방정식이 유도됩니다. 배플 앞 반구로 퍼지는 음향 강도 보존을 통해 유한 개구 Rayleigh 전이 진폭식을 구현했습니다.
-          </p>
-          <div class="math-formula-box" style="border-left-color:var(--m1-color)">
-            <math display="block">
-              <mrow>
-                <mfrac>
-                  <mrow><msup><mo>∂</mo><mn>2</mn></msup><msup><mi>p</mi><mo>′</mo></msup></mrow>
-                  <mrow><mo>∂</mo><msup><mi>t</mi><mn>2</mn></msup></mrow>
-                </mfrac>
-                <mo>−</mo>
-                <msup><mi>c</mi><mn>2</mn></msup>
-                <msup><mo>∇</mo><mn>2</mn></msup><msup><mi>p</mi><mo>′</mo></msup>
-                <mo>=</mo><mn>0</mn>
-                <mo>,</mo><mspace width="1em"/>
-                <msub><mi>u</mi><mrow><mi>rms</mi></mrow></msub><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo>
-                <mo>=</mo>
-                <msub><mi>u</mi><mn>0</mn></msub>
-                <msqrt>
-                  <mfrac>
-                    <mi>A</mi>
-                    <mrow><mi>A</mi><mo>+</mo><mn>2</mn><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow>
-                  </mfrac>
-                </msqrt>
-                <mo>,</mo><mspace width="1em"/>
-                <msub><mi>F</mi><mrow><mi>rad</mi></mrow></msub>
-                <mo>=</mo>
-                <mfrac><msub><mi>P</mi><mrow><mi>acoustic</mi></mrow></msub><mrow><mn>2</mn><mi>c</mi></mrow></mfrac>
-              </mrow>
-            </math>
-          </div>
-          <div class="math-code-mapping">
-            <span class="tag">CODE</span>
-            <code>firelab.physics:_simulate_m1</code> · <code>firelab.acoustics:plane_wave</code> (1D Staggered FDTD 해)
-          </div>
-        </div>
-      </div>
-
-      <!-- M2 Math Card -->
-      <div class="math-card">
-        <div class="math-card-header">
-          <div>
-            <span class="eyebrow">METHOD 2</span>
-            <h2>M2 공기 와류 링 (Pulsed Vortex Ring)</h2>
-          </div>
-          <span class="method-badge" style="color:var(--m2-color)">M2 VORTEX RING</span>
-        </div>
-        <div class="math-card-body">
-          <p class="math-explanation">
-            노즐 출구의 비정상 슬러그(Slug) 유동에서 순환 Γ와 충격량 I를 계산하고, 점성 확산 코어 a(t)를 갖는 얇은 와류 링의 Saffman 자기유도 속도를 시간 적분하여 전진 거리를 엄밀히 산출합니다. 공간장은 유한핵 정규화 Biot-Savart 적분으로 형성됩니다.
-          </p>
-          <div class="math-formula-box" style="border-left-color:var(--m2-color)">
-            <math display="block">
-              <mrow>
-                <msub><mi>U</mi><mrow><mi>ring</mi></mrow></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo>
-                <mo>=</mo>
-                <mfrac><mi>Γ</mi><mrow><mn>4</mn><mi>π</mi><mi>R</mi></mrow></mfrac>
-                <mrow><mo>[</mo>
-                  <mo form="prefix">ln</mo><mfenced><mfrac><mrow><mn>8</mn><mi>R</mi></mrow><mrow><mi>a</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mfrac></mfenced>
-                  <mo>−</mo><mn>0.558</mn>
-                <mo>]</mo></mrow>
-                <mo>,</mo><mspace width="1em"/>
-                <mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo>
-                <mo>=</mo>
-                <msubsup><mo>∫</mo><mn>0</mn><mi>t</mi></msubsup>
-                <msub><mi>U</mi><mrow><mi>ring</mi></mrow></msub><mo stretchy="false">(</mo><mi>τ</mi><mo stretchy="false">)</mo><mi>d</mi><mi>τ</mi>
-              </mrow>
-            </math>
-          </div>
-          <div class="math-code-mapping">
-            <span class="tag">CODE</span>
-            <code>firelab.physics:_ring_parameters</code>, <code>_ring_travel</code>, <code>_ring_velocity</code>
-          </div>
-        </div>
-      </div>
-
-      <!-- M3/M4 Math Card -->
-      <div class="math-card">
-        <div class="math-card-header">
-          <div>
-            <span class="eyebrow">METHOD 3 & 4</span>
-            <h2>M3 수분무 증발 및 M4 에어로졸 수송 (Droplet / Particle Transport)</h2>
-          </div>
-          <span class="method-badge" style="color:var(--m3-color)">M3 / M4 PARTICLE</span>
-        </div>
-        <div class="math-card-body">
-          <p class="math-explanation">
-            구형 희박 입자군(Lagrangian parcels)에 대해 Schiller-Naumann 항력 상관식을 적용하고, Stokes 완화시간 τ_p에 대한 적분 해석해로 위치를 전진시킵니다. 수분무(M3)는 주변 습도·온도를 반영한 등온 Maxwell d² 법칙에 의해 액적 직경이 감소합니다.
-          </p>
-          <div class="math-formula-box" style="border-left-color:var(--m3-color)">
-            <math display="block">
-              <mrow>
-                <msub><mi>τ</mi><mi>p</mi></msub>
-                <mo>=</mo>
-                <mfrac>
-                  <mrow><msub><mi>ρ</mi><mi>p</mi></msub><msup><mi>d</mi><mn>2</mn></msup></mrow>
-                  <mrow><mn>18</mn><msub><mi>μ</mi><mi>g</mi></msub><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mn>0.15</mn><mi>R</mi><msup><mi>e</mi><mrow><mn>0.687</mn></mrow></msup><mo stretchy="false">)</mo></mrow>
-                </mfrac>
-                <mo>,</mo><mspace width="1em"/>
-                <msup><mi>d</mi><mn>2</mn></msup><mo stretchy="false">(</mo><mi>t</mi><mo>+</mo><mi>Δ</mi><mi>t</mi><mo stretchy="false">)</mo>
-                <mo>=</mo>
-                <mo form="prefix" movablelimits="true">max</mo>
-                <mrow><mo>[</mo><msup><mi>d</mi><mn>2</mn></msup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>−</mo><mi>K</mi><mi>Δ</mi><mi>t</mi><mo>,</mo><mspace width="0.2em"/><mn>0</mn><mo>]</mo></mrow>
-              </mrow>
-            </math>
-          </div>
-          <div class="math-code-mapping">
-            <span class="tag">CODE</span>
-            <code>firelab.physics:_particle_transport</code>, <code>_water_evaporation_coefficient</code>
-          </div>
-        </div>
-      </div>
-
-      <!-- M5 Math Card -->
-      <div class="math-card">
-        <div class="math-card-header">
-          <div>
-            <span class="eyebrow">METHOD 5</span>
-            <h2>M5 전도성 와류 및 전기유체역학 (EHD / Conductive Vortex)</h2>
-          </div>
-          <span class="method-badge" style="color:var(--m5-color)">M5 EHD / CV</span>
-        </div>
-        <div class="math-card-body">
-          <p class="math-explanation">
-            단극성 전하 수송과 Poisson 정전기 결합을 1차원 유한체적법으로 풀며, 공간 전하와 전기장의 상호작용으로 인한 Coulomb 체적력 f_e = qE를 계산합니다. 가공의 가속을 방지하기 위해 공급 전력 기반 속도 증가분 상한을 적용합니다.
-          </p>
-          <div class="math-formula-box" style="border-left-color:var(--m5-color)">
-            <math display="block">
-              <mrow>
-                <msup><mo>∇</mo><mn>2</mn></msup><mi>ϕ</mi>
-                <mo>=</mo>
-                <mo>−</mo><mfrac><mi>q</mi><mrow><msub><mi>ε</mi><mn>0</mn></msub><msub><mi>ε</mi><mi>r</mi></msub></mrow></mfrac>
-                <mo>,</mo><mspace width="1em"/>
-                <mi mathvariant="bold">J</mi>
-                <mo>=</mo>
-                <mi>q</mi><msub><mi mathvariant="bold">u</mi><mrow><mi>gas</mi></mrow></msub>
-                <mo>+</mo><mi>μ</mi><mi>q</mi><mi mathvariant="bold">E</mi>
-                <mo>−</mo><mi>D</mi><mo>∇</mo><mi>q</mi>
-                <mo>,</mo><mspace width="1em"/>
-                <msub><mi>f</mi><mi>e</mi></msub>
-                <mo>=</mo>
-                <mi>q</mi><mi mathvariant="bold">E</mi>
-              </mrow>
-            </math>
-          </div>
-          <div class="math-code-mapping">
-            <span class="tag">CODE</span>
-            <code>firelab.ehd:simulate_ehd</code>, <code>firelab.physics:_simulate_m5</code>
-          </div>
-        </div>
-      </div>
-
-      <!-- Drone Math Card -->
-      <div class="math-card">
-        <div class="math-card-header">
-          <div>
-            <span class="eyebrow">DRONE PLATFORM</span>
-            <h2>드론 6자유도 동역학, 액추에이터 디스크, 열용량 (Flight Dynamics & Thermal)</h2>
-          </div>
-          <span class="badge ready">NEWTON-EULER 6-DOF</span>
-        </div>
-        <div class="math-card-body">
-          <p class="math-explanation">
-            로터 추진은 운동량 이론(Actuator Disk)을 통해 유도동력 P = T^(3/2) / sqrt(2ρA)를 계산하고 배터리 방전 장부로 관리합니다. 기체 자세는 쿼터니언 미분방정식으로 단위 노름을 보존하며, 외부 화재 열유속에 대해서는 집중 열용량(Lumped Capacitance) 해석해로 과도 온도를 예측합니다.
-          </p>
-          <div class="math-formula-box">
-            <math display="block">
-              <mrow>
-                <mi>m</mi><mover accent="true"><mi mathvariant="bold">v</mi><mo>˙</mo></mover>
-                <mo>=</mo>
-                <mi>T</mi><mi mathvariant="bold">R</mi><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo><msub><mi mathvariant="bold">e</mi><mn>3</mn></msub>
-                <mo>+</mo><msub><mi mathvariant="bold">F</mi><mrow><mi>reaction</mi></mrow></msub>
-                <mo>+</mo><msub><mi mathvariant="bold">F</mi><mrow><mi>drag</mi></mrow></msub>
-                <mo>−</mo><mi>m</mi><mi>g</mi><msub><mi mathvariant="bold">e</mi><mn>3</mn></msub>
-                <mo>,</mo><mspace width="1em"/>
-                <mi>C</mi><mfrac><mrow><mi>d</mi><mi>T</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac>
-                <mo>=</mo>
-                <msub><mover accent="true"><mi>Q</mi><mo>˙</mo></mover><mrow><mi>in</mi></mrow></msub>
-                <mo>−</mo><mi>H</mi><mo stretchy="false">(</mo><mi>T</mi><mo>−</mo><msub><mi>T</mi><mi>∞</mi></msub><mo stretchy="false">)</mo>
-              </mrow>
-            </math>
-          </div>
-          <div class="math-code-mapping">
-            <span class="tag">CODE</span>
-            <code>firelab.drone:simulate_mission</code>, <code>firelab.drone_study</code>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PAGE 4: DESIGN (실험 매트릭스) -->
-  <section class="page" id="page-design">
-    <div class="design-summary">
-      <article><strong>5</strong><span>단독 방식 (Single)</span></article>
-      <article><strong>10</strong><span>동시 조합 (Simultaneous)</span></article>
-      <article><strong>20</strong><span>순차 조합 (Sequential)</span></article>
-      <article><strong>1</strong><span>무개입 대조군 (Control)</span></article>
-    </div>
-    <section class="panel">
-      <div class="panel-head">
-        <div>
-          <span class="eyebrow">EXPERIMENT MATRIX</span>
-          <h2>36개 기본 비교 조건 설계</h2>
-        </div>
-        <button class="button small" id="matrix-export">설계 JSON 내려받기</button>
-      </div>
-      <p class="section-copy">사전 등록된 상호보완성 및 순서 효과 검정 매트릭스입니다. 부분 투입량 대조군 및 M5 분해군은 별도 하위 조건으로 관리됩니다.</p>
-      <div class="filter-row" id="matrix-filters">
-        <button class="selected" data-mode="all">전체 조건 (36)</button>
-        <button data-mode="single">단독 (5)</button>
-        <button data-mode="simultaneous">동시 조합 (10)</button>
-        <button data-mode="sequential">순차 조합 (20)</button>
-      </div>
-      <div class="table-scroll">
-        <table>
-          <thead>
-            <tr>
-              <th>조건 ID</th>
-              <th>적용 방식</th>
-              <th>작동 모드</th>
-              <th>자원 투입량</th>
-              <th>소화 상태</th>
-            </tr>
-          </thead>
-          <tbody id="matrix-table"></tbody>
-        </table>
-      </div>
-    </section>
-  </section>
-
-  <!-- PAGE 5: DATA ANALYSIS (반복별 결과 분석) -->
-  <section class="page" id="page-data">
-    <div class="data-layout">
-      <section class="panel">
-        <div class="panel-head">
-          <div>
-            <span class="eyebrow">IMPORT & AUDIT</span>
-            <h2>반복별 화염 관측 데이터 반입</h2>
-          </div>
-        </div>
-        <p class="section-copy">
-          실험 또는 고충실도 솔버(FDS)의 반복별 결과 JSON을 반입하여 우측 검열, RMST(제한평균생존시간), 부트스트랩 95% 신뢰구간을 통계학적으로 엄밀히 산출합니다.
-        </p>
-        <label class="file-drop" for="outcome-file">
-          <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-          <strong>결과 JSON 파일 선택 또는 드래그</strong>
-          <small>records 배열 및 tau_s 필수 포함 · 최대 8 MB</small>
-          <input type="file" id="outcome-file" accept=".json,application/json">
-        </label>
-        <div style="padding:0 20px 14px; display:flex; gap:8px;">
-          <button class="button small" id="template-export">입력 템플릿 내려받기</button>
-        </div>
-        <details class="advanced" style="padding:0 20px 14px;">
-          <summary>직접 JSON 입력</summary>
-          <textarea id="outcome-editor" aria-label="결과 JSON 입력" placeholder='{"tau_s": 10, "records": [...]}'></textarea>
-          <button class="button primary small" id="analyze-btn">통계 분석 실행</button>
-        </details>
-      </section>
-
-      <section class="panel">
-        <div class="panel-head">
-          <div>
-            <span class="eyebrow">STATISTICAL METRICS</span>
-            <h2>통계 분석 결과</h2>
-          </div>
-          <button class="text-button" id="analysis-export" disabled>JSON 저장 ↗</button>
-        </div>
-        <div id="outcome-summary" class="outcome-placeholder">
-          결과 데이터를 반입하세요.
-          <p>RMST (Restricted Mean Survival Time) · 카플란-마이어 검열 처리 · 대응 비교 검정</p>
-        </div>
-        <pre id="outcome-result" hidden></pre>
-      </section>
-    </div>
-  </section>
-
-  <!-- PAGE 6: PROGRAM (전체 연구 실행) -->
-  <section class="page" id="page-program">
-    <section class="panel">
-      <div class="panel-head">
-        <div>
-          <span class="eyebrow">END-TO-END AUTOMATION</span>
-          <h2>화염·드론·노출 통합 연구 실행</h2>
-        </div>
-        <button id="study-refresh" class="button small">상태 새로고침</button>
-      </div>
-      <div class="section-copy">
-        <p>전체 36개 조건에 대해 지원되는 native FDS 케이스를 생성 및 실행하고, 드론 비행 적분 및 열 노출 보고서를 자동 생성합니다.</p>
-        <div style="display:flex; gap:10px; align-items:center; margin-top:10px;">
-          <button id="study-run" class="button primary">전체 연구 캠페인 시작</button>
-          <button id="study-stop" class="button" disabled>현재 케이스 종료 후 중단</button>
-          <a id="study-zip" class="button" hidden>결과 아카이브 (ZIP) 내려받기</a>
-        </div>
-        <p id="study-status" role="status" style="margin-top:10px; font-family:var(--font-mono); font-size:11.5px; color:var(--muted);">설정을 불러오는 중...</p>
-      </div>
-      <details class="advanced" style="padding:0 20px 18px;">
-        <summary>캠페인 실행 및 판정 기준 JSON</summary>
-        <textarea id="study-config" aria-label="연구 설정 JSON" style="min-height:280px;"></textarea>
-      </details>
-    </section>
-
-    <section class="panel">
-      <div class="panel-head">
-        <h2>케이스별 실행 및 데이터 근거 상태</h2>
-        <span class="badge" id="study-count"></span>
-      </div>
-      <div class="table-scroll">
-        <table>
-          <thead>
-            <tr>
-              <th>조건 ID</th>
-              <th>솔버 실행 상태</th>
-              <th>관측 유효성</th>
-              <th>상태 근거 및 원인</th>
-            </tr>
-          </thead>
-          <tbody id="study-cases"></tbody>
-        </table>
-      </div>
-      <div class="section-copy" id="study-reports"></div>
-    </section>
-
-    <section class="panel">
-      <div class="panel-head">
-        <h2>실제 솔버 Heat Release Rate (HRR) 시계열 비교</h2>
-      </div>
-      <img id="study-hrr" alt="native HRR 비교 차트" style="width:100%; border-radius:0 0 10px 10px;" hidden>
-    </section>
-  </section>
-
-  <!-- PAGE 7: NATIVE FIELDS (3D 격자 단면 탐색) -->
-  <section class="page" id="page-nativefields">
-    <section class="panel">
-      <div class="panel-head">
-        <div>
-          <span class="eyebrow">CFD NATIVE SLICE EXPLORER</span>
-          <h2>FDS / OpenFOAM 원본 격자 3D 시각화</h2>
-        </div>
-      </div>
-      <div class="section-copy" style="display:flex; flex-wrap:wrap; gap:16px; align-items:center;">
-        <label>해석 데이터셋: <select id="native-dataset" aria-label="native 데이터 선택"></select></label>
-        <label>표시 물리량: <select id="native-quantity" aria-label="native 물리량 선택"></select></label>
-        <label>저장 시점: <input id="native-time" type="range" min="0" max="0" value="0" style="display:inline-block; width:140px; vertical-align:middle; margin:0 8px;"><output id="native-time-label" style="font-family:var(--font-mono); font-weight:600;"></output></label>
-      </div>
-      <canvas id="native-canvas" style="width:100%; height:500px; touch-action:none;" aria-label="CFD 단면 3D 뷰"></canvas>
-      <div class="section-copy" style="display:flex; justify-content:space-between; align-items:center;">
-        <button class="button small" id="native-reset">시점 초기화</button>
-        <p id="native-legend" style="margin:0; font-family:var(--font-mono); font-size:11px; color:var(--muted);"></p>
-        <small id="native-provenance" style="font-family:var(--font-mono); font-size:10.5px; color:var(--ash);"></small>
-      </div>
-    </section>
-  </section>
-
-  <!-- PAGE 8: EVIDENCE (근거와 검증) -->
-  <section class="page" id="page-evidence">
-    <section class="panel">
-      <div class="panel-head">
-        <div>
-          <span class="eyebrow">DATA PROVENANCE</span>
-          <h2>원본 출처 자료 및 해시 무결성</h2>
-        </div>
-        <span class="badge ready">SHA-256 VERIFIED</span>
-      </div>
-      <div id="source-list"></div>
-    </section>
-
-    <div class="data-layout">
-      <section class="panel">
-        <div class="panel-head">
-          <h2>데이터 호환성 게이트 (Compatibility Gates)</h2>
-        </div>
-        <div id="gate-list"></div>
-      </section>
-
-      <section class="panel">
-        <div class="panel-head">
-          <h2>실증 완료에 필요한 미비 근거</h2>
-        </div>
-        <ul class="missing-list" id="missing-list"></ul>
-      </section>
-    </div>
-
-    <section class="panel">
-      <div class="panel-head">
-        <div>
-          <span class="eyebrow">SOLVER AUDIT TRAIL</span>
-          <h2>실제 네이티브 솔버 실행 기록</h2>
-        </div>
-        <button class="text-button" id="refresh-native">기록 새로고침</button>
-      </div>
-      <div id="native-list" class="section-copy">실행 기록을 확인하는 중...</div>
-    </section>
-  </section>
-
-  <footer>
-    <span>FIREFIELD / REPRODUCIBLE RESEARCH PLATFORM</span>
-    <span class="footer-id" id="run-id">준비 완료 · 모든 기본 파라미터는 공학 가정값으로 표시됩니다</span>
-  </footer>
-</main>
-
-<div class="toast" id="toast" role="alert" hidden></div>
-
-<script src="/app.js"></script>
-<script src="/campaign.js"></script>
-</body>
-</html>
+if __name__ == "__main__":
+    generate_index_html()
