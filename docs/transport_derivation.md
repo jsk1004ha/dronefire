@@ -136,7 +136,9 @@ m_emitted = m_delivered + m_evaporated + m_deposited + m_escaped + m_airborne
 E_ideal(U) = (1/2) rho_air A_c U³ duration + (1/2) m U²
 ```
 
-를 함께 계산한다. 첫 항은 carrier air의 운동에너지 유량 적분이고 둘째 항은 입자 발사 운동에너지다. `E_ideal(U_requested) > P_device duration`이면 이 식을 이분법으로 풀어 유효 출구속도 `U_effective`를 낮춘다. 따라서 carrier와 입자의 이상 운동에너지 합은 장치 에너지를 넘지 않는다. 펌프 효율을 1로 둔 상한이며, 실제 압축가스 탱크가 있다면 그 저장에너지를 입력 계약에 추가한 뒤 별도 장부로 계산해야 한다.
+를 함께 계산한다. 첫 항은 carrier air의 운동에너지 유량 적분이고 둘째 항은 입자 발사 운동에너지다. 총 에너지뿐 아니라 실제 방출 중의 `P_ideal(U) = (1/2) rho_air A_c U³ + (1/2) mass_flow U² <= P_device`도 만족해야 한다. 약제가 일찍 소진될 경우 전체 시간으로 평균낸 에너지 제약만으로는 순간 출력 초과를 막지 못한다. 현재 구현은 순간 출력식을 이분법으로 풀어 유효 출구속도 `U_effective`를 제한한다. 따라서 순간 이상 출력과 전체 이상 운동에너지 모두 가용 장치 자원을 넘지 않는다. 펌프 효율을 1로 둔 상한이며, 실제 압축가스 탱크가 있다면 그 저장에너지를 입력 계약에 추가한 뒤 별도 장부로 계산해야 한다.
+
+M3/M4/M5는 `consumable_release`에 실제 유량, 방출 지속시간, 기체 기준 배출속도 벡터를 기록한다. 드론은 이 구간의 배출량으로 질량과 입자 반동 `F_particle = -mass_flow * exhaust_velocity`를 함께 계산한다. M5 공기 펄스와 입자 방출은 독립 항으로 합산하며, 공기 펄스 선택 때문에 입자 반동이 누락되지 않는다. `reaction_force_N`은 기존 요약값이고, `nonconsumable_reaction_force_N`과 펄스 정보는 입자 반동을 제외한 시간해석용 항이다.
 
 코드 위치: `_water_evaporation_coefficient`, `_particle_transport`, `_simulate_m3_or_m4`.
 

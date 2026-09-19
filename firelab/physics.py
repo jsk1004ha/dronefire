@@ -562,12 +562,21 @@ def _simulate_m3_or_m4(s: dict[str, float], m: dict[str, Any], assumed: list[str
 
     requested_velocity = m["exit_velocity_m_s"]
     requested_energy = ideal_kinetic_energy(requested_velocity)
+    # With no pressure/energy store declared, the source must be affordable
+    # while particles are actually emitted, not merely averaged over the run.
+    release_flow = m["flow_kg_s"] if requested_mass > 0.0 else 0.0
+
+    def ideal_kinetic_power(exit_velocity: float) -> float:
+        return (0.5 * RHO_AIR * carrier_area * exit_velocity ** 3
+                + 0.5 * release_flow * exit_velocity ** 2)
+
+    requested_power = ideal_kinetic_power(requested_velocity)
     effective_velocity = requested_velocity
-    if requested_energy > device_energy + 1e-12 and requested_velocity > 0.0:
+    if requested_power > m["power_W"] and requested_velocity > 0.0:
         lower, upper = 0.0, requested_velocity
         for _ in range(64):
             midpoint = 0.5 * (lower + upper)
-            if ideal_kinetic_energy(midpoint) <= device_energy:
+            if ideal_kinetic_power(midpoint) <= m["power_W"]:
                 lower = midpoint
             else:
                 upper = midpoint
@@ -590,23 +599,33 @@ def _simulate_m3_or_m4(s: dict[str, float], m: dict[str, Any], assumed: list[str
     metrics["requested_exit_velocity_m_s"] = requested_velocity
     metrics["effective_exit_velocity_m_s"] = effective_velocity
     metrics["requested_ideal_kinetic_energy_J"] = requested_energy
+    metrics["requested_peak_ideal_kinetic_power_W"] = requested_power
+    metrics["peak_ideal_kinetic_power_W"] = ideal_kinetic_power(effective_velocity)
     metrics["carrier_air_kinetic_energy_J"] = 0.5 * RHO_AIR * carrier_area * effective_velocity ** 3 * s["duration_s"]
     metrics["injected_kinetic_energy_J"] = 0.5 * metrics["emitted_kg"] * effective_velocity ** 2
     metrics["total_ideal_kinetic_energy_J"] = metrics["carrier_air_kinetic_energy_J"] + metrics["injected_kinetic_energy_J"]
     result["metrics"] = metrics
     result["series"] = series
     result["field"] = {"points": points.tolist(), "velocity": velocity.tolist(), "scalar": concentration.tolist(), "scalar_name": "airborne_water_concentration" if water else "passive_particle_concentration", "unit": "kg/m3"}
+    # Keep the legacy mean-force summary; the explicit release profile is
+    # authoritative for time-resolved mass and momentum in the drone solver.
     result["reaction_force_N"] = [-(reaction + carrier_reaction), 0.0, 0.0]
+    result["nonconsumable_reaction_force_N"] = [-carrier_reaction, 0.0, 0.0]
+    result["consumable_release"] = {
+        "flow_kg_s": release_flow, "duration_s": actual_duration,
+        "exhaust_velocity_m_s": [effective_velocity, 0.0, 0.0],
+    }
     result["consumable_kg"] = metrics["emitted_kg"]
     result["loaded_consumable_kg"] = m["payload_kg"]
     sufficient = effective_velocity >= requested_velocity - 1e-12
     result["resource_status"] = {
         "status": "sufficient" if sufficient else "insufficient",
-        "reason": None if sufficient else "Device energy is below the ideal carrier-air plus particle exit kinetic energy; the effective exit velocity is reduced without assuming an unreported pressure reservoir.",
+        "reason": None if sufficient else "Device power is below the instantaneous ideal carrier-air plus particle launch power; the effective exit velocity is reduced without borrowing future energy or assuming an unreported pressure reservoir.",
         "requested_particle_kg": requested_mass,
         "requested_exit_velocity_m_s": requested_velocity,
         "effective_exit_velocity_m_s": effective_velocity,
         "minimum_ideal_kinetic_energy_J": requested_energy,
+        "minimum_peak_ideal_kinetic_power_W": requested_power,
         "device_energy_capacity_J": device_energy,
     }
     if not sufficient:
@@ -689,6 +708,12 @@ def _simulate_m5(s: dict[str, float], m: dict[str, Any], assumed: list[str]) -> 
     particle_reaction = metrics["emitted_kg"] * m["exit_velocity_m_s"] / s["duration_s"]
     metrics["mean_particle_reaction_N"] = particle_reaction
     result["reaction_force_N"] = [-(peak_jet_reaction + ehd_force + particle_reaction), 0.0, 0.0]
+    result["nonconsumable_reaction_force_N"] = [-ehd_force, 0.0, 0.0]
+    result["consumable_release"] = {
+        "flow_kg_s": m["flow_kg_s"] if metrics["emitted_kg"] > 0.0 else 0.0,
+        "duration_s": metrics["emitted_kg"] / m["flow_kg_s"] if m["flow_kg_s"] > 0.0 else 0.0,
+        "exhaust_velocity_m_s": [m["exit_velocity_m_s"], 0.0, 0.0],
+    }
     result["reaction_pulse"] = {
         "peak_force_N": [-(peak_jet_reaction + ehd_force + particle_reaction), 0.0, 0.0],
         "peak_jet_force_N": [-peak_jet_reaction, 0.0, 0.0],

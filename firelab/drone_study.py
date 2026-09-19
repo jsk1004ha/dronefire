@@ -141,9 +141,11 @@ def _inactive_method(method: Mapping[str, Any]) -> dict[str, Any]:
         "reaction_pulse": {},
         "series": [],
         "device_power_W": 0.0,
-        "device_mass_kg": device_mass + loaded,
+        "device_mass_kg": device_mass,
         "consumable_kg": 0.0,
-        "loaded_consumable_kg": 0.0,
+        "loaded_consumable_kg": loaded,
+        "consumable_release": None,
+        "nonconsumable_reaction_force_N": [0.0, 0.0, 0.0],
         "resource_status": {"status": "not_applicable", "reason": "D2 device OFF"},
     })
     return result
