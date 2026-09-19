@@ -273,7 +273,7 @@ def run_campaign(root, overrides=None, progress=None, cancel_event=None):
                for x in design if 'partial_controls' in x]
         result['analysis']=analyze_study(result['records'],cfg['metrics'],synergy_specs=specs)
         result['exposure']=summarize_exposure(result['records'],cfg['exposure_criteria'],cfg['metrics']['tau_s'])
-    checkpoint('D0–D5·센서·열·탑재 요구조건 계산',.82)
+    checkpoint('D0-D5·센서·열·탑재 요구조건 계산',.82)
     _finish_numerical_and_drone(root,dest,result)
     if result['status']!='cancelled':
         result['status']=_final_campaign_status(result)
