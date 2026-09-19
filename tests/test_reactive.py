@@ -48,7 +48,7 @@ class ReactiveCaseTests(unittest.TestCase):
             payload = json.loads((Path(temporary) / "needs_model.json").read_text(encoding="utf-8"))
             self.assertEqual(payload["unsupported_methods"], ["M4"])
 
-    def test_sequence_records_full_dose_and_distinct_schedule(self):
+    def test_sequence_records_full_amplitude_and_distinct_schedule(self):
         item = next(value for value in default_reactive_conditions() if value["id"] == "SEQ_M1_THEN_M3")
         self.assertEqual(item["dose_fraction"], {"M1": 1.0, "M3": 1.0})
         self.assertEqual(item["schedule"]["M1"]["duration_s"], 2.0)
@@ -63,9 +63,11 @@ class ReactiveCaseTests(unittest.TestCase):
 
     def test_pulsed_nozzle_uses_declared_pulse_width(self):
         ramp = "\n".join(_pulse_ramp("jet", 6.0, 2.0, cycles=2, period=1.0, pulse_width=.05))
-        self.assertIn("T=6.05, F=1", ramp)
-        self.assertIn("T=7.05, F=1", ramp)
-        self.assertNotIn("T=6.5, F=1", ramp)
+        import re
+        points = [(float(t), float(f)) for t, f in re.findall(r"T=([\d.eE+-]+), F=([\d.eE+-]+)", ramp)]
+        self.assertIn((6.05, 0.0), points)
+        self.assertIn((7.05, 0.0), points)
+        self.assertTrue(all(6.0 < t < 6.05 or 7.0 < t < 7.05 for t, f in points if f > 0.0))
 
     def test_checked_in_default_config_is_accepted(self):
         config_path = Path(__file__).parents[1] / "configs" / "reactive_default.json"

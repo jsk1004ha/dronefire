@@ -267,8 +267,25 @@ def _method_inputs(method_result: Mapping[str, Any]) -> dict[str, Any]:
         "steady_force_N": np.zeros(3),
         "simulated_pulses": None,
         "reaction_series": [],
+        "consumable_release": None,
+        "nonconsumable_reaction_force_N": reaction.copy(),
         "resource_status": method_result.get("resource_status"),
     }
+    release = method_result.get("consumable_release")
+    if release is not None:
+        if not isinstance(release, Mapping):
+            raise ValueError("consumable_release must be a mapping")
+        flow = _finite_number(release.get("flow_kg_s"), "consumable_release.flow_kg_s", minimum=0.0)
+        release_duration = _finite_number(release.get("duration_s"), "consumable_release.duration_s", minimum=0.0)
+        exhaust = _vector3(release.get("exhaust_velocity_m_s"), "consumable_release.exhaust_velocity_m_s")
+        if not math.isclose(flow * release_duration, emitted_consumable, rel_tol=1e-9, abs_tol=1e-12):
+            raise ValueError("consumable_release integrated mass must equal consumable_kg")
+        result["consumable_release"] = {
+            "flow_kg_s": flow, "duration_s": release_duration, "exhaust_velocity_m_s": exhaust,
+        }
+        result["nonconsumable_reaction_force_N"] = _vector3(
+            method_result.get("nonconsumable_reaction_force_N"), "nonconsumable_reaction_force_N"
+        )
     pulse = method_result.get("reaction_pulse", {})
     if pulse is None:
         pulse = {}
@@ -313,6 +330,8 @@ def _method_inputs(method_result: Mapping[str, Any]) -> dict[str, Any]:
         force = _vector3(row["reaction_force_N"], f"series[{index}].reaction_force_N")
         reaction_series.append((time_s, force))
     reaction_series.sort(key=lambda point: point[0])
+    if any(right[0] <= left[0] for left, right in zip(reaction_series, reaction_series[1:])):
+        raise ValueError("reaction force series timestamps must be unique")
     result["reaction_series"] = reaction_series
     return result
 
@@ -340,19 +359,41 @@ def _pulse_overlap(
     return overlap / duration_s
 
 
+def _released_mass(local_t: float, dt: float, method: Mapping[str, Any], actuation_duration: float) -> float:
+    """Mass scheduled in this interval; legacy inputs retain uniform release."""
+    release = method["consumable_release"]
+    end = release["duration_s"] if release is not None else actuation_duration
+    flow = release["flow_kg_s"] if release is not None else method["consumable_kg"] / actuation_duration
+    return flow * max(0.0, min(local_t + dt, end) - max(local_t, 0.0))
+
+
 def _reaction_at(local_t: float, dt: float, method: Mapping[str, Any]) -> np.ndarray:
+    """Average total force over an interval (impulse divided by dt).
+
+    Supplied reaction series already represent the total force. Otherwise the
+    steady/pulsed carrier and the finite-duration particle exhaust are added.
+    """
     series_points = method["reaction_series"]
     if series_points:
         times = np.array([point[0] for point in series_points])
         forces = np.array([point[1] for point in series_points])
-        return np.array([np.interp(local_t, times, forces[:, axis]) for axis in range(3)])
+        if dt <= 0.0:
+            return np.array([np.interp(local_t, times, forces[:, axis]) for axis in range(3)])
+        knots = np.concatenate(([local_t], times[(times > local_t) & (times < local_t + dt)], [local_t + dt]))
+        samples = np.column_stack([np.interp(knots, times, forces[:, axis]) for axis in range(3)])
+        return np.sum(0.5 * (samples[:-1] + samples[1:]) * np.diff(knots)[:, None], axis=0) / dt
     period = method["pulse_period_s"]
     duration = method["pulse_duration_s"]
     if period is not None:
         active_fraction = _pulse_overlap(local_t, dt, period, duration, method["simulated_pulses"])
-        return method["steady_force_N"] + active_fraction * method["pulse_force_N"]
-    return method["reaction_force_N"].copy()
-
+        force = method["steady_force_N"] + active_fraction * method["pulse_force_N"]
+    else:
+        force = method["nonconsumable_reaction_force_N"].copy()
+    release = method["consumable_release"]
+    if release is not None and dt > 0.0:
+        emitted = _released_mass(local_t, dt, method, release["duration_s"])
+        force -= release["exhaust_velocity_m_s"] * (emitted / dt)
+    return force
 
 def _induced_power(thrust_N: float, drone: Mapping[str, Any]) -> float:
     disk_area = drone["rotor_count"] * math.pi * drone["rotor_radius_m"] ** 2
@@ -462,6 +503,11 @@ def simulate_mission(
     nominal_step_count = int(math.ceil(duration / dt_nominal))
     time_points = [min(index * dt_nominal, duration) for index in range(nominal_step_count + 1)]
     time_points.extend((drone["approach_s"], drone["approach_s"] + scenario["duration_s"]))
+    release = method["consumable_release"]
+    if release is not None:
+        if release["duration_s"] > scenario["duration_s"] + 1e-9:
+            raise ValueError("consumable release cannot extend beyond the actuation window")
+        time_points.append(drone["approach_s"] + release["duration_s"])
     time_points = sorted({point for point in time_points if 0.0 <= point <= duration})
     step_count = len(time_points) - 1
     payload_initial = method["device_mass_kg"] + method["loaded_consumable_kg"]
@@ -711,9 +757,7 @@ def simulate_mission(
 
         if active and method["consumable_kg"] > 0.0:
             consumption = (
-                method["consumable_kg"]
-                * active_dt
-                / scenario["duration_s"]
+                _released_mass(active_start - actuation_start, active_dt, method, scenario["duration_s"])
                 * device_delivery_fraction
             )
             consumption = min(consumption, consumable)
@@ -840,9 +884,9 @@ def simulate_mission(
 def simulate_controls(config: Mapping[str, Any], method_result: Mapping[str, Any]) -> dict[str, dict[str, Any]]:
     """Return mass-matched OFF, uncorrected, and corrected comparisons.
 
-    OFF carries the same initial device and consumable mass, but the stored
-    consumable is represented as inactive payload so it is neither emitted nor
-    removed from vehicle mass.
+    OFF retains both mass and mounting positions. Stored consumable stays in
+    its tank rather than being moved into the device point mass; it is not
+    emitted or removed from vehicle mass.
     """
     if not isinstance(method_result, Mapping):
         raise ValueError("method_result must be a mapping")
@@ -855,9 +899,11 @@ def simulate_controls(config: Mapping[str, Any], method_result: Mapping[str, Any
     inactive.update({
         "reaction_force_N": [0.0, 0.0, 0.0],
         "device_power_W": 0.0,
-        "device_mass_kg": device_mass + consumable_mass,
+        "device_mass_kg": device_mass,
         "consumable_kg": 0.0,
-        "loaded_consumable_kg": 0.0,
+        "loaded_consumable_kg": consumable_mass,
+        "consumable_release": None,
+        "nonconsumable_reaction_force_N": [0.0, 0.0, 0.0],
         "series": [],
         "reaction_pulse": {},
         "resource_status": {"status": "not_applicable", "reason": "device inactive in OFF control"},

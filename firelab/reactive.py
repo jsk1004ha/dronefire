@@ -93,9 +93,9 @@ def default_reactive_config() -> dict[str, Any]:
 def default_reactive_conditions() -> list[dict[str, Any]]:
     """Return C0, five singles, ten simultaneous pairs and twenty sequences.
 
-    Pair components use a disclosed half-dose simultaneous window.  A
-    sequential component consumes its full configured dose in half of the
-    intervention window.  No cross-method "equal effectiveness" assumption
+    Pair components use half source amplitude in a shared window. A
+    sequential component uses full source amplitude for half the intervention
+    window, NOT the full single-method integrated dose.  No cross-method "equal effectiveness" assumption
     is encoded.  `partial_single_id` identifies the matching component for
     later, correctly paired analysis.
     """
@@ -122,7 +122,7 @@ def default_reactive_conditions() -> list[dict[str, Any]]:
                 },
                 "metadata": {
                     "partial_single_id": {left: f"P_SIM_{pair}_{left}", right: f"P_SIM_{pair}_{right}"},
-                    "component_dose_rule": "half configured dose over shared four-second window",
+                    "component_dose_rule": "half configured source amplitude over shared four-second window; integrated resource is reported separately",
                 },
             })
             for first, second in ((left, right), (right, left)):
@@ -135,7 +135,7 @@ def default_reactive_conditions() -> list[dict[str, Any]]:
                     },
                     "metadata": {
                         "partial_single_id": {first: f"P_SEQ_{first}_FIRST", second: f"P_SEQ_{second}_SECOND"},
-                        "component_dose_rule": "full configured dose over each two-second sequential window",
+                        "component_dose_rule": "full configured source amplitude over each two-second sequential window, not full single-method integrated dose",
                     },
                 })
     return result
@@ -182,6 +182,15 @@ def _normalise_config(config: Mapping[str, Any] | None) -> dict[str, Any]:
         for key, value in fields.items():
             if key != "kind":
                 _number(value, f"methods.{method}.{key}")
+    if burner["area_m2"] <= 0.0:
+        raise ValueError("burner.area_m2 must be positive and resolved by the mesh")
+    for method in SOURCE_METHODS:
+        # The partitioned xmin boundary contains fixed 0.1 m x 0.1 m patches.
+        if not math.isclose(result["methods"][method]["vent_area_m2"], .01, rel_tol=0.0, abs_tol=1e-12):
+            raise ValueError(f"methods.{method}.vent_area_m2 must equal the fixed native patch area 0.01 m2")
+    pulse = result["methods"]["M2"]
+    if not 0.0 < pulse["pulse_duration_s"] <= pulse["period_s"]:
+        raise ValueError("M2 requires 0 < pulse_duration_s <= period_s")
     return result
 
 
@@ -229,42 +238,82 @@ def _normalise_condition(config: dict[str, Any], condition: Mapping[str, Any] | 
     return item
 
 
-def _pulse_ramp(identifier: str, start: float, duration: float, *, cycles: int | None = None, period: float | None = None, pulse_width: float | None = None) -> list[str]:
-    """Make an FDS fractional RAMP with non-duplicated time coordinates."""
-    points: list[tuple[float, float]] = [(0.0, 0.0)]
-    epsilon = min(.001, duration / 20.0)
-    if cycles and period:
-        for index in range(cycles):
-            on = start + index * period
-            width = pulse_width if pulse_width is not None else min(period * .5, duration / max(cycles, 1))
-            off = min(start + duration, on + width)
-            if on >= start + duration:
-                break
-            points.extend([(on, 0.0), (on + epsilon, 1.0), (off, 1.0), (off + epsilon, 0.0)])
+def _pulse_count(duration: float, period: float) -> int:
+    if period <= 0.0:
+        raise ValueError("pulse period must be positive")
+    count = int(math.ceil(max(0.0, duration / period - 1e-12)))
+    if count > 100000:
+        raise ValueError("native ramp is limited to 100000 pulses")
+    return count
+
+
+def _ramp_points(start: float, duration: float, *, cycles: int | None = None,
+                 period: float | None = None, pulse_width: float | None = None) -> list[tuple[float, float]]:
+    """Bounded trapezoids: ramps rise and fall INSIDE each on interval."""
+    if not math.isfinite(start) or not math.isfinite(duration) or start < 0.0 or duration <= 0.0:
+        raise ValueError("ramp start must be nonnegative and duration positive, both finite")
+    if cycles is not None:
+        if type(cycles) is not int or not 0 <= cycles <= 100000:
+            raise ValueError("cycles must be an integer in [0, 100000]")
+        if period is None or not math.isfinite(period) or period <= 0.0:
+            raise ValueError("pulsed ramp needs a finite positive period")
+        width = pulse_width if pulse_width is not None else period * .5
+        if not math.isfinite(width) or not 0.0 < width <= period:
+            raise ValueError("pulse width must be in (0, period]")
+        intervals = [(start + index * period, min(start + duration, start + index * period + width))
+                     for index in range(cycles) if index * period < duration]
     else:
-        points.extend([(start, 0.0), (start + epsilon, 1.0), (start + duration, 1.0), (start + duration + epsilon, 0.0)])
-    cleaned: list[tuple[float, float]] = []
-    for time_s, value in points:
-        if cleaned and time_s <= cleaned[-1][0]:
-            time_s = cleaned[-1][0] + 1.0e-6
-        cleaned.append((time_s, value))
-    return [f"&RAMP ID='{identifier}', T={time_s:.6g}, F={value:.6g} /" for time_s, value in cleaned]
+        intervals = [(start, start + duration)]
+    # Adjacent on windows with 100% duty form one continuous activation.
+    merged: list[tuple[float, float]] = []
+    for on, off in intervals:
+        if merged and on <= merged[-1][1]:
+            merged[-1] = (merged[-1][0], max(off, merged[-1][1]))
+        else:
+            merged.append((on, off))
+    points = [(0.0, 0.0)]
+    for on, off in merged:
+        epsilon = min(.001, (off - on) / 20.0)
+        if not on < on + epsilon < off - epsilon < off:
+            raise ValueError("pulse is below floating-point time resolution")
+        for point in ((on, 0.0), (on + epsilon, 1.0), (off - epsilon, 1.0), (off, 0.0)):
+            if point == points[-1]:
+                continue
+            points.append(point)
+    if points[-1][0] < start + duration:
+        points.append((start + duration, 0.0))
+    return points
+
+
+def _pulse_ramp(identifier: str, start: float, duration: float, *, cycles: int | None = None,
+                period: float | None = None, pulse_width: float | None = None) -> list[str]:
+    points = _ramp_points(start, duration, cycles=cycles, period=period, pulse_width=pulse_width)
+    # Six significant digits can collapse distinct sub-millisecond points.
+    return [f"&RAMP ID='{identifier}', T={time_s:.17g}, F={value:.17g} /" for time_s, value in points]
 
 
 def _method_resource(config: dict[str, Any], method: str, duration: float, fraction: float) -> dict[str, float | str]:
     spec = config["methods"].get(method)
     if spec is None:
         return {"method_id": method, "status": "needs_model"}
-    if method == "M1":
-        return {"method_id": method, "status": "proxy", "input_energy_J": None, "air_volume_m3": spec["velocity_rms_m_s"] * spec["vent_area_m2"] * duration * fraction}
+    extra = {}
     if method == "M2":
-        pulses = math.floor(duration / spec["period_s"] + 1.0e-9)
-        on_time = min(duration, pulses * spec["pulse_duration_s"])
-        return {"method_id": method, "status": "proxy", "input_energy_J": None, "air_volume_m3": spec["exit_velocity_m_s"] * spec["vent_area_m2"] * on_time * fraction, "pulse_count": pulses}
-    if method == "M3":
-        return {"method_id": method, "status": "native_particle_transport", "input_energy_J": None, "water_mass_kg": spec["water_flow_kg_s"] * duration * fraction}
-    return {"method_id": method, "status": "needs_model"}
-
+        extra = {"cycles": _pulse_count(duration, spec["period_s"]),
+                 "period": spec["period_s"], "pulse_width": spec["pulse_duration_s"]}
+    points = _ramp_points(0.0, duration, **extra)
+    on_time = sum((b[0] - a[0]) * (a[1] + b[1]) * .5 for a, b in zip(points, points[1:]))
+    result = {"method_id": method, "status": "proxy", "input_energy_J": None,
+              "ramp_integral_s": on_time, "source_amplitude_fraction": fraction}
+    if method == "M1":
+        result["air_volume_m3"] = math.sqrt(2.0) * spec["velocity_rms_m_s"] * spec["vent_area_m2"] * on_time * fraction
+    elif method == "M2":
+        result.update(air_volume_m3=spec["exit_velocity_m_s"] * spec["vent_area_m2"] * on_time * fraction,
+                      pulse_count=extra["cycles"])
+    elif method == "M3":
+        result.update(status="native_particle_transport", water_mass_kg=spec["water_flow_kg_s"] * on_time * fraction)
+    else:
+        return {"method_id": method, "status": "needs_model"}
+    return result
 
 def capabilities(config: Mapping[str, Any] | None = None) -> dict[str, Any]:
     """Return method-by-method native capability gates without fabricating efficacy."""
@@ -310,14 +359,16 @@ def _render_input(config: dict[str, Any], condition: dict[str, Any], chid: str) 
     # domain; require enough room and alignment to resolve their geometry.
     if x0 > 0 or x1 < 1.5 or y0 > -.6 or y1 < .6 or z0 != 0 or z1 < 1.0:
         raise ValueError("domain must contain the fixed [0,1.5] x [-.6,.6] x [0,1] compact benchmark")
-    fixed_coordinates = ((x0, (.65, .85)), (y0, (-.5, -.4, -.2, -.1, .1, .2)), (z0, (.2, .3)))
+    burner_side = math.sqrt(burner["area_m2"])
+    bx0, bx1 = .75 - burner_side / 2, .75 + burner_side / 2
+    by0, by1 = -burner_side / 2, burner_side / 2
+    if not x0 <= bx0 < bx1 <= x1 or not y0 <= by0 < by1 <= y1:
+        raise ValueError("burner must lie inside the native domain")
+    fixed_coordinates = ((x0, (bx0, bx1)), (y0, (-.5, -.4, -.2, -.1, .1, .2, by0, by1)), (z0, (.2, .3)))
     for origin, coordinates in fixed_coordinates:
         for coordinate in coordinates:
             if abs((coordinate - origin) / dx - round((coordinate - origin) / dx)) > 1.0e-9:
                 raise ValueError("mesh_cell_m and domain origin must align with fixed burner/source coordinates")
-    burner_side = math.sqrt(burner["area_m2"])
-    bx0, bx1 = .75 - burner_side / 2, .75 + burner_side / 2
-    by0, by1 = -.0 - burner_side / 2, .0 + burner_side / 2
     lines = [
         f"&HEAD CHID='{chid}', TITLE='Reactive intervention research case {condition['id']}' /",
         f"&MESH IJK={ijk[0]},{ijk[1]},{ijk[2]}, XB={x0:.6g},{x1:.6g},{y0:.6g},{y1:.6g},{z0:.6g},{z1:.6g} /",
@@ -379,20 +430,20 @@ def _render_input(config: dict[str, Any], condition: dict[str, Any], chid: str) 
             fraction = float(condition["dose_fraction"][method])
             if method == "M2":
                 m = config["methods"][method]
-                pulses = max(1, math.floor(duration / m["period_s"] + 1.0e-9))
+                pulses = _pulse_count(duration, m["period_s"])
                 lines.extend(_pulse_ramp(ramp, start, duration, cycles=pulses, period=m["period_s"], pulse_width=m["pulse_duration_s"]))
             else:
                 lines.extend(_pulse_ramp(ramp, start, duration))
         y_center = y_slots[method]
         if method == "M1":
             m = config["methods"][method]
-            lines.append(f"&SURF ID='SRC_{method}', VEL=-{m['velocity_rms_m_s'] * math.sqrt(2) * fraction:.6g}, RAMP_V='{ramp}' /")
+            lines.append(f"&SURF ID='SRC_{method}', VEL=-{m['velocity_rms_m_s'] * math.sqrt(2) * fraction:.17g}, RAMP_V='{ramp}' /")
         elif method == "M2":
             m = config["methods"][method]
-            lines.append(f"&SURF ID='SRC_{method}', VEL=-{m['exit_velocity_m_s'] * fraction:.6g}, RAMP_V='{ramp}' /")
+            lines.append(f"&SURF ID='SRC_{method}', VEL=-{m['exit_velocity_m_s'] * fraction:.17g}, RAMP_V='{ramp}' /")
         else:
             particle_flux = m3["water_flow_kg_s"] * fraction / m3["vent_area_m2"]
-            lines.append(f"&SURF ID='SRC_{method}', VEL=-{m3['carrier_velocity_m_s']:.6g}, RAMP_V='{ramp}', PART_ID='WATER_SOURCE', PARTICLE_MASS_FLUX={particle_flux:.6g}, RAMP_PART='{ramp}' /")
+            lines.append(f"&SURF ID='SRC_{method}', VEL=-{m3['carrier_velocity_m_s']:.6g}, RAMP_V='{ramp}', PART_ID='WATER_SOURCE', PARTICLE_MASS_FLUX={particle_flux:.17g}, RAMP_PART='{ramp}' /")
         lines.append(f"&VENT XB={x0:.6g},{x0:.6g},{y_center-.05:.6g},{y_center+.05:.6g},0.2,0.3, SURF_ID='SRC_{method}' /")
     lines.extend(["&TAIL /", ""])
     return "\n".join(lines), resources
